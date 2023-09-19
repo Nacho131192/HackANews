@@ -8,12 +8,12 @@ async function viewEntrie(req, res, next) {
 
         const results = await sendQuery(query, [new_title]);
 
-        if (results.length == 0) {
-            return res.status(404).json({ error: 'que nooooooo,Entrada no encontrada' });
+        if (results.length === 0) {
+            // const entry = results;
+            res.json(results);
         } else {
+            return res.status(404).json({ error: 'Entrada no encontrada' });
 
-            const entry = results[0];
-            res.json(entry);
         }
     } catch (error) {
         next(error);
