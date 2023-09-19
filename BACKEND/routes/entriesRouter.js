@@ -3,9 +3,9 @@ const entriesRouter = express.Router();
 
 const authUser = require('../middlewares/authUser');
 const addEntry = require('../controller/entries/addEntry.js')
+const getEntrie = require('../controller/entries/getEntrie.js')
 
-
-// router.get('/', __________);    //!COMPLETAR PARTE DE MOSTRAR LAS ENTRADAS DE FORO
+router.get('/', getEntrie);    //!COMPLETAR PARTE DE MOSTRAR LAS ENTRADAS DE FORO
 entriesRouter.post('/', authUser, addEntry);
 // router.delete('/:entryId', authUser, ___________);  //! PARA ELIMINAR LAS ENTRADAS DE FORO
 
