@@ -14,7 +14,6 @@ async function addEntry(req, res, next) {
         new_title: Joi.string().required(),
         new_entrance: Joi.string().required(),
         new_text: Joi.string(),
-        new_theme: Joi.string().required(),
         new_pic: Joi.string(),
         new_video: Joi.string(),
 
@@ -26,12 +25,12 @@ async function addEntry(req, res, next) {
         return next(createError(400, error.message));
     }
 
-    const { new_title, new_entrance, new_text, new_theme, new_pic, new_video } = req.body;
+    const { new_title, new_entrance, new_text, new_pic, new_video } = req.body;
     try {
         await sendQuery(
             `INSERT INTO news 
-            (id, new_title, new_entrance, new_text, new_theme, new_pic, new_video) 
-            VALUES (?, ?, ?, ?, ?, ?, ?);`, [userId, new_title, new_entrance, new_text, new_theme, new_pic, new_video]);
+            (id, new_title, new_entrance, new_text, new_pic, new_video) 
+            VALUES (?, ?, ?, ?, ?, ?, ?);`, [userId, new_title, new_entrance, new_text, new_pic, new_video]);
 
         res.status(200).json({
             ok: true,
