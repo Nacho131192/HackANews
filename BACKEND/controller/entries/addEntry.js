@@ -8,8 +8,8 @@ const sendQuery = require('../../db/connectToDB');
 async function addEntry(req, res, next) {
 
     const { userId } = req.user; //saca la info del usuario
-    console.log(req.user);
-    console.log(userId);
+    //console.log(req.user);
+    //console.log(userId);
     const schema = Joi.object({
         new_title: Joi.string().required(),
         new_entrance: Joi.string().required(),
