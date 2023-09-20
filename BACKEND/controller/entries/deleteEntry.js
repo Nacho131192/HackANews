@@ -25,13 +25,13 @@ async function deleteEntry (req, res, next) {
         `,
       [entryId]
     )
-
+    console.log(entry)
     if (!entry) {
       return next(createError(404, 'No existe ninguna noticia con ese ID.'))
     }
 
     //* Comprobamos que seas el dueño de la entrada, y si no, ERROR
-    if (entry.user_id !== userId) {
+    if (entry.users_user_id !== userId) {
       return next(
         createError(
           403,
@@ -43,8 +43,8 @@ async function deleteEntry (req, res, next) {
     //* Faltaría borrar la entrada
     await sendQuery(
       `
-            DELETE FROM entries
-            WHERE entry_id = ?
+            DELETE FROM news
+            WHERE id = ?
         `,
       [entryId]
     )
