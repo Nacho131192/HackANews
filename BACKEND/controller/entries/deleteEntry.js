@@ -20,8 +20,8 @@ async function deleteEntry (req, res, next) {
     const [entry] = await sendQuery(
       `
             SELECT * 
-            FROM entries
-            WHERE entry_id = ?
+            FROM news
+            WHERE id = ?
         `,
       [entryId]
     )
