@@ -37,6 +37,7 @@ async function addEntry(req, res, next) {
             data: null,
             error: null,
             message: '🚀Entrada realizada correctamente🚀'
+            //res.send({ status: 'ok', message: '🚀Entrada realizada correctamente🚀' });
         });
     } catch (error) {
         return next(error);

@@ -32,10 +32,12 @@ async function addUser(req, res, next) {  // funcion que manda los datos a la ba
         //console.log(result);
 
         res.send({
-            status: 'success',
             userid: result.insertId,
             user_name,
             user_email,
+            message: 'Registro correcto',
+
+            //res.send({ status: 'ok', message: 'Registro correcto con número ${result.insertId}' });
 
         });
     }
