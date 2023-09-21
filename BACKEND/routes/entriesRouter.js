@@ -7,7 +7,7 @@ const deleteEntry = require('../controller/entries/deleteEntry');
 const getAllEntries = require('../controller/entries/getAllEntries');
 const viewEntryOneUser = require('../controller/entries/viewEntryOneUser.js');
 
-entriesRouter.get('/view/:users_user_id', viewEntryOneUser);
+entriesRouter.get('/view/:news_id', viewEntryOneUser);
 entriesRouter.post('/', authUser, addEntry);
 entriesRouter.delete('/:entryId', authUser, deleteEntry);
 entriesRouter.get("/allentries", getAllEntries);
