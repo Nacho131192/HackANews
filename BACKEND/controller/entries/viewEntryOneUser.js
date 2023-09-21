@@ -5,7 +5,7 @@ const createError = require('../../helpers/createError.js');
 async function viewEntryOneUser(req, res, next) {
     try {
         const userId = req.params.users_user_id;
-        const user = await sendQuery(`SELECT * FROM users WHERE user_id = ?`, [userId]);
+        const user = await sendQuery(`SELECT user_name, user_email FROM users WHERE user_id = ?`, [userId]);
         if (!user || user.length === 0) {
             return next(createError(404, 'El usuario no existe'));
         }
@@ -19,7 +19,7 @@ async function viewEntryOneUser(req, res, next) {
         } else {
             res.send({
                 ok: 'true',
-                data: results,
+                data: { results, user },
                 error: null,
                 message: `Visualización de la entrada del usuario ${userId}`
             });
