@@ -49,6 +49,7 @@ async function loginUser(req, res, next) {
             },
             error: null,
             message: 'Login correcto'
+            //res.send({ status: 'ok', message: '🚀Login correcto🚀', data: {token}  });
         });
     } catch (error) {
         next(error);

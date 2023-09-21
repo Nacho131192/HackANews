@@ -8,8 +8,8 @@ const sendQuery = require('../../db/connectToDB');
 async function addEntry(req, res, next) {
 
     const { userId } = req.user; //saca la info del usuario
-    console.log(req.user);
-    console.log(userId);
+    //console.log(req.user);
+    //console.log(userId);
     const schema = Joi.object({
         new_title: Joi.string().required(),
         new_entrance: Joi.string().required(),
@@ -39,6 +39,7 @@ async function addEntry(req, res, next) {
             data: null,
             error: null,
             message: '🚀Entrada realizada correctamente🚀'
+            //res.send({ status: 'ok', message: '🚀Entrada realizada correctamente🚀' });
         });
     } catch (error) {
         return next(error);
