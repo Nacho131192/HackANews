@@ -6,7 +6,10 @@ const usersRouter = require('./routes/usersRouter.js')
 const entriesRouter = require('./routes/entriesRouter.js')
 const errorHandler = require('./middlewares/errorHandler.js')
 
+const fileUpload = require('express-fileupload')
+
 app.use(express.json())
+app.use(fileUpload())
 
 app.use('/users', usersRouter)
 app.use('/entries', entriesRouter)
