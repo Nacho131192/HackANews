@@ -12,7 +12,7 @@ const newUserSchema = Joi.object({
         'any.required': 'El email es requerido'
     }),
 
-    user_password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}$/).required().messages({
+    user_password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}$/).min(8).max(30).required().messages({
         'string.pattern.base': 'La contraseña debe contener al menos una mayúscula, una minúscula y un número',
         'any.required': 'La contraseña es requerida'
     })
