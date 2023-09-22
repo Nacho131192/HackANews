@@ -6,6 +6,7 @@ const addEntry = require('../controller/entries/addEntry.js')
 const deleteEntry = require('../controller/entries/deleteEntry')
 const getAllEntries = require('../controller/entries/getAllEntries')
 const viewEntryOneUser = require('../controller/entries/viewEntryOneUser.js')
+const updateEntry = require('../controller/entries/updateEntry.js')
 
 entriesRouter.get('/view/:news_id', viewEntryOneUser)
 entriesRouter.post('/', authUser, addEntry)
