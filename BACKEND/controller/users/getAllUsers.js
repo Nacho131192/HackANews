@@ -13,7 +13,6 @@ async function getAllUsers(req, res, next) {
         next(error)
     }
 
-
 }
 
 module.exports = getAllUsers

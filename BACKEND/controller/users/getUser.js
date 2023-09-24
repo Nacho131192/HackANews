@@ -14,7 +14,6 @@ async function getUser(req, res, next) {
         return next(createError(403, "No tiene permisos para ver el usuario"))
     }
 
-
     try {
         const [user] = await sendQuery(`
         SELECT user_id, user_name, user_email, user_avatar, created_at, modified_at, biography
@@ -24,9 +23,6 @@ async function getUser(req, res, next) {
         if (!user) {
             return next(createError(404, "El usuario no esta en la Base de Datos"));
         }
-
-
-
 
         res.send({
             ok: true,

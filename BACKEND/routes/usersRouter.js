@@ -14,7 +14,6 @@ usersRouter.post('/login', loginUser);
 usersRouter.get("/getUser/:userId", authUser, getUser)
 usersRouter.delete("/delete/:userDeleteId", authUser, deleteUser)
 usersRouter.post('/update/:userId', authUser, updateUser)
-
 usersRouter.get("/getAllUsers", authUser, getAllUsers)
 
 

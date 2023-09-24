@@ -13,8 +13,6 @@ async function addUser(req, res, next) {  // funcion que manda los datos a la ba
 
     const { user_name, user_email, user_password } = req.body
 
-
-
     try {   //* COMPRUEBA MAIL Y USER
         const [username] = await sendQuery('SELECT user_name FROM users WHERE user_name = ?', [user_name]);
         if (username) {
@@ -29,20 +27,13 @@ async function addUser(req, res, next) {  // funcion que manda los datos a la ba
         const hashedPassword = await bcrypt.hash(user_password, 10);
         const result = await sendQuery('INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)', [user_name, user_email, hashedPassword]);
 
-        //console.log(result);
-
         res.send({
             userid: result.insertId,
             user_name,
             user_email,
             message: 'Registro correcto',
-
-            //res.send({ status: 'ok', message: 'Registro correcto con número ${result.insertId}' });
-
         });
     }
-
-
     catch (error) {
         return next(createError(500, error.message));
     }
