@@ -29,9 +29,6 @@ async function loginUser(req, res, next) {
         if (!validPassword) {
             return next(createError(401, 'Email o Password son inválidos'));
         }
-
-
-
         const infoUser = {
             userId: user.user_id,
             user_name: user.user_name
@@ -49,7 +46,6 @@ async function loginUser(req, res, next) {
             },
             error: null,
             message: 'Login correcto'
-            //res.send({ status: 'ok', message: '🚀Login correcto🚀', data: {token}  });
         });
     } catch (error) {
         next(error);

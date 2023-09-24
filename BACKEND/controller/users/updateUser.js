@@ -8,7 +8,6 @@ const updateUserSchema = require('../../schemas/updateUserSchema');
 async function updateUser(req, res, next) {
     try {
         const { userId } = req.user; // Obtiene la información del usuario
-        console.log(userId);
 
         const { error } = updateUserSchema.validate(req.body);
 
@@ -27,7 +26,6 @@ async function updateUser(req, res, next) {
 
         // Si se cambia la nueva contraseña, se hashea
         let hashedPassword = await bcrypt.hash(user_password, 10);
-
 
         // Aqui se hacen los cambios
         await sendQuery('UPDATE users SET user_email=?, user_password=? WHERE user_id=?', [user_email, hashedPassword, userId]);

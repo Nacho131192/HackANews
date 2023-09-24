@@ -18,7 +18,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFt
 GET http://localhost:3000/entries/allentries
 
 ### Update Entry
-POST http://localhost:3000/users/update/:entryId
+POST http://localhost:3000/entries/update/:entryId
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M
 Content-Type: application/json
 
