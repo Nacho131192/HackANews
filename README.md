@@ -64,35 +64,35 @@ Para arrancar la API, necesitarás instalar las siguientes dependencias instalan
 ****
 ### Endpoints API
 ****
-## Add Entry
+## Añadir entrada
+El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
 POST http://localhost:3000/entries/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M
 Content-Type: application/json
-
+En el body deberán ir los siguientes datos:
 {
-    "new_title": "Fast and Furious 28",
-    "new_entrance": "Estreno de la nueva peli de moda",
-    "new_text": "Una pelicula completamente nueva en el sector de carreras, en esta ocasion con carreras mortales en sillas de ruedas desde el asilo donde nuestro protagonista volvera a defender a la familia de una nueva amenaza",
-    "new_theme": 3
+    "new_title":
+    "new_entrance":
+    "new_text": 
+    "new_theme":
 }
 
 ## Eliminar una noticia
+El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
 DELETE http://localhost:3000/entries/:entryId
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M 
 
 ## Ver todas las noticias
 GET http://localhost:3000/entries/allentries
 
 ## Actualizar o editar una noticia
+El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
 POST http://localhost:3000/users/update/:entryId
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M
 Content-Type: application/json
-
+En el body deberán ir los siguientes datos:
 {
-    "new_title": "Mulan 13",
-    "new_entrance": "Estreno de la nueva pelila de moda",
-    "new_text": "Una pelicula completamente nueva en el sector de aventuras, en esta ocasion con carreras mortales en sillas de ruedas desde el asilo donde nuestro protagonista volvera a defender a la familia de una nueva amenaza",
-    "new_theme": 2
+    "new_title":
+    "new_entrance": 
+    "new_text": 
+    "new_theme": 
 }
 
 ## Ver las entradas de un usuario
@@ -101,42 +101,44 @@ GET http://localhost:3000/entries/view/:news_id
 ## Añadir un usuario
 POST http://localhost:3000/users
 Content-Type: application/json
-
+En el body deberán ir los siguientes datos:
 {
-    "user_name" : "Juaiton",
-    "user_email": "juanitoreshulon_85@hotmail.com",
-    "user_password": "1234AbCd"
+    "user_name" :
+    "user_email": 
+    "user_password": 
 }
 
 ## Eliminar un usuario
+El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
 DELETE http://localhost:3000/users/delete/:uderDeleteId
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M
+
 
 ## Acceder a todos los usuarios
+El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
 GET http://localhost:3000/users/getAllUsers/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M
 
 ## Acceder a un usuario
+El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
 GET http://localhost:3000/users/getUser/:userId
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M
+
 
 ## Hacer login
 POST http://localhost:3000/users/login
 Content-Type: application/json
-
+En el body deberán ir los siguientes datos:
 {
-    "email": "juanitoreshulon_85@hotmail.com",
-    "password": "1234AbCd"
+    "email": 
+    "password":
 }
 
 ## Actualizar o editar la información de un usuario
+El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
 POST http://localhost:3000/users/update/:userId
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJfbmFtZSI6Ikp1YW4iLCJpYXQiOjE2OTUzNzMxNzQsImV4cCI6MTY5NTQ1OTU3NH0.bPUSELVFU4iG3UMoM7crdrcFOXVmuIjSQjqOY4HUf-M
-
+En el body deberán ir los siguientes datos:
 {
-    "user_email": "juanitoreshulon_85@hotmail.com",
-    "user_password": "1234AbCd"
+    "user_email": 
+    "user_password": 
 }  
 
 ****
