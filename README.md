@@ -78,7 +78,7 @@ En el body deberán ir los siguientes datos:
 
 ## Eliminar una noticia
 El usuario debe estar registrado y haber hecho login, su token deberá ir como authorization en el header.
-DELETE http://localhost:3000/entries/:entryId
+DELETE http://localhost:3000/entries/delete/:entryId
 
 ## Ver todas las noticias
 GET http://localhost:3000/entries/allentries
