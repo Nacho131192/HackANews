@@ -95,6 +95,8 @@ En el body deberán ir los siguientes datos:
     "new_theme": 
 }
 
+## Dar like o eliminarlo a una noticia
+POSThttp://localhost:3000/entries/likeEntry
 ## Ver las entradas de un usuario
 GET http://localhost:3000/entries/view/:news_id
 
