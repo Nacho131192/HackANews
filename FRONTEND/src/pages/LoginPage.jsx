@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginUserService } from "../services/index.jsx";
+import { loginUserService } from "../services/LoginService.jsx";
 
 export const LoginPage = () => {
     const [email, setEmail] = useState('');
