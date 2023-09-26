@@ -1,5 +1,8 @@
-export default function LoginPage() {
+export const LoginPage = () => {
     return (
-        <h2>Login</h2>
+        <section>
+            <h1>Login</h1>
+            <p>Aquí irá el formulario de login</p>
+        </section>        
     )
 }
