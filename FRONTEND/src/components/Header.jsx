@@ -9,11 +9,10 @@ export default function Header() {
                 <Link to={"/register"}>
                      <li>Registro</li>
                 </Link>
+             
                 <Link to={"/login"}>
                      <li>Login</li>
                 </Link>
-                
-
             </ul>
 
 
