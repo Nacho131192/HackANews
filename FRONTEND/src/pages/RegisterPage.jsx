@@ -1,4 +1,5 @@
 import { useState } from "react"
+import registerService from "../services/registerServive"
 
 export default function RegisterPage() {
 
@@ -15,7 +16,7 @@ export default function RegisterPage() {
     // console.log(e)
    setFormValues ({...formValues,[e.target.name]: e.target.value})
   }
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     console.log(formValues.userpass1)
     console.log(formValues.userpass2)
@@ -23,7 +24,11 @@ export default function RegisterPage() {
       setError("Password do not match ")
       return
     }
-    
+    try {
+      await registerService({user_name: formValues.username,user_email:formValues.usermail,user_password:formValues.userpass1})
+    } catch (error) {
+      setError(error.message)
+    }
   }
   return (
     <section>
