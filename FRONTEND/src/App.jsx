@@ -6,6 +6,7 @@ import Aside from './components/Aside.jsx';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login/" element={<LoginPage />} />
-
+          <Route path="/register" element={<RegisterPage/>}></Route>
         </Routes>
 
 
