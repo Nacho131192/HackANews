@@ -8,6 +8,7 @@ const entriesRouter = require('./routes/entriesRouter.js')
 const errorHandler = require('./middlewares/errorHandler.js')
 
 const fileUpload = require('express-fileupload')
+const cors= require('cors')
 
 app.use(cors({
   origin: 'http://localhost:5173'
@@ -15,7 +16,7 @@ app.use(cors({
 
 app.use(express.json())
 app.use(fileUpload())
-
+app.use(cors())
 app.use('/users', usersRouter)
 app.use('/entries', entriesRouter)
 
