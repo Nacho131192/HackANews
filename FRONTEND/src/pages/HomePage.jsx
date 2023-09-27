@@ -12,7 +12,7 @@ export default function HomePage() {
 
     return (
         <section>
-            <h2>Contenido de pagina principal</h2>
+            <h2>ÚLTIMAS NOTICIAS</h2>
             <AllEntries news={news} />
         </section>
     )

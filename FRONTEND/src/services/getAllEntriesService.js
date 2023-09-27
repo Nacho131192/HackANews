@@ -1,7 +1,7 @@
 async function getAllEntriesService() {
     const response = await fetch(`http://localhost:3000/entries/allentries`);
     const json = await response.json();
-    console.log(json);
+
 
     if (!response.ok) {
         throw new Error(json.message);

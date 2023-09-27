@@ -1,18 +1,26 @@
 import { Entry } from './Entry';
+import styled from 'styled-components';
 
 export default function AllEntries({ news }) {
 
     return news.length ? (
-        <ul>
+        <NewsSection>
 
             {news.map((news) => (
-                <li key={news.id}>
+                <section key={news.id}>
                     <Entry news={news} />
-                </li>
+                </section>
             ))}
 
-        </ul>
+        </NewsSection>
     ) : (
         <p>No hay entradas</p>
     );
-}; 
+};
+
+const NewsSection = styled.section`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+`;
