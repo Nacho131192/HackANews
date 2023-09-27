@@ -8,7 +8,7 @@ function Celebrities() {
     fetch('http://localhost:3000/themes/1')
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Se ha producido un errror');
+          throw new Error('Se ha producido un error');
         }
         return response.json();
       })

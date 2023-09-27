@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 function Oscars2024() {
   const [data, setData] = useState([]);
-  const targetId = 1; 
+  const targetId = 3; 
   useEffect(() => {
     // Replace 'http://localhost:3001' with your Node.js server URL
-    fetch('http://localhost:3000/themes/1')
+    fetch('http://localhost:3000/themes/3')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Se ha producido un errror');
