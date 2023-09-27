@@ -1,5 +1,5 @@
 import { useState } from "react"
-import registerService from "../services/registerServive"
+import registerService from "../services/RegisterService"
 import { useNavigate } from "react-router-dom"
 export default function RegisterPage() {
   const navigate = useNavigate()
