@@ -13,9 +13,8 @@ export default function Header() {
                 <Link to={"/login"}>
                      <li>Login</li>
                 </Link>
+                
             </ul>
-
-
 
         </header>
     )
