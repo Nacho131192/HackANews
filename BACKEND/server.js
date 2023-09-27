@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const PORT = 3000
 
@@ -9,11 +10,17 @@ const errorHandler = require('./middlewares/errorHandler.js')
 const fileUpload = require('express-fileupload')
 const cors= require('cors')
 
+app.use(cors({
+  origin: 'http://localhost:5173'
+}))
+
 app.use(express.json())
 app.use(fileUpload())
 app.use(cors())
 app.use('/users', usersRouter)
 app.use('/entries', entriesRouter)
+
+
 
 app.use((req, res, next) => {
   console.log('Pasa una petición.')
