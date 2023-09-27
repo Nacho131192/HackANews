@@ -11,9 +11,15 @@ export default function HomePage() {
 
 
     return (
-        <section>
-            <h2>ÚLTIMAS NOTICIAS</h2>
-            <AllEntries news={news} />
-        </section>
+        <>
+            <section>
+                <h2>MEJORES VALORACIONES</h2>
+                <AllEntries news={news} />
+            </section>
+            <section>
+                <h2>ÚLTIMAS NOTICIAS</h2>
+                <AllEntries news={news} />
+            </section>
+        </>
     )
 }
