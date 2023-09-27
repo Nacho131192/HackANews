@@ -24,13 +24,13 @@ export const LoginPage = () => {
             <form onSubmit={handleForm}>
                 <fieldset>
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" required 
+                    <input type="email" id="email" name="email" required value={email}
                     onChange={(e) => setEmail(e.target.value)} />
                 </fieldset>
 
                 <fieldset> 
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" required 
+                    <input type="password" id="password" name="password" required value={password}
                     onChange={(e) => setPassword(e.target.value)} />
                 </fieldset>
 
