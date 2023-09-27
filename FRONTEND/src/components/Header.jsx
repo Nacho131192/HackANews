@@ -6,13 +6,17 @@ export default function Header() {
             <h1>Hack a News</h1>
             <h2>LOGO</h2>
             <ul>
+                <Link to={"/"}>
+                    <li>Inicio</li>
+                </Link>
                 <Link to={"/register"}>
-                     <li>Registro</li>
+                    <li>Registro</li>
                 </Link>
-             
+
                 <Link to={"/login"}>
-                     <li>Login</li>
+                    <li>Login</li>
                 </Link>
+
             </ul>
 
 
