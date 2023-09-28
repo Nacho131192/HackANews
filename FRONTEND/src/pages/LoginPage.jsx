@@ -7,17 +7,17 @@ export const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    // const [setToken] = useContext(LoginContext);
-// const {color, setColor} = useContext(LoginContext)
-//     setColor("red");
+    const { setToken } = useContext(LoginContext);
+    // console.log(value);
+
     const handleForm = async (e) => {
         e.preventDefault();
         setError("");
 
         try {
-            const data = await loginUserService({email, password});
-            // setToken(data);
+            const data = await loginUserService({email, password});               
             console.log(data);
+            setToken(data.token);
         }catch (error){
             setError(error.message);
         }

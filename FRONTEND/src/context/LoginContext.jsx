@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const LoginContext = createContext();
 
@@ -11,8 +11,14 @@ const LoginContextProvider = ({children}) => {
     // );
     
 
-    const [token, setToken] = useState();
+    const [token, setToken] = useState("");
     // const [user, setUser] = useState("");
+
+    useEffect(() => {
+      localStorage.setItem("token", token);
+    }, [token]);
+
+
     return (
       <LoginContext.Provider value={{ token, setToken }}>
         {children}
