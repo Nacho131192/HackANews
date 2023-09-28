@@ -2,13 +2,20 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import useEntry from '../hooks/useEntryFull';
 
+
 function EntryFull() {
     const { id } = useParams();
-    const { news, loading, error } = useEntryFull(id);
+    const { news, loading, error } = useEntry(id);
+
+    if (loading) return <p>Cargando...</p>;
+    if (error) return <p>{error}</p>;
+
+
     console.log(id);
+
     return <NewsArticle>
 
-        <img src={`http://localhost:3000/uploads/${news.new_pic}`} alt="Entrada" />
+        <img src={`http://localhost:3000/${news.new_pic}`} alt="Imagen de Entrada" />
         <p>{news.new_title}</p>
         <p>{news.new_entrance}</p>
         <p>{news.new_text}</p>

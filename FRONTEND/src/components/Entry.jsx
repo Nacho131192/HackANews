@@ -19,13 +19,13 @@ const NewsArticle = styled.article`
     border: 2px solid black;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    height: 250px;
-    width: 100px;
+    align-items: center;    
+    height: 400px;
+    width: 200px;
     
 
     img {
-        
+        margin-top: 0px;
+        width: 200px;
     }
 `;

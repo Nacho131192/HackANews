@@ -1,7 +1,7 @@
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
-async function getEntryService(news_id) {
-    const response = await fetch(`${API_URL}/entries/view/${news_id} `);
+async function getEntryService(id) {
+    const response = await fetch(`${API_URL}/entries/view/${id} `);
     const json = await response.json();
 
 

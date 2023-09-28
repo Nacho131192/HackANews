@@ -25,18 +25,18 @@ function App() {
 
     <>
       <Header />
-      <Themes/>
-      
+      <Themes />
+
       <main>
 
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/mynews" element={<MyNews />}></Route>
-          <Route path="/entries/:news_id" elements={<EntryFull />} />
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path= "/:id" element= {<CategoriesPage/>}/>
-          <Route path="/mynews" element={<MyNews/>}>
+          <Route path="/mynews" element={<MyNews />} />
+          <Route path="/entries/:id" elements={<EntryFull />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/:id" element={<CategoriesPage />} />
+          <Route path="/mynews" element={<MyNews />} />
 
 
         </Routes>
