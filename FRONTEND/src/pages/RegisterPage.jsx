@@ -1,8 +1,8 @@
 import { useState } from "react"
-import registerService from "../services/registerServive"
-
+import registerService from "../services/RegisterService"
+import { useNavigate } from "react-router-dom"
 export default function RegisterPage() {
-
+  const navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     username: '',
     usermail: '',
@@ -13,19 +13,17 @@ export default function RegisterPage() {
   const [error,setError] = useState('')
   
   function handleFormChange(e) {
-    // console.log(e)
    setFormValues ({...formValues,[e.target.name]: e.target.value})
   }
   async function handleSubmit(e) {
     e.preventDefault()
-    console.log(formValues.userpass1)
-    console.log(formValues.userpass2)
     if (formValues.userpass1 !== formValues.userpass2) {
       setError("Password do not match ")
       return
     }
     try {
-      await registerService({user_name: formValues.username,user_email:formValues.usermail,user_password:formValues.userpass1})
+      await registerService({ user_name: formValues.username, user_email: formValues.usermail, user_password: formValues.userpass1 })
+      navigate("/login")
     } catch (error) {
       setError(error.message)
     }
