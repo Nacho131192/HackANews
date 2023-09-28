@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 
 export const Entry = ({ news }) => {
+    console.log(news.new_pic);
     return <NewsArticle>
 
         <img src={`http://localhost:3000/uploads/${news.new_pic}`} alt="Entrada" />
@@ -9,6 +10,7 @@ export const Entry = ({ news }) => {
 
         <p> Creado por {news.users_user_id} el {new Date(news.created_at).toLocaleDateString()}</p>
     </NewsArticle>
+
 };
 
 
@@ -23,6 +25,6 @@ const NewsArticle = styled.article`
     
 
     img {
-        width: 100%;
+        
     }
 `;

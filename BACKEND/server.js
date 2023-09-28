@@ -7,7 +7,7 @@ const entriesRouter = require('./routes/entriesRouter.js')
 const errorHandler = require('./middlewares/errorHandler.js')
 
 const fileUpload = require('express-fileupload')
-const cors= require('cors')
+const cors = require('cors')
 
 app.use(cors({
   origin: 'http://localhost:5173'
@@ -21,7 +21,7 @@ app.use('/entries', entriesRouter)
 
 
 app.use((req, res, next) => {
-  console.log('Pasa una petición.')
+
   req.cohete = '🚀'
   next()
 })
