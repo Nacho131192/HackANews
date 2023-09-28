@@ -11,6 +11,7 @@ export default function HomePage() {
 
 
     return (
+
         <>
             <section>
                 <h2>MEJORES VALORACIONES</h2>
@@ -21,5 +22,6 @@ export default function HomePage() {
                 <AllEntries news={news} />
             </section>
         </>
+
     )
 }
