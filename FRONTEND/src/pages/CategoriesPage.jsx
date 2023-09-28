@@ -3,20 +3,40 @@ import { useParams } from 'react-router-dom';
 
 function CategoriesPage() {
   const categories = {
-    celebrities: 1,
-    premieres: 2,
-    oscars2024: 3,
-    reviews: 4,
-    ranking: 5,
-    festivals: 6
+    celebrities: {
+      title: "Celebrities", 
+      id: 1
+    },
+    premieres: {
+      title: "Premieres", 
+      id: 2
+    },
+    oscars2024:  {
+      title: "Oscars 2024", 
+      id: 3
+    },
+    reviews:  {
+      title: "Reviews", 
+      id: 4
+    },
+    ranking:  {
+      title: "Ranking", 
+      id: 5
+    },
+    festivals:  {
+      title: "Film Festivals", 
+      id: 6
+    },
   }
 
-  let { id } = useParams();
+  let { categoryId } = useParams();
   const [data, setData] = useState([]);
-  const targetId = categories[id];
+  const targetId = categories[categoryId].id;
+
   console.log(targetId)
+ 
   useEffect(() => {
-    // Replace 'http://localhost:3001' with your Node.js server URL
+    
     fetch(`http://localhost:3000/entries/themes/${targetId}`)
       .then((response) => {
         if (!response.ok) {
@@ -40,6 +60,8 @@ function CategoriesPage() {
         
       {data.map((item) => (
        <article key={item.id}>
+       <h1>{categories[categoryId].title}</h1>
+   
        <h2>{item.new_title}</h2>
        <h3>{item.new_entrance}</h3>
        <h4>{item.new_text}</h4>
@@ -53,15 +75,3 @@ function CategoriesPage() {
 
 export default CategoriesPage;
 
-
-/*export default function Celebrities () {
-    try {
-      
-    } catch (error) {
-      error(error.message)
-    }
-return (
-<h1>CELEBRITIES</h1>
-
-)}
-*/
