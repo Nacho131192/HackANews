@@ -24,7 +24,6 @@ const sendQuery = async (query, values) => {
   try {
     connection = await getConnection()
     const [results] = await connection.query(query, values)
-    console.log(results)
     return results
   } catch (error) {
     throw new Error(error.message)
