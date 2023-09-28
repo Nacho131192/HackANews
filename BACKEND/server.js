@@ -10,17 +10,17 @@ const morgan = require('morgan')
 const fileUpload = require('express-fileupload')
 const cors= require('cors')
 
+
 app.use(morgan('dev'))
 app.use(cors({
   origin: 'http://localhost:5173'
 }))
 
+
 app.use(express.json())
 app.use(fileUpload())
 app.use('/users', usersRouter)
 app.use('/entries', entriesRouter)
-
-
 
 app.use((req, res, next) => {
   console.log('Pasa una petición.')
