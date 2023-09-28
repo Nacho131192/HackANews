@@ -1,4 +1,4 @@
-export const loginUserService = async ({email, password}) => {
+export const loginUserService = async ({ email, password }) => {
     const response = await fetch(`http://localhost:3000/users/login`, {
         method: 'POST',
         headers: {

@@ -1,12 +1,18 @@
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import useEntry from '../hooks/useEntryFull';
 
-
-export const Entry = ({ news }) => {
-
+function EntryFull() {
+    const { id } = useParams();
+    const { news, loading, error } = useEntryFull(id);
+    console.log(id);
     return <NewsArticle>
 
         <img src={`http://localhost:3000/uploads/${news.new_pic}`} alt="Entrada" />
         <p>{news.new_title}</p>
+        <p>{news.new_entrance}</p>
+        <p>{news.new_text}</p>
+        <p>{news.themes_themes_id}</p>
 
         <p> Creado por {news.user_name} el {new Date(news.created_at).toLocaleDateString()}</p>
 
@@ -21,11 +27,13 @@ const NewsArticle = styled.article`
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    height: 250px;
-    width: 100px;
+
     
 
     img {
         
     }
 `;
+
+
+export default EntryFull

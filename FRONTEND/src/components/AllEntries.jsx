@@ -1,5 +1,6 @@
 import { Entry } from './Entry';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 export default function AllEntries({ news }) {
 
@@ -7,9 +8,11 @@ export default function AllEntries({ news }) {
         <NewsSection>
 
             {news.map((news) => (
-                <section key={news.id}>
-                    <Entry news={news} />
-                </section>
+                <Link to={`/entries/${news.id}`} key={news.id}>
+                    <section key={news.id}>
+                        <Entry news={news} />
+                    </section>
+                </Link>
             ))}
 
         </NewsSection>
@@ -18,9 +21,11 @@ export default function AllEntries({ news }) {
     );
 };
 
+
+
 const NewsSection = styled.section`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
+display: flex;
+flex-direction: row;
+
+gap: 1rem;
 `;

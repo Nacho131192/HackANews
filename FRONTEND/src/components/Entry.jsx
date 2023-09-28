@@ -5,11 +5,11 @@ export const Entry = ({ news }) => {
 
     return <NewsArticle>
 
-        <img src={`http://localhost:3000/uploads/${news.new_pic}`} alt="Entrada" />
+        <img src={`http://localhost:3000/${news.new_pic}`} alt="Entrada" />
         <p>{news.new_title}</p>
 
         <p> Creado por {news.user_name} el {new Date(news.created_at).toLocaleDateString()}</p>
-        <button>Ir a la noticia</button>
+
     </NewsArticle>
 
 };

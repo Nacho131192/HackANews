@@ -13,6 +13,8 @@ app.use(cors({
   origin: 'http://localhost:5173'
 }))
 
+app.use(express.static('uploads'))
+
 app.use(express.json())
 app.use(fileUpload())
 app.use('/users', usersRouter)
