@@ -9,8 +9,6 @@ const errorHandler = require('./middlewares/errorHandler.js')
 
 const fileUpload = require('express-fileupload')
 
-const cors = require('cors')
-
 app.use(
   cors({
     origin: 'http://localhost:5173'

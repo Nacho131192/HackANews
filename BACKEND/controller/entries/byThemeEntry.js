@@ -1,8 +1,9 @@
-const sendQuery = require("../../db/connectToDB")
-const createError = require("../../helpers/createError")
+const sendQuery = require('../../db/connectToDB')
+const createError = require('../../helpers/createError')
 
-async function byThemeEntry(req, res, next) {
+async function byThemeEntry (req, res, next) {
   try {
+    console.log(req.params)
     idThemeEntry = req.params.themeId
 
     const entry = await sendQuery(
@@ -12,9 +13,10 @@ async function byThemeEntry(req, res, next) {
       [idThemeEntry]
     )
     if (entry.length === 0) {
-      return next(createError(404, "No existe ninguna entrada con ese tema."))
+      return next(createError(404, 'No existe ninguna entrada con ese tema.'))
     }
-    const theme = await sendQuery(`
+    const theme = await sendQuery(
+      `
     SELECT theme_name 
     FROM themes
     WHERE themes_id = ?`,
@@ -25,7 +27,7 @@ async function byThemeEntry(req, res, next) {
       ok: true,
       data: { theme_name, entry },
       error: null,
-      message: `Entradas del tema : ${theme_name}`,
+      message: `Entradas del tema : ${theme_name}`
     })
   } catch (error) {
     next(error.message)
