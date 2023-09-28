@@ -9,7 +9,7 @@ export const Entry = ({ news }) => {
         <p>{news.new_title}</p>
 
         <p> Creado por {news.user_name} el {new Date(news.created_at).toLocaleDateString()}</p>
-        <button>Ir a la noticia</button>
+
     </NewsArticle>
 
 };

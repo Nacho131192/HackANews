@@ -3,7 +3,7 @@ const sendQuery = require("../../db/connectToDB");
 
 async function getAllEntries(req, res, next) {
   try {
-    const results = await sendQuery('SELECT * FROM news')
+    const results = await sendQuery('SELECT * FROM news INNER JOIN users ON news.users_user_id = users.user_id');
     res.send({
       ok: true,
       data: results,
@@ -11,7 +11,7 @@ async function getAllEntries(req, res, next) {
       message: "Listado general de noticias solicitados correctamente"
     })
   } catch (error) {
-    next (error)
+    next(error)
   }
 
 }
