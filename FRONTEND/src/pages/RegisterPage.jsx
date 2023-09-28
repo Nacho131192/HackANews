@@ -13,13 +13,10 @@ export default function RegisterPage() {
   const [error,setError] = useState('')
   
   function handleFormChange(e) {
-    // console.log(e)
    setFormValues ({...formValues,[e.target.name]: e.target.value})
   }
   async function handleSubmit(e) {
     e.preventDefault()
-    console.log(formValues.userpass1)
-    console.log(formValues.userpass2)
     if (formValues.userpass1 !== formValues.userpass2) {
       setError("Password do not match ")
       return
