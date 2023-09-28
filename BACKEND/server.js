@@ -6,9 +6,11 @@ const usersRouter = require('./routes/usersRouter.js')
 const entriesRouter = require('./routes/entriesRouter.js')
 const errorHandler = require('./middlewares/errorHandler.js')
 
+const morgan = require('morgan')
 const fileUpload = require('express-fileupload')
 const cors= require('cors')
 
+app.use(morgan('dev'))
 app.use(cors({
   origin: 'http://localhost:5173'
 }))
