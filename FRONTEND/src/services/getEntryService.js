@@ -9,6 +9,7 @@ async function getEntryService(id) {
         throw new Error(json.message);
     }
     return json.data;
+
 }
 
 export default getEntryService;

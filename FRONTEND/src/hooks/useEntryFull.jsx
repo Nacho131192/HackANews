@@ -3,27 +3,27 @@ import getEntryService from '../services/getEntryService';
 
 
 
-const useEntry = () => {
+const useEntry = (id) => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
 
     useEffect(() => {
         const loadNews = async () => {
             try {
                 setLoading(true);
 
-                const data = await getEntryService();
+                const data = await getEntryService(id);
 
                 setNews(data);
-            } catch {
+            } catch (error) {
                 setError(error.message);
             } finally {
                 setLoading(false);
             }
         }
         loadNews();
-    }, []);
+    }, [id]);
 
     return { news, loading, error };
 };
