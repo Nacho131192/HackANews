@@ -1,6 +1,27 @@
+import useEntries from '../hooks/useEntries';
+import AllEntries from '../components/AllEntries';
+
+
 export default function HomePage() {
+    const { news, loading, error } = useEntries();
+
+    if (loading) return <p>Cargando...</p>;
+    if (error) return <p>{error}</p>;
+
+
+
     return (
-        <h2>Contenido de pagina principal</h2>
-        
+
+        <>
+            <section>
+                <h2>MEJORES VALORACIONES</h2>
+                <AllEntries news={news} />
+            </section>
+            <section>
+                <h2>ÚLTIMAS NOTICIAS</h2>
+                <AllEntries news={news} />
+            </section>
+        </>
+
     )
 }
