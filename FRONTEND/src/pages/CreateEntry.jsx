@@ -1,98 +1,81 @@
 import { useContext, useState } from "react";
+import { createEntryService } from "../services/createEntryService";
 import { LoginContext, LoginContextProvider } from "../context/LoginContext.jsx";
-import { toast } from "react-toastify";
 
-const CreateEntry = () => {
-  const [title, setTitle] = useState("");
-  const [entrance, setEntrance] = useState("");
-  const [text, setText] = useState("");
-  const [pic, setPic] = useState("");
-  const [theme, setTheme] = useState ("")
+const CreateEntry = ({ addEntry }) => {
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { token } = useContext(LoginContext);
 
 
-  console.log(token)
+const handleForm = async (e) => {
+  e.preventDefault();
 
-  return (
-    <LoginContextProvider>
-    <form
-      onSubmit={async (e) => {
-        try {
-          e.preventDefault();
+  try {
+    setLoading(true);
+    const data = new FormData(e.target);
+    console.log(data)
+    const entry = await createEntryService({ data, token });
 
-          const res = await fetch("http://localhost:3000/entries", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: token,
-            },
-            body: JSON.stringify({ new_title: title, new_entrance: entrance, new_text: text, new_pic: pic, new_theme:  theme }),
-          });
+    addEntry(entry);
 
-          const body = await res.json();
+    e.target.reset();
+    setImage(null);
+  } catch (error) {
+    setError(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+return (
+  <div>
+  <LoginContextProvider>
+    <h1>Añadir nueva noticia</h1>
+    <form className="new-entry" onSubmit={handleForm}>
+      <fieldset>
+        <label htmlFor="new_title">Título</label>
+        <input type="text" name="new_title" id="new_title" required />
+      </fieldset>
 
-          if (!res.ok) {
-            throw new Error(body.message);
-          }
+      <fieldset>
+        <label htmlFor="new_entrance">Entradilla</label>
+        <input type="text" name="new_entrance" id="new_entrance" required />
+      </fieldset>
 
-          setTitle("");
-          setEntrance("");
-          setText("");
-          setPic("");
-          setTheme("")
+      <fieldset>
+        <label htmlFor="new_text">Texto</label>
+        <input type="text" name="new_text" id="new_title" required />
+      </fieldset>
 
-
-
-          toast.success("¡Post creado con éxito!");
-        } catch (error) {
-          console.log(error);
-          toast.error(error.message);
-        }
-      }}
-    >
-      <label htmlFor="title">Título:</label>
-      <input
-        id="title"
-        required
-        value={title}
-        onChange={(e) => {
-          setTitle(e.target.value);
-        }}
-      />
-
-      <label htmlFor="entrance">Entradilla:</label>
-      <input
-        id="entrance"
-        required
-        value={entrance}
-        onChange={(e) => {
-          setEntrance(e.target.value);
-        }}
-      ></input>
-
-<label htmlFor="text">Texto:</label>
-      <textarea
-        id="text"
-        required
-        value={text}
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
-      ></textarea>
-
-<label htmlFor="pic">Imagen:</label>
-      <input
-        id="pic"
-        value={pic}
-        onChange={(e) => {
-          setPic(e.target.value);
-        }}
-      ></input>
-        
-      <button>Crear noticia</button>
+      <fieldset>
+        <label htmlFor="new_pic">Imagen</label>
+        <input
+          type="file"
+          name="pic"
+          id="pic"
+          accept={"image/*"}
+          onChange={(e) => setImage(e.target.files[0])}
+        />
+        {image ? (
+          <figure>
+            <img
+              src={URL.createObjectURL(image)}
+              style={{ width: "100px" }}
+              alt="Preview"
+            />
+          </figure>
+        ) : null}
+      </fieldset>
+      <button>Enviar noticia</button>
+      {error ? <p>{error}</p> : null}
+      {loading ? <p>Publicando noticia...</p> : null}
     </form>
     </LoginContextProvider>
-  );
-};
+    </div>
+);
+        };
 
-export default CreateEntry;
+
+  export default CreateEntry
+
