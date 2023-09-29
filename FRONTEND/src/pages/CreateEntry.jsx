@@ -3,6 +3,28 @@ import { createEntryService } from "../services/createEntryService";
 import { LoginContext, LoginContextProvider } from "../context/LoginContext.jsx";
 
 const CreateEntry = ({ addEntry }) => {
+
+  const fetchedCategories = [
+    {name: "Celebrities",
+    id: 1
+    },
+    {name: "Festivals",
+    id: 2
+    },  
+    {name: "Oscars 2024",
+    id: 3
+    },
+    {name: "Premieres",
+    id: 4
+    },
+    {name: "Ranking",
+    id: 5
+    },
+    {name: "Reviews",
+    id: 6
+    },
+  ]
+  
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -46,6 +68,20 @@ return (
       <fieldset>
         <label htmlFor="new_text">Texto</label>
         <input type="text" name="new_text" id="new_title" required />
+      </fieldset>
+
+      <fieldset>
+        <label htmlFor="new_theme">Categoria</label>
+        <select name="new_theme">
+          {
+            fetchedCategories.map((category)=> {
+              return (<option value={category.id} key={category.id}>{category.name}</option>)
+            })
+          }
+          
+
+        </select>
+     
       </fieldset>
 
       <fieldset>
