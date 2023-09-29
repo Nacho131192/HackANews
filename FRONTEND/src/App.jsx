@@ -28,11 +28,12 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/mynews" element={<MyNews />} />
           <Route path="/entries/:id" element={<EntryFull />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/:id" element={<CategoriesPage />} />
-          <Route path="/mynews" element={<MyNews />} />
+          <Route path="/mynews" element={<MyNews />}/>
+          <Route path="/register" element={<RegisterPage/>} />
+          <Route path= "/:categoryId" element= {<CategoriesPage/>}/>
+          <Route path="/mynews" element={<MyNews/>}/>
+
 
 
         </Routes>
