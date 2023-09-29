@@ -3,6 +3,7 @@ const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 import { Link } from "react-router-dom";
 
 
+
 export const Entry = ({ news }) => {
 
     return <Link to={`/entries/${news.id}`}>
