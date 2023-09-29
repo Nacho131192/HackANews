@@ -8,11 +8,11 @@ export default function AllEntries({ news }) {
         <NewsSection>
 
             {news.map((news) => (
-                <Link to={`/entries/${news.id}`} key={news.id}>
-                    <section key={news.id}>
-                        <Entry news={news} />
-                    </section>
-                </Link>
+
+                <section key={news.id}>
+                    <Entry news={news} />
+                </section>
+
             ))}
 
         </NewsSection>
