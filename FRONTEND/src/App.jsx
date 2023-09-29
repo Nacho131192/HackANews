@@ -15,6 +15,7 @@ import CategoriesPage from './pages/CategoriesPage';
 
 import MyNews from './pages/MyNews';
 import EntryFull from './pages/EntryFull';
+import CreateEntry from './pages/CreateEntry';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/register" element={<RegisterPage/>} />
           <Route path= "/:categoryId" element= {<CategoriesPage/>}/>
           <Route path="/mynews" element={<MyNews/>}/>
+          <Route path="/createentry" element = {<CreateEntry/>}/>
 
 
         </Routes>
