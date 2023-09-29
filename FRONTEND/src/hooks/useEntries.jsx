@@ -5,7 +5,7 @@ import getAllEntriesService from '../services/getAllEntriesService';
 
 const useEntries = () => {
     const [news, setNews] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {

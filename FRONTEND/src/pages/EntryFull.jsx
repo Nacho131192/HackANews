@@ -9,21 +9,20 @@ const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 function EntryFull() {
     const { id } = useParams();
     const { news, loading, error } = useEntry(id);
-
+    const { results, user } = news;
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>{error}</p>;
 
-    console.log(id);
     return <NewsArticle>
 
-        <img src={`${API_URL}/${news.new_pic}`} alt="Imagen de Entrada" />
-        <p>{news.new_title}</p>
-        <p>{news.new_entrance}</p>
-        <p>{news.new_text}</p>
-        <p>{news.themes_themes_id}</p>
+        <img src={`${API_URL}/${results[0].new_pic}`} alt="Imagen de Entrada" />
+        <p>{results[0].new_title}</p>
+        <p>{results[0].new_entrance}</p>
+        <p>{results[0].new_text}</p>
+        <button>Trailer</button>
 
-        <p> Creado por {news.user_name} el {new Date(news.created_at).toLocaleDateString()}</p>
+        <p> Creado por {user[0].user_name} el {new Date(results[0].created_at).toLocaleDateString()}</p>
 
     </NewsArticle>
 
