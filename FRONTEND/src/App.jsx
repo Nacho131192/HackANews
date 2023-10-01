@@ -12,20 +12,22 @@ import CategoriesPage from './pages/CategoriesPage';
 import MyNews from './pages/MyNews';
 import EntryFull from './pages/EntryFull';
 import CreateEntry from './pages/CreateEntry';
+import MyUserZone from './components/MyUserZone';
+import { useContext } from 'react';
+import { LoginContext } from './context/LoginContext';
 
 
 function App() {
-
+  const { user } = useContext(LoginContext)
 
   return (
 
 
     <>
-      <Header />
+      <Header/>
+      {user?<MyUserZone/>:null}
       <Themes />
-
       <main>
-
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -33,7 +35,6 @@ function App() {
           <Route path="/mynews" element={<MyNews />}/>
           <Route path="/register" element={<RegisterPage/>} />
           <Route path= "/:categoryId" element= {<CategoriesPage/>}/>
-          <Route path="/mynews" element={<MyNews/>}/>
           <Route path="/createentry" element = {<CreateEntry/>}/>
 
 

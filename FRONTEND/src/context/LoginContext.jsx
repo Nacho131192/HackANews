@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import getMyDataService from '../services/getMyDataService';
 
 const LoginContext = createContext();
 
@@ -10,9 +11,21 @@ const LoginContextProvider = ({children}) => {
       localStorage.setItem("token", token);
     }, [token]);
 
-
+    useEffect(() => {
+      const getMyData = async () => {
+        try {
+          const data = await getMyDataService(token)
+          console.log(data)
+          setUser(data)
+        } catch (error) {
+          setToken("")
+          setUser(null)
+        }
+      }
+      if(token) getMyData()
+    },[token,setToken])
     return (
-      <LoginContext.Provider value={{ token, setToken }}>
+      <LoginContext.Provider value={{ token, setToken, user, setUser }}>
         {children}
         </LoginContext.Provider>
     );
