@@ -38,9 +38,8 @@ const handleForm = async (e) => {
     setLoading(true);
     const data = new FormData(e.target);
     console.log(data)
-    const entry = await createEntryService({ data, token });
+    await createEntryService({ data, token });
 
-    addEntry(entry);
 
     e.target.reset();
     setImage(null);

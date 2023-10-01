@@ -9,9 +9,6 @@ const UpdateEntry = ({ updateEntry }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const { token } = useContext(LoginContext);
-  
-    console.log(token)
-    console.log(entryId)
 
   const fetchedCategories = [
     {
@@ -50,9 +47,10 @@ const handleForm = async (e) => {
     setLoading(true);
     const data = new FormData(e.target);
     console.log(data)
-    const entry = await updateEntryService({ data, token });
+    console.log(token)
+    console.log(entryId)
 
-    updateEntry(entry);
+    await updateEntryService({ data, token, entryId });
 
     e.target.reset();
     setImage(null);

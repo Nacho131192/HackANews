@@ -1,11 +1,14 @@
-export const updateEntryService = async ({ data, token }) => {
-  const response = await fetch('http://localhost:3000/entries/update/:id', {
-    method: 'POST',
-    body: data,
-    headers: {
-      Authorization: token
+export const updateEntryService = async ({ data, token, entryId }) => {
+  const response = await fetch(
+    `http://localhost:3000/entries/update/${entryId}`,
+    {
+      method: 'POST',
+      body: data,
+      headers: {
+        Authorization: token
+      }
     }
-  })
+  )
 
   const json = await response.json()
   if (!response.ok) {
