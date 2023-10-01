@@ -2,13 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { LoginContext, LoginContextProvider } from "../context/LoginContext.jsx";
 import { useParams } from "react-router-dom";
 import { updateEntryService } from "../services/updateEntryService";
+import getEntryService from "../services/getEntryService.js"
 
 const UpdateEntry = ({ updateEntry }) => {
-    let { entryId } = useParams();
-    const [image, setImage] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-    const { token } = useContext(LoginContext);
+  let { entryId } = useParams();
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { token } = useContext(LoginContext);
+  const [entry, setEntry] = useState('')
+
+  // const entry  =  async () => { await getEntryService(entryId)}∫
+
+  // useEffect ... fetch(`http://localhost:3000/entries/view/${entryId}`).then(response => response.json()).then(data => setEntry(data.data.results[0])).catch(err => console.log('Solicitud fallida', err));
+
+  console.log(entry)
 
   const fetchedCategories = [
     {
@@ -40,15 +48,13 @@ const UpdateEntry = ({ updateEntry }) => {
 
 
 
+
 const handleForm = async (e) => {
   e.preventDefault();
 
   try {
     setLoading(true);
     const data = new FormData(e.target);
-    console.log(data)
-    console.log(token)
-    console.log(entryId)
 
     await updateEntryService({ data, token, entryId });
 
@@ -78,7 +84,7 @@ return (
 
       <fieldset>
         <label htmlFor="new_text">Texto</label>
-        <input type="text" name="new_text" id="new_title" required />
+        <input type="text" name="new_text" id="new_title"  required />
       </fieldset>
 
       <fieldset>

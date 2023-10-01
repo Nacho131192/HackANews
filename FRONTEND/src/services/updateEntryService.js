@@ -1,4 +1,5 @@
 export const updateEntryService = async ({ data, token, entryId }) => {
+  //CORREGIR DIRECCION SERVIDOR
   const response = await fetch(
     `http://localhost:3000/entries/update/${entryId}`,
     {
