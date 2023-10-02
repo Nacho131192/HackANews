@@ -28,21 +28,23 @@ async function addEntry (req, res, next) {
   // RECOGIDA DE IMAGENES
   let imageFileName
 
-  if (req.files && req.files.image) {
+  if (req.files && req.files.new_pic) {
     // creacion path del directorio
     const uploadFolder = path.join(__dirname, '../../uploads')
     //creación del drectorio
     await createFolder(uploadFolder)
     // procesamos la imagen con sharp
-    const image = sharp(req.files.image.data)
+    const image = sharp(req.files.new_pic.data)
     image.resize(320, 240)
     // guardamos la imagen en uploads
     imageFileName = `${randomId()}.jpg`
+
     await image.toFile(path.join(uploadFolder, imageFileName))
   }
 
   //RECOGIDA DEL RESTO DE DATOS
   console.log(req.body)
+
   const { new_title, new_entrance, new_text, new_video, new_theme } = req.body
   try {
     await sendQuery(
