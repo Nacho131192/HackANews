@@ -29,10 +29,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/entries/:id" element={<EntryFull />} />
-          <Route path="/mynews" element={<MyNews />}/>
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path= "/:categoryId" element= {<CategoriesPage/>}/>
-          <Route path="/mynews" element={<MyNews/>}/>
+          <Route path="/mynews" element={<MyNews />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/:categoryId" element={<CategoriesPage />} />
+          <Route path="/mynews" element={<MyNews />} />
 
 
 

@@ -22,10 +22,11 @@ function EntryFull() {
         <NewsArticleFull>
 
             <p className="title">{results[0].new_title}</p>
-            <img src={`${API_URL}/${results[0].new_pic}`} alt="Imagen de Entrada" />
+            <img className="pic" src={`${API_URL}/${results[0].new_pic}`} alt="Imagen de Entrada" />
             <p className="entrance">{results[0].new_entrance}</p>
             <p className="text">{results[0].new_text}</p>
-            <button>Trailer</button>
+            <p className="theme">Tema: {results[0].new_theme}</p>
+            <video className="video" src={`${API_URL}/${results[0].new_video}`} width="100%" type="video/mp4" autoPlay muted controls></video>
 
             <p className="author">Autor de la entrada: {user[0].user_name}</p>
             <p className="date">Publicación hecha el {new Date(results[0].created_at).toLocaleDateString()}</p>
@@ -38,27 +39,39 @@ function EntryFull() {
 //! TAMAÑO IMAGEN CARTEL PELICULA 486PX x 720PX
 
 const NewsArticleFull = styled.article`
-    border: 2px solid black;
-    position: relative;
-    display: flex;    
-    align-items: flex-start;  
-    justify-content: flex-start;
-    height: 720px;
-    p{
-        margin: 10px;
-    }
+    width: 1000px;
     
-    .text{
-        border: 2px solid black;
-        width: 500px;
-    }
-    img {
-        margin-top: 100px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    display: grid; 
+    grid-template-columns: 0.7fr 1.3fr 1fr; 
+    grid-template-rows: 0.5fr 0.7fr 1.8fr 0.6fr 1.7fr 0.7fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "title title title"
+    "pic entrance entrance"
+    "pic text text"
+    "pic text text"
+    "theme video video"
+    ". author author";
+    * {padding: 10px;}
+    padding: 10px;
+    .title { grid-area: title;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: uppercase;}
+    .pic { grid-area: pic;
+        width: 400px;
+    max-width: 400px;}
+    .entrance { grid-area: entrance; }
+    .text { grid-area: text; }
+    .video { grid-area: video; }
+    .theme { grid-area: theme; }
+    .author { grid-area: author; }
+    .date{ grid-area: author;
+        text-align: end;}
         
-        width: 300px;
-        
-
-    }
 `;
 
 
