@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { createEntryService } from "../services/createEntryService";
 import { LoginContext, LoginContextProvider } from "../context/LoginContext.jsx";
 
-const CreateEntry = ({ addEntry }) => {
+const CreateEntry = ({}) => {
 
   const fetchedCategories = [
     {name: "Celebrities",
@@ -87,8 +87,8 @@ return (
         <label htmlFor="new_pic">Imagen</label>
         <input
           type="file"
-          name="pic"
-          id="pic"
+          name="new_pic"
+          id="new_pic"
           accept={"image/*"}
           onChange={(e) => setImage(e.target.files[0])}
         />
