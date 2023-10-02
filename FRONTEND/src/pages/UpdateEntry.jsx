@@ -44,6 +44,7 @@ const UpdateEntry = ({ updateEntry }) => {
       setEntranceInput(data.data.results[0].new_entrance)
       setTextInput(data.data.results[0].new_text)
       setThemeInput(data.data.results[0].new_theme)
+      console.log(data.data.results[0])
 
     })
      .catch(err => console.log('Solicitud fallida', err));
