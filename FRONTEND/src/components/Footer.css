@@ -1,0 +1,6 @@
+div#root > footer {
+  text-align: center;
+  letter-spacing: 1px;
+  background-color: steelblue;
+  color: black;
+}
