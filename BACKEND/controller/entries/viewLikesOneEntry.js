@@ -3,20 +3,33 @@ const createError = require("../../helpers/createError")
 
 async function viewLikeEntry(req, res, next) {
     try {
-        const { userId } = req.user
+
         const entryId = req.params.entryId
-        const likes = await sendQuery(
-            `SELECT * FROM likes
-            WHERE new_id = ? AND user_id = ? `,
-            [entryId, userId]
+        const results = await sendQuery(
+            `SELECT new_likes 
+            FROM news
+            WHERE id = ?  `,
+            [entryId]
         )
+        //console.log(results);
         res.send({
             ok: true,
-            data: likes,
-            error: null,
+            data: results,
+            error: false,
             message: "likes obtenidos",
         })
-    } catch {
+        if (results.lenght > 0) {
+            const likes = results[0]
+            res.send({
+                ok: true,
+                data: likes,
+                error: false,
+                message: "likes obtenidos",
+            });
+
+        }
+    } catch (error) {
+        next(createError(404, "Likes no encontrados"))
 
     }
 }
