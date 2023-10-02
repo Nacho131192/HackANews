@@ -12,9 +12,43 @@ const UpdateEntry = ({ updateEntry }) => {
   const { token } = useContext(LoginContext);
   const [entry, setEntry] = useState('')
 
-  // const entry  =  async () => { await getEntryService(entryId)}∫
+  const [titleInput, setTitleInput] = useState("")
+  const handleTitleChange = (event) => {
+    setTitleInput(event.target.value);
+  };
 
-  // useEffect ... fetch(`http://localhost:3000/entries/view/${entryId}`).then(response => response.json()).then(data => setEntry(data.data.results[0])).catch(err => console.log('Solicitud fallida', err));
+  const [entranceInput, setEntranceInput] = useState("")
+  const handleEntranceChange = (event) => {
+    setEntranceInput(event.target.value);
+  };
+
+  const [textInput, setTextInput] = useState("")
+  const handleTextChange = (event) => {
+    setTextInput(event.target.value);
+  };
+
+  const [themeInput, setThemeInput] = useState("")
+  const handleThemeChange = (event) => {
+    setThemeInput(event.target.value);
+  };
+  
+  const [picInput, setPicInput] = useState("")
+  const handlePicChange = (event) => {
+    setPicInput(event.target.value);
+  };
+   useEffect (()=>{
+     fetch(`http://localhost:3000/entries/view/${entryId}`)
+     .then(response => response.json())
+     .then(data => {
+      setTitleInput(data.data.results[0].new_title)
+      setEntranceInput(data.data.results[0].new_entrance)
+      setTextInput(data.data.results[0].new_text)
+      setThemeInput(data.data.results[0].new_theme)
+
+    })
+     .catch(err => console.log('Solicitud fallida', err));
+   },[entryId])
+
 
   console.log(entry)
 
@@ -67,6 +101,7 @@ const handleForm = async (e) => {
   }
 }
 
+
 return (
   <div>
   <LoginContextProvider>
@@ -74,22 +109,22 @@ return (
     <form className="new-entry" onSubmit={handleForm}>
       <fieldset>
         <label htmlFor="new_title">Título</label>
-        <input type="text" name="new_title" id="new_title" required />
+        <input type="text" name="new_title" id="new_title" value={titleInput} onChange={handleTitleChange} required />
       </fieldset>
 
       <fieldset>
         <label htmlFor="new_entrance">Entradilla</label>
-        <input type="text" name="new_entrance" id="new_entrance" required />
+        <input type="text" name="new_entrance" id="new_entrance" value={entranceInput} onChange={handleEntranceChange}required />
       </fieldset>
 
       <fieldset>
         <label htmlFor="new_text">Texto</label>
-        <input type="text" name="new_text" id="new_title"  required />
+        <input type="text" name="new_text" id="new_title" value={textInput} onChange={handleTextChange}required />
       </fieldset>
 
       <fieldset>
         <label htmlFor="new_theme">Categoria</label>
-        <select name="new_theme">
+        <select name="new_theme" value={themeInput} onChange={handleThemeChange}>
           {
             fetchedCategories.map((category)=> {
               return (<option value={category.id} key={category.id}>{category.name}</option>)
@@ -108,7 +143,8 @@ return (
           name="pic"
           id="pic"
           accept={"image/*"}
-          onChange={(e) => setImage(e.target.files[0])}
+          
+          onChange={handlePicChange}
         />
         {image ? (
           <figure>
@@ -120,7 +156,7 @@ return (
           </figure>
         ) : null}
       </fieldset>
-      <button>Enviar noticia</button>
+      <button>Editar noticia</button>
       {error ? <p>{error}</p> : null}
       {loading ? <p>Publicando noticia...</p> : null}
     </form>
@@ -131,4 +167,3 @@ return (
 
 
   export default UpdateEntry
-
