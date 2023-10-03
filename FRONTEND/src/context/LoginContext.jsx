@@ -60,6 +60,7 @@ const LoginContextProvider = ({ children }) => {
     <LoginContext.Provider
       value={{ user, setUser, isAuthenticated, authLogin, loading }}
     >
+
       {children}
     </LoginContext.Provider>
   );
