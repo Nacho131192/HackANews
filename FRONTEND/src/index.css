@@ -9,6 +9,9 @@ div#root {
   display: flex;
   flex-direction: column;
 }
+
 main {
   flex-grow: 1;
+  margin-left: 200px;
+  margin-top: -160px;
 }

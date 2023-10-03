@@ -25,19 +25,19 @@ function App() {
 
 
     <>
-      <Header/>
-      {user?<MyUserZone/>:null}
+      <Header />
+      {user ? <MyUserZone /> : null}
       <Themes />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/entries/:id" element={<EntryFull />} />
-          <Route path="/mynews" element={<MyNewsPage />}/>
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path= "/:categoryId" element= {<CategoriesPage/>}/>
-          <Route path="/createentry" element = {<CreateEntry/>}/>
-          <Route path="/entries/update/:entryId" element = {<UpdateEntry/>}/>
+          <Route path="/mynews" element={<MyNewsPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/:categoryId" element={<CategoriesPage />} />
+          <Route path="/createentry" element={<CreateEntry />} />
+          <Route path="/entries/update/:entryId" element={<UpdateEntry />} />
 
 
 

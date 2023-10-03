@@ -1,0 +1,17 @@
+aside {
+
+    letter-spacing: 1px;
+    padding: 10px;
+    color: black;
+
+}
+
+.nav2 {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.category {
+    margin-bottom: 1rem;
+}

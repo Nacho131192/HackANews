@@ -1,6 +1,37 @@
-div#root > header {
+.header {
   text-align: center;
-  letter-spacing: 1px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   background-color: steelblue;
   color: black;
+  height: 100px;
+}
+
+.name {
+  text-transform: uppercase;
+
+
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  list-style: none;
+
+
+
+}
+
+* {
+  text-decoration: none;
+}
+
+.logo {
+  margin-left: 30px;
+
 }
