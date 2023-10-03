@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { createEntryService } from "../services/createEntryService";
 import { LoginContext, LoginContextProvider } from "../context/LoginContext.jsx";
+import { getToken } from "../utilities/getToken";
 
 const CreateEntry = ({}) => {
 
@@ -28,8 +29,8 @@ const CreateEntry = ({}) => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { token } = useContext(LoginContext);
-
+  // const { token } = useContext(LoginContext);
+  const token = getToken()
 
 const handleForm = async (e) => {
   e.preventDefault();
