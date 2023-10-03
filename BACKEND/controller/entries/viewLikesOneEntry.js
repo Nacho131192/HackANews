@@ -18,16 +18,7 @@ async function viewLikeEntry(req, res, next) {
             error: false,
             message: "likes obtenidos",
         })
-        if (results.lenght > 0) {
-            const likes = results[0]
-            res.send({
-                ok: true,
-                data: likes,
-                error: false,
-                message: "likes obtenidos",
-            });
 
-        }
     } catch (error) {
         next(createError(404, "Likes no encontrados"))
 

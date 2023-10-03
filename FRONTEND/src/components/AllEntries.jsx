@@ -1,6 +1,6 @@
 import { Entry } from './Entry';
 import styled from 'styled-components';
-import Counter from './Counter';
+
 
 export default function AllEntries({ news }) {
 
