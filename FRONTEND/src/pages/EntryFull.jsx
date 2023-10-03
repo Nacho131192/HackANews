@@ -13,6 +13,8 @@ const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 function EntryFull() {
     // const { user: usercontext } = useContext(LoginContext)
     const { user: usercontext } = useLogin()
+
+
     const { id } = useParams();
     const { news, loading, error } = useEntry(id);
     const { results, user } = news;
@@ -21,13 +23,12 @@ function EntryFull() {
     if (error) return <p>{error}</p>;
    
     return (
-      <NewsArticle>
-        <img src={`${API_URL}/${results[0].new_pic}`} alt="Imagen de Entrada" />
-        <p>{results[0].new_title}</p>
-        <p>{results[0].new_entrance}</p>
-        <p>{results[0].new_text}</p>
-        <button>Trailer</button>
-
+        <NewsArticle>
+            <img src={`${API_URL}/${results[0].new_pic}`} alt="Imagen de Entrada" />
+            <p>{results[0].new_title}</p>
+            <p>{results[0].new_entrance}</p>
+            <p>{results[0].new_text}</p>
+            <button>Trailer</button>
         <p>
           {" "}
           Creado por {user[0].user_name} el{" "}
@@ -35,6 +36,7 @@ function EntryFull() {
         </p>
         {usercontext && usercontext.user_email == user[0].user_email ? <EditDeleteEntry results={ results } /> : null}
       </NewsArticle>
+       
     )
 
 };
