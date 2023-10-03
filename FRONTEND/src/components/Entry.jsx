@@ -37,11 +37,10 @@ const NewsArticle = styled.article`
     .title{
         font-size: 16px;
         font-weight: bold;
-        color: white;
         text-transform: uppercase;
         margin-bottom: 1rem;
         margin-top: 0.5rem;
-        background-color: #5a5aff;
+       
         
     }
     .author{

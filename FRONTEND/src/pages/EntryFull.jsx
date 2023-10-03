@@ -38,13 +38,14 @@ function EntryFull() {
             <p className="likes">LIKES: {results[0].new_likes}</p>
             <p className="author">Autor de la entrada: {user[0].user_name}</p>
             <p className="date">Publicación hecha el {new Date(results[0].created_at).toLocaleDateString()}</p>
-            {usercontext && usercontext.user_email == user[0].user_email ? <EditDeleteEntry results={ results } /> : null}
-             
-        </NewsArticleFull>
+            {usercontext && usercontext.user_email == user[0].user_email ? <EditDeleteEntry results={results} /> : null}
 
+        </NewsArticleFull>
+    </>
 
 
 };
+
 //! TAMAÑO IMAGEN CARTEL PELICULA 486PX x 720PX
 
 const NewsArticleFull = styled.article`
@@ -64,6 +65,7 @@ const NewsArticleFull = styled.article`
     "pic text text"
     "theme video video"
     ". author author";
+
     * {padding: 10px;}
     padding: 10px;
     .title { grid-area: title;
