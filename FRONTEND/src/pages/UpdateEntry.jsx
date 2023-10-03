@@ -44,6 +44,7 @@ const UpdateEntry = ({ updateEntry }) => {
       setEntranceInput(data.data.results[0].new_entrance)
       setTextInput(data.data.results[0].new_text)
       setThemeInput(data.data.results[0].new_theme)
+      setPicInput(data.data.results[0].new_pic)
       console.log(data.data.results[0])
 
     })
@@ -138,11 +139,14 @@ return (
       </fieldset>
 
       <fieldset>
+        {console.log(picInput)}
+        <img src= {`http://localhost:3000/${picInput}`}/>
         <label htmlFor="new_pic">Imagen</label>
         <input
           type="file"
-          name="pic"
-          id="pic"
+          name="new_pic"
+          id="new_pic"
+          //value="picInput"
           accept={"image/*"}
           
           onChange={handlePicChange}
