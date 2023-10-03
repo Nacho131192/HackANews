@@ -3,6 +3,7 @@ import { LoginContext, LoginContextProvider } from "../context/LoginContext.jsx"
 import { useParams } from "react-router-dom";
 import { updateEntryService } from "../services/updateEntryService";
 import getEntryService from "../services/getEntryService.js"
+import { getToken } from "../utilities/getToken"
 
 const UpdateEntry = ({ updateEntry }) => {
   let { entryId } = useParams();

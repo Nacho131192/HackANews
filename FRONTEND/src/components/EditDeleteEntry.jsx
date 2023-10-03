@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { LoginContext } from '../context/LoginContext';
 import deleteEntryService from '../services/deleteEntryService';
 import { Navigate, useNavigate } from 'react-router-dom';
+
 import swal from 'sweetalert';
 import { getToken } from '../utilities/getToken';
 export default function EditDeleteEntry({ results }) {
@@ -20,7 +21,10 @@ export default function EditDeleteEntry({ results }) {
   }
   return (
     <section>
-      <button>edit</button>
+      <button
+      onClick={()=>{
+        navigate(`/entries/update/${idNew}`)
+      }}>edit</button>
       <button
         onClick={() => {
           if (
