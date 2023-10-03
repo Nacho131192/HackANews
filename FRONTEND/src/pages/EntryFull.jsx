@@ -14,7 +14,6 @@ function EntryFull() {
     // const { user: usercontext } = useContext(LoginContext)
     const { user: usercontext } = useLogin()
 
-
     const { id } = useParams();
     const { news, loading, error } = useEntry(id);
     const { results, user } = news;
@@ -30,7 +29,7 @@ function EntryFull() {
             <p>{results[0].new_text}</p>
             <button>Trailer</button>
         <p>
-          {" "}
+          
           Creado por {user[0].user_name} el{" "}
           {new Date(results[0].created_at).toLocaleDateString()}
         </p>

@@ -18,6 +18,6 @@ entriesRouter.get('/allentries', getAllEntries)
 entriesRouter.post('/update/:entryId', authUser, updateEntry)
 entriesRouter.get("/themes/:themeId", byThemeEntry)
 entriesRouter.post("/like/:entryId", authUser, likeEntry)
-entriesRouter.get("/meentries/:user_Id", authUser, getMeEntries )
+entriesRouter.get("/meentries/", authUser, getMeEntries )
 
 module.exports = entriesRouter;

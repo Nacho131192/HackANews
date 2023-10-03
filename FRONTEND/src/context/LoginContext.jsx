@@ -23,7 +23,7 @@ const LoginContextProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const data = await getMyDataService(token);
-
+        console.log(data);
         setUser(data.user);
       } catch (err) {
         alert(err.message);
