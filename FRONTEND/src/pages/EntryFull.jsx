@@ -27,7 +27,7 @@ function EntryFull() {
             <p className="text">{results[0].new_text}</p>
             <p className="theme">Tema: {results[0].new_theme}</p>
             <video className="video" src={`${API_URL}/${results[0].new_video}`} width="100%" type="video/mp4" autoPlay muted controls></video>
-
+            <p className="likes">LIKES: {results[0].new_likes}</p>
             <p className="author">Autor de la entrada: {user[0].user_name}</p>
             <p className="date">Publicación hecha el {new Date(results[0].created_at).toLocaleDateString()}</p>
 
@@ -39,7 +39,8 @@ function EntryFull() {
 //! TAMAÑO IMAGEN CARTEL PELICULA 486PX x 720PX
 
 const NewsArticleFull = styled.article`
-    width: 1000px;
+    max-width: 1000px;
+    min-width: 600px;
     
     border-radius: 10px;
     background-color: aliceblue;
@@ -61,12 +62,15 @@ const NewsArticleFull = styled.article`
         font-size: 30px;
         font-weight: bold;
         text-transform: uppercase;}
-    .pic { grid-area: pic;
-        width: 400px;
-    max-width: 400px;}
+    img { grid-area: pic;
+        
+    max-width: 350px;}
     .entrance { grid-area: entrance; }
     .text { grid-area: text; }
-    .video { grid-area: video; }
+    .video { grid-area: video;
+    max-width: 97%;}
+    .likes { grid-area: theme;
+    text-align: end;}
     .theme { grid-area: theme; }
     .author { grid-area: author; }
     .date{ grid-area: author;
