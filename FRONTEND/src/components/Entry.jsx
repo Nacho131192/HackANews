@@ -11,9 +11,9 @@ export const Entry = ({ news }) => {
 
             <img src={`${API_URL}/${news.new_pic}`} alt="Entrada" />
             <p>{news.new_title}</p>
-
+            <p>{news.new_likes} LIKES</p>
             <p> Creado por {news.user_name} el {new Date(news.created_at).toLocaleDateString()}</p>
-            
+
         </NewsArticle>
     </Link>
 };

@@ -10,6 +10,7 @@ const updateEntry = require('../controller/entries/updateEntry.js')
 const byThemeEntry = require('../controller/entries/byThemeEntry')
 const likeEntry = require('../controller/entries/likeEntry')
 const getMeEntries = require('../controller/entries/getMeEntries')
+const viewLikesOneEntry = require('../controller/entries/viewLikesOneEntry')
 
 entriesRouter.get('/view/:news_id', viewEntryOneUser)
 entriesRouter.post('/', authUser, addEntry)
@@ -18,6 +19,7 @@ entriesRouter.get('/allentries', getAllEntries)
 entriesRouter.post('/update/:entryId', authUser, updateEntry)
 entriesRouter.get("/themes/:themeId", byThemeEntry)
 entriesRouter.post("/like/:entryId", authUser, likeEntry)
-entriesRouter.get("/meentries/:user_Id", authUser, getMeEntries )
+entriesRouter.get("/meentries/:user_Id", authUser, getMeEntries)
+entriesRouter.get("/viewlikes/:entryId", viewLikesOneEntry)
 
 module.exports = entriesRouter
