@@ -11,6 +11,7 @@ export default function AllEntries({ news }) {
 
                 <section key={news.id}>
                     <Entry news={news} />
+
                 </section>
 
             ))}

@@ -1,6 +1,10 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import useEntry from '../hooks/useEntryFull';
+import { LoginContext } from '../context/LoginContext';
+import { useContext } from 'react';
+import EditDeleteEntry from '../components/EditDeleteEntry';
+import { useLogin } from '../hooks/useLogin';
 
 
 
@@ -9,14 +13,18 @@ const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
 
 function EntryFull() {
+    // const { user: usercontext } = useContext(LoginContext)
+    const { user: usercontext } = useLogin()
+
     const { id } = useParams();
     const { news, loading, error } = useEntry(id);
     const { results, user } = news;
 
 
-
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>{error}</p>;
+
+
 
     return <>
         <NewsArticleFull>
@@ -30,10 +38,11 @@ function EntryFull() {
             <p className="likes">LIKES: {results[0].new_likes}</p>
             <p className="author">Autor de la entrada: {user[0].user_name}</p>
             <p className="date">Publicación hecha el {new Date(results[0].created_at).toLocaleDateString()}</p>
-
+            {usercontext && usercontext.user_email == user[0].user_email ? <EditDeleteEntry results={ results } /> : null}
+             
         </NewsArticleFull>
 
-    </>
+
 
 };
 //! TAMAÑO IMAGEN CARTEL PELICULA 486PX x 720PX

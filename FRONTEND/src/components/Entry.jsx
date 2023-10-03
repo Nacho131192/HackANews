@@ -14,6 +14,7 @@ export const Entry = ({ news }) => {
             <p className='likes'>• {news.new_likes}💚 •</p>
             <p className='author'>{news.user_name} - {new Date(news.created_at).toLocaleDateString()}</p>
 
+
         </NewsArticle>
     </Link>
 };

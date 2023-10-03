@@ -1,5 +1,5 @@
-const express = require('express')
-const entriesRouter = express.Router()
+const express = require('express');
+const entriesRouter = express.Router();
 
 const authUser = require('../middlewares/authUser')
 const addEntry = require('../controller/entries/addEntry.js')
@@ -9,6 +9,7 @@ const viewEntryOneUser = require('../controller/entries/viewEntryOneUser.js')
 const updateEntry = require('../controller/entries/updateEntry.js')
 const byThemeEntry = require('../controller/entries/byThemeEntry')
 const likeEntry = require('../controller/entries/likeEntry')
+const getMeEntries = require('../controller/entries/getMeEntries')
 
 entriesRouter.get('/view/:news_id', viewEntryOneUser)
 entriesRouter.post('/', authUser, addEntry)
@@ -17,5 +18,6 @@ entriesRouter.get('/allentries', getAllEntries)
 entriesRouter.post('/update/:entryId', authUser, updateEntry)
 entriesRouter.get("/themes/:themeId", byThemeEntry)
 entriesRouter.post("/like/:entryId", authUser, likeEntry)
+entriesRouter.get("/meentries/", authUser, getMeEntries )
 
-module.exports = entriesRouter
+module.exports = entriesRouter;
