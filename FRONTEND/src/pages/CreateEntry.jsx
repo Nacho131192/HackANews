@@ -40,7 +40,6 @@ const handleForm = async (e) => {
     console.log(data)
     await createEntryService({ data, token });
 
-   
 
     e.target.reset();
     setImage(null);
