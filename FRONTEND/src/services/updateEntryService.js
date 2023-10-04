@@ -21,5 +21,5 @@ export const updateEntryService = async ({ formData, entryId }) => {
         throw new Error(json.message);
     }
 
-    return json.data;
+    return json;
 };

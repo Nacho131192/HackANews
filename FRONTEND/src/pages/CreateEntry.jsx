@@ -4,6 +4,10 @@ import { useState } from 'react';
 // Importamos los servicios.
 import { createEntryService } from '../services/createEntryService';
 
+//importamos el npm de notificaciones
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Importamos la función que retorna un token.
 import { getToken } from '../utilities/getToken';
 
@@ -31,14 +35,26 @@ const CreateEntry = () => {
 
             const data = new FormData(e.target);
 
-            await createEntryService({ data, token });
+            const res = await createEntryService({ data, token });
+            console.log(res);
+            //const body = await res.json();
 
             e.target.reset();
 
             setImage(null);
+            if (!res.ok) {
+                //throw new Error(body.message);
+                toast.error(res.message);
+            }
+
+            // setToken(body.data.token);
+            setLoading(false);
+
+            toast.success(res.message);
         } catch (error) {
-            setError(error.message);
-        } finally {
+            console.log(error);
+            toast.error(error.message);
+
             setLoading(false);
         }
     };
@@ -112,6 +128,8 @@ const CreateEntry = () => {
                 {error ? <p>{error}</p> : null}
                 {loading ? <p>Publicando noticia...</p> : null}
             </form>
+
+            <ToastContainer />
         </div>
     );
 };

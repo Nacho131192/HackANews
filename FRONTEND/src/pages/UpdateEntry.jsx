@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom';
 
 // Importamos los servicios.
 import { updateEntryService } from '../services/updateEntryService';
-
+// Importamos el modulo de notificaciones
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UpdateEntry = () => {
     let { entryId } = useParams();
 
@@ -68,9 +70,17 @@ const UpdateEntry = () => {
             formData.append('new_text', textInput);
             formData.append('new_theme', themeInput);
 
-            await updateEntryService({ formData, entryId });
+            const res = await updateEntryService({ formData, entryId });
 
             e.target.reset();
+            if (!res.ok) {
+                //throw new Error(body.message);
+                toast.error(res.message);
+            }
+
+            setLoading(false);
+
+            toast.success(res.message);
         } catch (error) {
             setError(error.message);
         } finally {
@@ -139,6 +149,7 @@ const UpdateEntry = () => {
                 {error ? <p>{error}</p> : null}
                 {loading ? <p>Publicando noticia...</p> : null}
             </form>
+            <ToastContainer />
         </div>
     );
 };
