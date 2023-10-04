@@ -1,41 +1,43 @@
+import './Themes.css';
 import { Link } from "react-router-dom";
 
 
 export default function Themes() {
-  return (
-    <aside>
-        
-        <h2>CATEGORIAS</h2>
-        <ul>
-            <Link to={"/celebrities"}>
-                 <li>Celebrities</li>
-            </Link>
-         
-            <Link to={"/premieres"}>
-                 <li>Premieres</li>
-            </Link>
+     return (
+          <aside>
 
-            <Link to={"/oscars2024"}>
-                 <li>Oscars 2024</li>
-            </Link>
+               <h2 className='category'>CATEGORIAS</h2>
+               <ul className='nav2'>
 
-            <Link to={"/reviews"}>
-                 <li>Reviews</li>
-            </Link>
+                    <Link to={"/celebrities"}>
+                         <li>Celebrities</li>
+                    </Link>
 
-            <Link to={"/ranking"}>
-                 <li>Ranking</li>
-            </Link>
+                    <Link to={"/premieres"}>
+                         <li>Premieres</li>
+                    </Link>
 
-            <Link to={"/festivals"}>
-                 <li>Film Festivals</li>
-            </Link>
-        </ul>
+                    <Link to={"/oscars2024"}>
+                         <li>Oscars 2024</li>
+                    </Link>
+
+                    <Link to={"/reviews"}>
+                         <li>Reviews</li>
+                    </Link>
+
+                    <Link to={"/ranking"}>
+                         <li>Ranking</li>
+                    </Link>
+
+                    <Link to={"/festivals"}>
+                         <li>Film Festivals</li>
+                    </Link>
+               </ul>
 
 
 
-    </aside>
-)
+          </aside>
+     )
 }
 
 
