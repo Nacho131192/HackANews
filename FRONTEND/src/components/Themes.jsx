@@ -10,27 +10,27 @@ export default function Themes() {
                <ul className='nav2'>
 
                     <Link to={"/celebrities"}>
-                         <li>Celebrities</li>
+                         <li><button className='btn_themes'>Celebrities</button></li>
                     </Link>
 
                     <Link to={"/premieres"}>
-                         <li>Premieres</li>
+                         <li><button className='btn_themes'>Premieres</button></li>
                     </Link>
 
                     <Link to={"/oscars2024"}>
-                         <li>Oscars 2024</li>
+                         <li><button className='btn_themes'>Oscars 2024</button></li>
                     </Link>
 
                     <Link to={"/reviews"}>
-                         <li>Reviews</li>
+                         <li><button className='btn_themes'>Reviews</button></li>
                     </Link>
 
                     <Link to={"/ranking"}>
-                         <li>Ranking</li>
+                         <li><button className='btn_themes'>Ranking</button></li>
                     </Link>
 
                     <Link to={"/festivals"}>
-                         <li>Film Festivals</li>
+                         <li><button className='btn_themes'>Film Festivals</button></li>
                     </Link>
                </ul>
 

@@ -10,8 +10,18 @@ aside {
     list-style: none;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
 
 .category {
     margin-bottom: 1rem;
+}
+
+.btn_themes {
+    background-color: #5E7EEC;
+    color: white;
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    text-transform: uppercase;
 }

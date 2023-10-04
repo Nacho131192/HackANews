@@ -12,14 +12,14 @@ export default function Header() {
 
             <ul className='nav'>
                 <Link to={"/"}>
-                    <li>INICIO</li>
+                    <li><button className='btn_header'>INICIO</button></li>
                 </Link>
                 <Link to={"/register"}>
-                    <li>REGISTRO</li>
+                    <li><button className='btn_header'>REGISTRO</button></li>
                 </Link>
 
                 <Link to={"/login"}>
-                    <li>LOGIN</li>
+                    <li><button className='btn_header'>LOGIN</button></li>
                 </Link>
 
             </ul>
