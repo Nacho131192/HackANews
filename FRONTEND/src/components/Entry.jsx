@@ -1,22 +1,34 @@
 import styled from 'styled-components';
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 import { Link } from 'react-router-dom';
+import './Entry.css';
+import { LoginContext } from '../context/LoginContext';
+import { useContext } from 'react';
+import Likes from './Likes';
 
 export const Entry = ({ news }) => {
+    const { user } = useContext(LoginContext);
     return (
-        <Link to={`/entries/${news.id}`} style={{ textDecoration: 'none' }}>
-            <NewsArticle>
-                {news.new_pic && (
-                    <img src={`${API_URL}/${news.new_pic}`} alt="Entrada" />
-                )}
-                <p className="title">{news.new_title}</p>
+        <>
+            <Link to={`/entries/${news.id}`} style={{ textDecoration: 'none' }}>
+                <NewsArticle>
+                    {news.new_pic && (
+                        <img src={`${API_URL}/${news.new_pic}`} alt="Entrada" />
+                    )}
+                    <p className="title">{news.new_title}</p>
+
+                    <p className="author">
+                        {news.user_name} -{' '}
+                        {new Date(news.created_at).toLocaleDateString()}
+                    </p>
+
+                </NewsArticle>
+            </Link>
+            <div>
+                {user && <Likes newsId={news.id} />}
                 <p className="likes">• {news.new_likes}💚 •</p>
-                <p className="author">
-                    {news.user_name} -{' '}
-                    {new Date(news.created_at).toLocaleDateString()}
-                </p>
-            </NewsArticle>
-        </Link>
+            </div>
+        </>
     );
 };
 
