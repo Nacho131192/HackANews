@@ -8,6 +8,7 @@ export default function Themes() {
 
                <h2 className='category'>CATEGORIAS</h2>
                <ul className='nav2'>
+
                     <Link to={"/celebrities"}>
                          <li>Celebrities</li>
                     </Link>
