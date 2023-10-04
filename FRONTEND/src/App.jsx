@@ -23,7 +23,7 @@ function App() {
     return (
         <>
             <Header />
-            {user && <MyUserZone />}
+
             <Themes />
             <main>
                 <Routes>
@@ -34,9 +34,7 @@ function App() {
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/:categoryId" element={<CategoriesPage />} />
                     <Route path="/createentry" element={<CreateEntry />} />
-                    <Route
-                        path="/entries/update/:entryId"
-                        element={<UpdateEntry />}
+                    <Route path="/entries/update/:entryId" element={<UpdateEntry />}
                     />
                 </Routes>
             </main>
