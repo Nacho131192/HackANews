@@ -4,24 +4,22 @@ import AllEntries from '../components/AllEntries';
 import { Navigate } from 'react-router-dom';
 
 export default function MyNewsPage() {
-  const { isAuthenticated } = useLogin();
+    const { user } = useLogin();
 
-  console.log(isAuthenticated);
+    // Si el usuario no está logueado redirigimos a la página principal.
+    if (!user) {
+        console.error('No se puede acceder a MyNewsPage');
+        return <Navigate to="/" />;
+    }
 
-  // Si el usuario no está logueado redirigimos a la página principal.
-  if (!isAuthenticated) {
-    alert('ERROR');
-    return <Navigate to='/' />;
-  }
+    // Obtenemos las noticias únicamente si existe un usuario...
+    const { meNews, error, loading } = useMeEntries();
 
-  // Obtenemos las noticias únicamente si existe un usuario...
-  const { meNews, error, loading } = useMeEntries();
+    return (
+        <>
+            <h2> Mis noticias</h2>
 
-  return (
-    <>
-      <h2> Mis noticias</h2>
-
-      <AllEntries news={meNews} />
-    </>
-  );
+            <AllEntries news={meNews} />
+        </>
+    );
 }

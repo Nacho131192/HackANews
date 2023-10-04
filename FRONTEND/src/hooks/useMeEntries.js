@@ -1,32 +1,32 @@
 import { useEffect, useState } from 'react';
-import MeNewsService from '../services/MeNewsService';
+import MeNewsService from '../services/meNewsService';
 import { useLogin } from './useLogin';
 import { getToken } from '../utilities/getToken';
 
 const useMeEntries = () => {
-  const { user } = useLogin();
+    const { user } = useLogin();
 
-  const [meNews, setMeNews] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+    const [meNews, setMeNews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
-  useEffect(() => {
-    const token = getToken();
+    useEffect(() => {
+        const token = getToken();
 
-    const loadmeNews = async () => {
-      try {
-        const data = await MeNewsService(token);
-        setMeNews(data);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
+        const loadmeNews = async () => {
+            try {
+                const data = await MeNewsService(token);
+                setMeNews(data);
+            } catch (error) {
+                setError(error.message);
+            }
+        };
 
-    // Si existe un token llamamos a la función.
-    if (token) loadmeNews();
-  }, []);
+        // Si existe un token llamamos a la función.
+        if (token) loadmeNews();
+    }, []);
 
-  return { meNews, loading, error };
+    return { meNews, loading, error };
 };
 
 export default useMeEntries;

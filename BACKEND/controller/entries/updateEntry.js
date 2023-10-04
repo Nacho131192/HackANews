@@ -1,77 +1,69 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const Joi = require('joi')
-const createError = require('../../helpers/createError')
-const sendQuery = require('../../db/connectToDB')
+const Joi = require('joi');
+const createError = require('../../helpers/createError');
+const sendQuery = require('../../db/connectToDB');
 
-async function updateEntry(req, res, next) {
-  try {
-    const { userId } = req.user //saca la info del usuario
-    //console.log(req.user);
-    //console.log(userId);
-    const schema2 = Joi.number().positive().integer()
-    await schema2.validateAsync(req.params.entryId)
+async function updateEntry (req, res, next) {
+    try {
+        const { userId } = req.user; //saca la info del usuario
+        const { entryId } = req.params;
 
-    const { entryId } = req.params
-
-    //* Comprobar si la entrada existe o no
-    const [entry] = await sendQuery(
-      `
+        //* Comprobar si la entrada existe o no
+        const [entry] = await sendQuery(
+            `
             SELECT * 
             FROM news
             WHERE id = ?
         `,
-      [entryId]
-    )
-    console.log(entry)
-    if (!entry) {
-      return next(createError(404, 'No existe ninguna noticia con ese ID.'))
+            [entryId]
+        );
+
+        if (!entry) {
+            createError(404, 'No existe ninguna noticia con ese ID.');
+        }
+
+        //* Comprobamos que seas el dueño de la entrada, y si no, ERROR
+        if (entry.users_user_id !== userId) {
+            createError(
+                403,
+                'No es tu noticia, no puedes editar la noticia de otra persona.'
+            );
+        }
+
+        console.log(req.body);
+
+        const schema = Joi.object({
+            new_title: Joi.string(),
+            new_entrance: Joi.string(),
+            new_text: Joi.string(),
+            new_theme: Joi.number(),
+        }).or('new_title', 'new_entrance', 'new_text', 'new_theme');
+
+        await schema.validateAsync(req.body);
+
+        let { new_title, new_entrance, new_text, new_theme } = req.body;
+
+        new_title = new_title || entry.new_title;
+        new_entrance = new_entrance || entry.new_entrance;
+        new_text = new_text || entry.new_text;
+        new_theme = new_theme || entry.new_theme;
+
+        await sendQuery(
+            `UPDATE news SET new_title=?, new_entrance=?, new_text=?, themes_themes_id=? WHERE id=?`,
+            [new_title, new_entrance, new_text, new_theme, entryId]
+        );
+
+        res.status(200).json({
+            ok: true,
+            data: null,
+            error: null,
+            message: '🚀Entrada editada correctamente🚀',
+            //res.send({ status: 'ok', message: '🚀Entrada realizada correctamente🚀' });
+        });
+    } catch (err) {
+        next(err);
     }
-
-    //* Comprobamos que seas el dueño de la entrada, y si no, ERROR
-    if (entry.users_user_id !== userId) {
-      return next(
-        createError(
-          403,
-          'No es tu noticia, no puedes editar la noticia de otra persona.'
-        )
-      )
-    }
-
-    const schema = Joi.object({
-      new_title: Joi.string().required(),
-      new_entrance: Joi.string().required(),
-      new_text: Joi.string(),
-      new_pic: Joi.binary(),
-      new_video: Joi.binary(),
-      new_theme: Joi.number()
-    })
-
-    await schema.validateAsync(req.body)
-
-    const { new_title, new_entrance, new_text, new_video, new_theme } = req.body
-    console.log(req.body)
-
-    await sendQuery(
-      `UPDATE news SET new_title=?, new_entrance=?, new_text=?, new_video=?, users_user_id=?, themes_themes_id=? WHERE id=?`,
-      [new_title, new_entrance, new_text, new_video, userId, new_theme, entryId]
-    )
-
-
-    res.status(200).json({
-      ok: true,
-      data: null,
-      error: null,
-      message: '🚀Entrada editada correctamente🚀'
-      //res.send({ status: 'ok', message: '🚀Entrada realizada correctamente🚀' });
-    })
-  } catch (error) {
-    return next(error)
-  }
 }
 
-module.exports = updateEntry
-
-
-
-
+module.exports = updateEntry;
