@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const UpdateEntry = () => {
     let { entryId } = useParams();
+    const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
     const [titleInput, setTitleInput] = useState('');
     const [entranceInput, setEntranceInput] = useState('');
@@ -21,7 +22,7 @@ const UpdateEntry = () => {
 
     useEffect(() => {
         let results = {};
-        fetch('http://localhost:3000/entries/themes')
+        fetch(`${API_URL}/entries/themes`)
             .then((response) => response.json())
             .then((data) => {
                 results = data.data.map((obj) => {

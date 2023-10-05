@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import AllEntries from '../components/AllEntries';
 
 function CategoriesPage() {
+    const API_URL = import.meta.env.VITE_API_URL_BACKEND;
     const categories = {
         celebrities: {
             title: 'Celebrities',
@@ -37,7 +38,7 @@ function CategoriesPage() {
     console.log(targetId);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/entries/themes/${targetId}`)
+        fetch(`${API_URL}/entries/themes/${targetId}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Se ha producido un error');
