@@ -14,10 +14,11 @@ import { getToken } from '../utilities/getToken';
 const CreateEntry = () => {
     const token = getToken();
     const [fetchedCategories, setFetchedCategories] = useState([]);
+    const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
     useEffect(() => {
         let results = {};
-        fetch('http://localhost:3000/entries/themes')
+        fetch(`${API_URL}/entries/themes`)
             .then((response) => response.json())
             .then((data) => {
                 results = data.data.map((obj) => {
