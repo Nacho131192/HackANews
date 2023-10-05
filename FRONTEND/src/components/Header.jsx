@@ -2,17 +2,18 @@ import { useContext } from 'react';
 import { LoginContext } from '../context/LoginContext';
 import './Header.css';
 import { Link } from "react-router-dom";
-
+import logo from '../assets/logo.png';
 
 
 export default function Header() {
     const { user } = useContext(LoginContext);
     return (
         <header className='header'>
+            
             <Link to={"/"}>
-                <h2 className='logo'>LOGO</h2>
+                <img className='logo' src={logo} />
             </Link>
-            <h1 className='name'>Hack a News</h1>
+            {/* <h1 className='name'>Hack a News</h1> */}
 
             <ul className='nav'>
                 {/* <Link to={"/"}>

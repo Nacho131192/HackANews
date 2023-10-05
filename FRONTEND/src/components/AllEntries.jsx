@@ -22,6 +22,8 @@ const NewsSection = styled.section`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 900px;
 `;
 
 

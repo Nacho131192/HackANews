@@ -6,11 +6,12 @@ import { LoginContext } from '../context/LoginContext';
 import { useContext } from 'react';
 import Likes from './Likes';
 
+
 export const Entry = ({ news }) => {
     const { user } = useContext(LoginContext);
     return (
         <>
-            <Link to={`/entries/${news.id}`} style={{ textDecoration: 'none' }}>
+            <Link to={`/entries/${news.id}`} >
                 <NewsArticle>
                     {news.new_pic && (
                         <img src={`${API_URL}/${news.new_pic}`} alt="Entrada" />
