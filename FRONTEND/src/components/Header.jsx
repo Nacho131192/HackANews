@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { LoginContext } from '../context/LoginContext';
 import './Header.css';
 import { Link } from "react-router-dom";
-import MyUserZone from '../components/MyUserZone';
+
 
 
 export default function Header() {
