@@ -1,5 +1,6 @@
 import useEntries from '../hooks/useEntries';
 import AllEntries from '../components/AllEntries';
+import Carousel from '../components/Carousel';
 
 
 export default function HomePage() {
@@ -16,7 +17,7 @@ export default function HomePage() {
             <section>
                 <h2>MEJORES VALORACIONES</h2>
                 <br />
-                <AllEntries news={news} />
+                <Carousel />
                 <br />
             </section>
             <section>

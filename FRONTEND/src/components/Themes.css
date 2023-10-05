@@ -1,8 +1,13 @@
 aside {
-
+    width: 270px;
     letter-spacing: 1px;
     padding: 10px;
     color: black;
+    display:flex;
+    flex-direction: column;
+   
+
+    
 
 }
 
@@ -15,6 +20,8 @@ aside {
 
 .category {
     margin-bottom: 1rem;
+    margin-left: 1.5rem;
+
 }
 
 .btn_themes {

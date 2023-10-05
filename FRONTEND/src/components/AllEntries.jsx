@@ -21,7 +21,7 @@ export default function AllEntries({ news }) {
 const NewsSection = styled.section`
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
   max-width: 900px;
 `;

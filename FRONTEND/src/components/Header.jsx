@@ -3,6 +3,7 @@ import { LoginContext } from '../context/LoginContext';
 import './Header.css';
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
+import Button from 'react-bootstrap/Button';
 
 
 export default function Header() {
@@ -24,7 +25,7 @@ export default function Header() {
                 </Link>}
 
                 {!user && <Link to={"/login"}>
-                    <li><button className='btn_header'>LOGIN</button></li>
+                    <li><Button variant="outline-light">LOGIN</Button></li>
                 </Link>}
                 {user && <Link to="/mynews"><li><button className='btn_header'>MIS NOTICIAS</button></li></Link>}
                 {user && <Link to="/createentry"><li><button className='btn_header'>NUEVA NOTICIA</button></li></Link>}
