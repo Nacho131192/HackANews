@@ -1,5 +1,6 @@
 import './Themes.css';
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 
 export default function Themes() {
@@ -7,32 +8,32 @@ export default function Themes() {
           <aside>
 
                <h2 className='category'>CATEGORIAS</h2>
-               <ul className='nav2'>
+               <div className='d-grid gap-2'>
 
                     <Link to={"/celebrities"}>
-                         <li><button className='btn_themes'>Celebrities</button></li>
+                         <Button className='btn_themes' variant="outline-primary" size="lg" >Celebrities</Button>
                     </Link>
 
                     <Link to={"/premieres"}>
-                         <li><button className='btn_themes'>Premieres</button></li>
+                         <Button className='btn_themes' variant="outline-primary" size="lg" >Premieres</Button>
                     </Link>
 
                     <Link to={"/oscars2024"}>
-                         <li><button className='btn_themes'>Oscars 2024</button></li>
+                         <Button className='btn_themes' variant="outline-primary" size="lg" >Oscars 2024</Button>
                     </Link>
 
                     <Link to={"/reviews"}>
-                         <li><button className='btn_themes'>Reviews</button></li>
+                         <Button className='btn_themes' variant="outline-primary" size="lg" >Reviews</Button>
                     </Link>
 
                     <Link to={"/ranking"}>
-                         <li><button className='btn_themes'>Ranking</button></li>
+                         <Button className='btn_themes' variant="outline-primary" size="lg" >Ranking</Button>
                     </Link>
 
                     <Link to={"/festivals"}>
-                         <li><button className='btn_themes'>Film Festivals</button></li>
+                         <Button className='btn_themes' variant="outline-primary" size="lg" >Film Festivals</Button>
                     </Link>
-               </ul>
+               </div>
 
 
 
