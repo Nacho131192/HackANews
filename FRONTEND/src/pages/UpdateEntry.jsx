@@ -17,6 +17,22 @@ const UpdateEntry = () => {
     const [picInput, setPicInput] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [fetchedCategories, setFetchedCategories] = useState([]);
+
+    useEffect(() => {
+        let results = {};
+        fetch('http://localhost:3000/entries/themes')
+            .then((response) => response.json())
+            .then((data) => {
+                results = data.data.map((obj) => {
+                    let hash = {};
+                    hash['name'] = obj.theme_name;
+                    hash['id'] = obj.themes_id;
+                    return hash;
+                });
+                setFetchedCategories(results);
+            });
+    }, []);
 
     useEffect(() => {
         fetch(`http://localhost:3000/entries/view/${entryId}`)
@@ -33,33 +49,6 @@ const UpdateEntry = () => {
     }, [entryId]);
 
     console.log(picInput);
-
-    const fetchedCategories = [
-        {
-            name: 'Celebrities',
-            id: 1,
-        },
-        {
-            name: 'Festivals',
-            id: 2,
-        },
-        {
-            name: 'Oscars 2024',
-            id: 3,
-        },
-        {
-            name: 'Premieres',
-            id: 4,
-        },
-        {
-            name: 'Ranking',
-            id: 5,
-        },
-        {
-            name: 'Reviews',
-            id: 6,
-        },
-    ];
 
     const handleForm = async (e) => {
         e.preventDefault();
@@ -158,20 +147,7 @@ const UpdateEntry = () => {
                         accept={'image/*'}
                         onChange={(e) => setPicInput(e.target.files[0])}
                     />
-                    {
-                        console.log(picInput)
-                        /* {picInput ? (
-                        <figure>
-                            <img
-                                src={URL.createObjectURL(picInput)}
-                                style={{ width: '100px' }}
-                                alt="Preview"
-                            />
-                        </figure>
-                    ) : null} */
-                    }
                 </fieldset>
-
                 <button>Editar noticia</button>
                 {error ? <p>{error}</p> : null}
                 {loading ? <p>Publicando noticia...</p> : null}

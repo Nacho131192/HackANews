@@ -1,5 +1,5 @@
 // Importamos los hooks.
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Importamos los servicios.
 import { createEntryService } from '../services/createEntryService';
@@ -12,16 +12,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getToken } from '../utilities/getToken';
 
 const CreateEntry = () => {
-    const fetchedCategories = [
-        { name: 'Celebrities', id: 1 },
-        { name: 'Festivals', id: 2 },
-        { name: 'Oscars 2024', id: 3 },
-        { name: 'Premieres', id: 4 },
-        { name: 'Ranking', id: 5 },
-        { name: 'Reviews', id: 6 },
-    ];
-
     const token = getToken();
+    const [fetchedCategories, setFetchedCategories] = useState([]);
+
+    useEffect(() => {
+        let results = {};
+        fetch('http://localhost:3000/entries/themes')
+            .then((response) => response.json())
+            .then((data) => {
+                results = data.data.map((obj) => {
+                    let hash = {};
+                    hash['name'] = obj.theme_name;
+                    hash['id'] = obj.themes_id;
+                    return hash;
+                });
+                setFetchedCategories(results);
+            });
+    }, []);
 
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
