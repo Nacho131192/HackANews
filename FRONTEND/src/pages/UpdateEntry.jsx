@@ -14,6 +14,7 @@ const UpdateEntry = () => {
     const [entranceInput, setEntranceInput] = useState('');
     const [textInput, setTextInput] = useState('');
     const [themeInput, setThemeInput] = useState('');
+    const [picInput, setPicInput] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -25,10 +26,13 @@ const UpdateEntry = () => {
                 setTitleInput(data.data.results[0].new_title);
                 setEntranceInput(data.data.results[0].new_entrance);
                 setTextInput(data.data.results[0].new_text);
+                setPicInput(data.data.results[0].new_pic);
                 setThemeInput(data.data.results[0].themes_themes_id);
             })
             .catch((err) => console.log('Solicitud fallida', err));
     }, [entryId]);
+
+    console.log(picInput);
 
     const fetchedCategories = [
         {
@@ -68,6 +72,7 @@ const UpdateEntry = () => {
             formData.append('new_title', titleInput);
             formData.append('new_entrance', entranceInput);
             formData.append('new_text', textInput);
+            formData.append('new_pic', picInput);
             formData.append('new_theme', themeInput);
 
             const res = await updateEntryService({ formData, entryId });
@@ -143,6 +148,28 @@ const UpdateEntry = () => {
                             );
                         })}
                     </select>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="new_pic">Imagen</label>
+                    <input
+                        type="file"
+                        name="new_pic"
+                        id="new_pic"
+                        accept={'image/*'}
+                        onChange={(e) => setPicInput(e.target.files[0])}
+                    />
+                    {
+                        console.log(picInput)
+                        /* {picInput ? (
+                        <figure>
+                            <img
+                                src={URL.createObjectURL(picInput)}
+                                style={{ width: '100px' }}
+                                alt="Preview"
+                            />
+                        </figure>
+                    ) : null} */
+                    }
                 </fieldset>
 
                 <button>Editar noticia</button>
