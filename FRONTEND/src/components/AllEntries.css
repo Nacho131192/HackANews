@@ -1,0 +1,13 @@
+.no-news{
+    display: flex;
+    justify-content: center;
+
+}
+
+.mapeo-array{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}

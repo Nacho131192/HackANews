@@ -24,7 +24,7 @@ export const Entry = ({ news }) => {
 </Card.Body>
         <div>
             {user && <Likes newsId={news.id} />}
-            <p className="likes">• {news.new_likes}💚 •</p>
+            <div className="likes">• {news.new_likes}💚 •</div>
         </div>
 </Card>
 );

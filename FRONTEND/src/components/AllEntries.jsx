@@ -1,30 +1,30 @@
 import { Entry } from "./Entry";
-import styled from "styled-components";
+
+import Spinner from 'react-bootstrap/Spinner';
+import './AllEntries.css';
 
 export default function AllEntries({ news }) {
 
-  const newArray = news.slice(0, 4);
+  const newArray = news.slice(0, 6);
 
   return news.length ? (
-    <NewsSection>
+    <section className='mapeo-array'>
       {newArray.map((news) => (
-        <section key={news.id}>
+        <article key={news.id}>
           <Entry news={news} />
-        </section>
+        </article>
       ))}
-    </NewsSection>
+    </section>
   ) : (
-    <p>No hay entradas</p>
+    <div className='no-news'>
+      <Spinner animation="grow" variant="danger" />
+      No hay entradas
+      <Spinner animation="grow" variant="danger" />
+    </div>
   );
 }
 
-const NewsSection = styled.section`
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  flex-wrap: wrap;
-  max-width: 900px;
-`;
+
 
 
 // slice o splice
