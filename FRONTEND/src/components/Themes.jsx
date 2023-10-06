@@ -11,27 +11,27 @@ export default function Themes() {
                <div className='d-grid gap-2'>
 
                     <Link to={"/celebrities"}>
-                         <Button className='btn_themes' variant="outline-primary" size="lg" >Celebrities</Button>
+                         <Button className='btn_themes' variant="primary" size="lg" >Celebrities</Button>
                     </Link>
 
                     <Link to={"/premieres"}>
-                         <Button className='btn_themes' variant="outline-primary" size="lg" >Premieres</Button>
+                         <Button className='btn_themes' variant="primary" size="lg" >Premieres</Button>
                     </Link>
 
                     <Link to={"/oscars2024"}>
-                         <Button className='btn_themes' variant="outline-primary" size="lg" >Oscars 2024</Button>
+                         <Button className='btn_themes' variant="primary" size="lg" >Oscars 2024</Button>
                     </Link>
 
                     <Link to={"/reviews"}>
-                         <Button className='btn_themes' variant="outline-primary" size="lg" >Reviews</Button>
+                         <Button className='btn_themes' variant="primary" size="lg" >Reviews</Button>
                     </Link>
 
                     <Link to={"/ranking"}>
-                         <Button className='btn_themes' variant="outline-primary" size="lg" >Ranking</Button>
+                         <Button className='btn_themes' variant="primary" size="lg" >Ranking</Button>
                     </Link>
 
                     <Link to={"/festivals"}>
-                         <Button className='btn_themes' variant="outline-primary" size="lg" >Film Festivals</Button>
+                         <Button className='btn_themes' variant="primary" size="lg" >Film Festivals</Button>
                     </Link>
                </div>
 

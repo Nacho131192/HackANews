@@ -19,24 +19,24 @@ export default function Header() {
                 <img className='logo' src={logo} />
             </Link>
 
-        <div className='non_user'>  
+        <div className='btn_position'>  
             <div>{!user && <Link to={"/register"}>
-                    <Button variant="outline-light">REGISTRO</Button>
+                    <Button className="btn_down" variant="outline-light">REGISTRO</Button>
                 </Link>}</div>
 
             <div>{!user && <Link to={"/login"}>
-                    <Button variant="outline-light">LOGIN</Button>
+                    <Button className="btn_down" variant="outline-light">LOGIN</Button>
                 </Link>}</div>
         </div>
-            
-           {user && <DropdownButton id="dropdown-basic-button" title='PERFIL'>
-                <Dropdown.Item href="#/action-1"><Link to="/mynews"><Button variant="outline-dark">MIS NOTICIAS</Button></Link></Dropdown.Item>
-                <Dropdown.Item href="#/action-2"><Link to="/createentry"><Button variant="outline-dark">NUEVA NOTICIA</Button></Link></Dropdown.Item>
-                <Dropdown.Item href="#/action-3"><Button variant="outline-dark">LOG OUT</Button></Dropdown.Item>
+        <div className='btn_position'>
+           {user && <DropdownButton id="dropdown-basic-button" title='PERFIL' className="btn_down">
+                <Dropdown.Item href="#/action-1" ><Link to="/mynews"><Button className="btn_down"  variant="outline-dark">MIS NOTICIAS</Button></Link></Dropdown.Item>
+                <Dropdown.Item href="#/action-2" ><Link to="/createentry"><Button className="btn_down"  variant="outline-dark">NUEVA NOTICIA</Button></Link></Dropdown.Item>
+                <Dropdown.Item href="#/action-3" ><Button className="btn_down"  variant="outline-dark">LOG OUT</Button></Dropdown.Item>
 
             </DropdownButton> }
 
-                
+        </div> 
 
                 
                 

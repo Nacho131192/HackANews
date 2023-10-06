@@ -4,13 +4,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #2e2b2b;
-  color: black;
+  background-color: #484444;
+  
   height: 100px;
   max-width: 100%;
   }
 
-.non_user{
+.btn_position{
   display: flex;
   flex-direction: row;
   gap: 2rem;
@@ -32,3 +32,6 @@
 
 }
 
+.btn_down{
+  width: 150px;
+}
