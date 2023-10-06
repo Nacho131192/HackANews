@@ -1,5 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Footer from './components/Footer.jsx';
 import Header from './components/Header';
@@ -44,6 +46,7 @@ function App() {
                 </Routes>
             </main>
             <Footer />
+            <ToastContainer />
         </>
     );
 }

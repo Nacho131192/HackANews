@@ -74,14 +74,7 @@ async function updateEntry (req, res, next) {
 
         await sendQuery(
             `UPDATE news SET new_title=?, new_entrance=?, new_text=?, new_pic=?, themes_themes_id=? WHERE id=?`,
-            [
-                new_title,
-                new_entrance,
-                new_text,
-                imageFileName,
-                new_theme,
-                entryId,
-            ]
+            [new_title, new_entrance, new_text, new_pic, new_theme, entryId]
         );
 
         res.status(200).json({
