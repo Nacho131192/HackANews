@@ -1,6 +1,6 @@
 // Importamos los hooks.
 import { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 // Importamos los servicios.
 import { createEntryService } from '../services/createEntryService';
 
@@ -15,6 +15,7 @@ const CreateEntry = () => {
     const token = getToken();
     const [fetchedCategories, setFetchedCategories] = useState([]);
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
+    const navigate = useNavigate();
 
     useEffect(() => {
         let results = {};
@@ -59,6 +60,7 @@ const CreateEntry = () => {
             setLoading(false);
 
             toast.success(res.message);
+            navigate('/mynews');
         } catch (error) {
             console.log(error);
             toast.error(error.message);
