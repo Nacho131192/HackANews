@@ -11,6 +11,7 @@ const byThemeEntry = require('../controller/entries/byThemeEntry');
 const likeEntry = require('../controller/entries/likeEntry');
 const getMeEntries = require('../controller/entries/getMeEntries');
 const getAllCategories = require('../controller/entries/getAllCategories');
+const likeStatusUserEntry = require('../controller/entries/likeStatusUserEntry');
 
 entriesRouter.get('/view/:news_id', viewEntryOneUser);
 entriesRouter.post('/', authUser, addEntry);
@@ -21,5 +22,6 @@ entriesRouter.get('/themes/:themeId', byThemeEntry);
 entriesRouter.post('/like/:entryId', authUser, likeEntry);
 entriesRouter.get('/meentries/', authUser, getMeEntries);
 entriesRouter.get('/themes', getAllCategories);
+entriesRouter.get('/likestatus/:entryId',authUser, likeStatusUserEntry)
 
 module.exports = entriesRouter;
