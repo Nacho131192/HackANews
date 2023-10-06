@@ -37,7 +37,7 @@ export const loginService = async ({ email, password }) => {
 
 // Obtener perfil privado.
 export async function getPrivateProfileService (token) {
-    const response = await fetch(`${API_URL}/entries/meentries`, {
+    const response = await fetch(`${API_URL}/users/getMeUsers`, {
         headers: {
             Authorization: token,
         },

@@ -19,7 +19,7 @@ import { LoginContext } from './context/LoginContext';
 
 function App() {
     const { user } = useContext(LoginContext);
-
+    console.log(user);
     return (
         <>
             <Header />
