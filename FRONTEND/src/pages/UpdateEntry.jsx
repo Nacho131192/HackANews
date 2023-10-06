@@ -21,6 +21,7 @@ const UpdateEntry = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [fetchedCategories, setFetchedCategories] = useState([]);
+    const [image, setImage] = useState(null);
 
     useEffect(() => {
         let results = {};
@@ -142,6 +143,7 @@ const UpdateEntry = () => {
                         })}
                     </select>
                 </fieldset>
+
                 <fieldset>
                     <label htmlFor="new_pic">Imagen</label>
                     <input
@@ -151,7 +153,29 @@ const UpdateEntry = () => {
                         accept={'image/*'}
                         onChange={(e) => setPicInput(e.target.files[0])}
                     />
+
+                    {picInput ? (
+                        typeof picInput === 'string' ||
+                        picInput instanceof String ? (
+                            <figure>
+                                <img
+                                    src={`${API_URL}/${picInput}`}
+                                    style={{ width: '100px' }}
+                                    alt="Preview"
+                                />
+                            </figure>
+                        ) : (
+                            <figure>
+                                <img
+                                    src={URL.createObjectURL(picInput)}
+                                    style={{ width: '100px' }}
+                                    alt="Preview"
+                                />
+                            </figure>
+                        )
+                    ) : null}
                 </fieldset>
+
                 <button>Editar noticia</button>
                 {error ? <p>{error}</p> : null}
                 {loading ? <p>Publicando noticia...</p> : null}
