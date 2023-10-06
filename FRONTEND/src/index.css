@@ -4,3 +4,9 @@ main {
   margin-top: -391px;
 
 }
+:root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cef3ef;
+}
