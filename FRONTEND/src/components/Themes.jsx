@@ -1,57 +1,42 @@
 import './Themes.css';
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export default function Themes() {
-     return (
-          <aside>
+    const API_URL = import.meta.env.VITE_API_URL_BACKEND;
+    const [fetchedCategories, setFetchedCategories] = useState([]);
 
-               <h2 className='category'>CATEGORIAS</h2>
-               <ul className='nav2'>
+    useEffect(() => {
+        let results = {};
+        fetch(`${API_URL}/entries/themes`)
+            .then((response) => response.json())
+            .then((data) => {
+                results = data.data.map((obj) => {
+                    let hash = {};
+                    hash['name'] = obj.theme_name;
+                    hash['id'] = obj.themes_id;
+                    return hash;
+                });
+                setFetchedCategories(results);
+            });
+    }, []);
 
-                    <Link to={"/celebrities"}>
-                         <li><button className='btn_themes'>Celebrities</button></li>
-                    </Link>
-
-                    <Link to={"/premieres"}>
-                         <li><button className='btn_themes'>Premieres</button></li>
-                    </Link>
-
-                    <Link to={"/oscars2024"}>
-                         <li><button className='btn_themes'>Oscars 2024</button></li>
-                    </Link>
-
-                    <Link to={"/reviews"}>
-                         <li><button className='btn_themes'>Reviews</button></li>
-                    </Link>
-
-                    <Link to={"/ranking"}>
-                         <li><button className='btn_themes'>Ranking</button></li>
-                    </Link>
-
-                    <Link to={"/festivals"}>
-                         <li><button className='btn_themes'>Film Festivals</button></li>
-                    </Link>
-               </ul>
-
-
-
-          </aside>
-     )
+    return (
+        <aside>
+            <h2 className="category">CATEGORIAS</h2>
+            <ul className="nav2">
+                {fetchedCategories.map((category) => {
+                    return (
+                        <Link to={`/themes/${category.id}`} key={category.id}>
+                            <li>
+                                <button className="btn_themes">
+                                    {category.name}
+                                </button>
+                            </li>
+                        </Link>
+                    );
+                })}
+            </ul>
+        </aside>
+    );
 }
-
-
-
-
-/*export default function Aside() {
-  return (
-    <aside>
-      <h2>CATEGORIAS</h2>
-      <ul>
-        <li>Oscars</li> 
-        <li>Celebrities</li>
-        <li>Estrenos</li>
-      </ul>
-    </aside>
-  )
-} */
