@@ -1,6 +1,7 @@
 // Importamos los hooks.
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Importamos los servicios.
 import { updateEntryService } from '../services/updateEntryService';
@@ -10,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const UpdateEntry = () => {
     let { entryId } = useParams();
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
+    const navigate = useNavigate();
 
     const [titleInput, setTitleInput] = useState('');
     const [entranceInput, setEntranceInput] = useState('');
@@ -76,6 +78,7 @@ const UpdateEntry = () => {
             setLoading(false);
 
             toast.success(res.message);
+            navigate('/mynews');
         } catch (error) {
             setError(error.message);
         } finally {
