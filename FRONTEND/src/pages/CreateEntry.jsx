@@ -134,6 +134,11 @@ const CreateEntry = () => {
                         </figure>
                     ) : null}
                 </fieldset>
+
+                <fieldset>
+                    <label htmlFor="new_video">Video URL </label>
+                    <input type="text" name="new_video" id="new_video" />
+                </fieldset>
                 <button>Enviar noticia</button>
                 {error ? <p>{error}</p> : null}
                 {loading ? <p>Publicando noticia...</p> : null}
