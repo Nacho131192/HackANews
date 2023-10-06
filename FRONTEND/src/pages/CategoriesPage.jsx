@@ -4,38 +4,10 @@ import AllEntries from '../components/AllEntries';
 
 function CategoriesPage() {
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
-    const categories = {
-        celebrities: {
-            title: 'Celebrities',
-            id: 1,
-        },
-        premieres: {
-            title: 'Premieres',
-            id: 2,
-        },
-        oscars2024: {
-            title: 'Oscars 2024',
-            id: 3,
-        },
-        reviews: {
-            title: 'Reviews',
-            id: 4,
-        },
-        ranking: {
-            title: 'Ranking',
-            id: 5,
-        },
-        festivals: {
-            title: 'Film Festivals',
-            id: 6,
-        },
-    };
 
     let { categoryId } = useParams();
     const [data, setData] = useState([]);
-    const targetId = categories[categoryId].id;
-
-    console.log(targetId);
+    const targetId = categoryId;
 
     useEffect(() => {
         fetch(`${API_URL}/entries/themes/${targetId}`)

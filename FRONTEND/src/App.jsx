@@ -32,7 +32,10 @@ function App() {
                     <Route path="/entries/:id" element={<EntryFull />} />
                     <Route path="/mynews" element={<MyNewsPage />} />
                     <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/:categoryId" element={<CategoriesPage />} />
+                    <Route
+                        path="/themes/:categoryId"
+                        element={<CategoriesPage />}
+                    />
                     <Route path="/createentry" element={<CreateEntry />} />
                     <Route
                         path="/entries/update/:entryId"
@@ -43,7 +46,6 @@ function App() {
             <Footer />
         </>
     );
-
 }
 
 export default App;
