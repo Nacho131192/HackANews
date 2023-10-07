@@ -1,11 +1,32 @@
-import { useContext, useState } from 'react';
-import likesButtomService from '../services/likesButtomService';
+import { useContext, useEffect, useState } from 'react';
 import { LoginContext } from '../context/LoginContext';
+import { likesButtomService, likesStatusService } from '../services/entriesServices';
 
 
 export default function Likes({ newsId }) {
     const { token } = useContext(LoginContext);
-    const [error, setError] = useState();
+   
+    //Estado del boton like
+    const {initialLike, setInitialLike} = useState(false)
+    const [error, setError] = useState("");
+    const {loading, setLoading} = useState(false);
+    console.log(initialLike);
+    
+    useEffect(() => {
+        const loadStatus = async () => {
+            try {
+                setLoading(true);
+                const data = await likesStatusService(newsId, token);
+                setInitialLike(data);
+            } catch (error) {
+                setError(error)
+            }
+        }
+        loadStatus()
+    },[])
+    
+   
+    // Cuando hace like
     const handleLike = async (newsId) => {
 
         try {

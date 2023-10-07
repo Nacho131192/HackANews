@@ -7,7 +7,6 @@ import { useContext } from 'react';
 import Likes from './Likes';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import LikeZone from './LikeZone';
 import { useLogin } from '../hooks/useLogin'
 
 
@@ -32,7 +31,6 @@ export const Entry = ({ news }) => {
             <div className="likes">• {news.new_likes}💚 •</div>
         </div>
   </Card>
-            {user && <LikeZone />}
         </>
     );
 };

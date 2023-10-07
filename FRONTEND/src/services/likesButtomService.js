@@ -1,11 +1,9 @@
 const API_URL = import.meta.env.VITE_API_URL_BACKEND
 
-
 export default async function likesButtomService(newsId, token) {
     const response = await fetch(`${API_URL}/entries/like/${newsId}`, {
         method: "POST",
         headers: {
-
             Authorization: token
         },
 
@@ -16,10 +14,4 @@ export default async function likesButtomService(newsId, token) {
         throw new Error(json.message)
     }
     return json.data
-
-
-
-
-
-
 }
