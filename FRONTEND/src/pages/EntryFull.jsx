@@ -1,11 +1,10 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import useEntry from '../hooks/useEntryFull';
-import { LoginContext } from '../context/LoginContext';
-import { useContext } from 'react';
 import EditDeleteEntry from '../components/EditDeleteEntry';
 import { useLogin } from '../hooks/useLogin';
-
+import Spinner from 'react-bootstrap/Spinner';
+import '../components/AllEntries.css';
 
 
 
@@ -13,15 +12,17 @@ const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
 
 function EntryFull() {
-    // const { user: usercontext } = useContext(LoginContext)
-    const { user: usercontext } = useLogin()
+    
 
+    const { user: usercontext } = useLogin()
+    
     const { id } = useParams();
     const { news, loading, error } = useEntry(id);
     const { results, user } = news;
 
+    
 
-    if (loading) return <p>Cargando...</p>;
+    if (loading) return <p><Spinner animation="border" />Cargando...</p>;
     if (error) return <p>{error}</p>;
 
 
@@ -41,6 +42,8 @@ function EntryFull() {
             {usercontext && usercontext.user_email == user[0].user_email ? <EditDeleteEntry results={results} /> : null}
 
         </NewsArticleFull>
+
+
     </>
 
 

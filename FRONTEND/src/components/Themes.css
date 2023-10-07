@@ -1,8 +1,15 @@
 aside {
-
+    width: 270px;
     letter-spacing: 1px;
     padding: 10px;
     color: black;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+    
 
 }
 
@@ -15,13 +22,12 @@ aside {
 
 .category {
     margin-bottom: 1rem;
+   
+
 }
 
 .btn_themes {
-    background-color: #5E7EEC;
-    color: white;
+
     width: 180px;
-    height: 30px;
-    border-radius: 10px;
-    text-transform: uppercase;
+
 }

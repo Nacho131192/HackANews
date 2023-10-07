@@ -1,11 +1,12 @@
 import useEntries from '../hooks/useEntries';
 import AllEntries from '../components/AllEntries';
-
+import Carousel from '../components/Carousel';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function HomePage() {
     const { news, loading, error } = useEntries();
 
-    if (loading) return <p>Cargando...</p>;
+    if (loading) return <p><Spinner animation="border" />Cargando...</p>;
     if (error) return <p>{error}</p>;
 
 
@@ -14,7 +15,13 @@ export default function HomePage() {
 
         <>
             <section>
-                <h2>MEJORES VALORACIONES</h2>
+                <h2>ULTIMOS ESTRENOS</h2>
+                <br />
+                <Carousel />
+                <br />
+            </section>
+            <section>
+                <h2>MEJORES VALORADAS</h2>
                 <br />
                 <AllEntries news={news} />
                 <br />

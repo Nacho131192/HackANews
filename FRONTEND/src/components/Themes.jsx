@@ -1,6 +1,7 @@
-import './Themes.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import './Themes.css';
+import Button from 'react-bootstrap/Button';
 
 export default function Themes() {
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
@@ -28,11 +29,11 @@ export default function Themes() {
                 {fetchedCategories.map((category) => {
                     return (
                         <Link to={`/themes/${category.id}`} key={category.id}>
-                            <li>
-                                <button className="btn_themes">
-                                    {category.name}
-                                </button>
-                            </li>
+                            <Button className='btn_themes' variant="primary" size="lg" >
+                              <li>
+                                {category.name}
+                              </li>
+                            </Buttom>
                         </Link>
                     );
                 })}
@@ -40,3 +41,4 @@ export default function Themes() {
         </aside>
     );
 }
+

@@ -1,17 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-div#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 main {
-  flex-grow: 1;
-  margin-left: 200px;
-  margin-top: -313px;
+ 
+  margin-left: 270px;
+  margin-top: -391px;
+
+}
+:root{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
 }

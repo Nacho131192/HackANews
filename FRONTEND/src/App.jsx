@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Footer from './components/Footer.jsx';
 import Header from './components/Header';
 
@@ -15,7 +17,7 @@ import MyNewsPage from './pages/MyNewsPage';
 import EntryFull from './pages/EntryFull';
 import CreateEntry from './pages/CreateEntry';
 import UpdateEntry from './pages/UpdateEntry';
-import MyUserZone from './components/MyUserZone';
+
 import { useContext } from 'react';
 import { LoginContext } from './context/LoginContext';
 
@@ -25,7 +27,7 @@ function App() {
     return (
         <>
             <Header />
-            {user && <MyUserZone />}
+
             <Themes />
             <main>
                 <Routes>
@@ -39,9 +41,7 @@ function App() {
                         element={<CategoriesPage />}
                     />
                     <Route path="/createentry" element={<CreateEntry />} />
-                    <Route
-                        path="/entries/update/:entryId"
-                        element={<UpdateEntry />}
+                    <Route path="/entries/update/:entryId" element={<UpdateEntry />}
                     />
                 </Routes>
             </main>
