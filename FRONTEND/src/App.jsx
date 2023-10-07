@@ -21,30 +21,32 @@ import UpdateEntry from './pages/UpdateEntry';
 import { useContext } from 'react';
 import { LoginContext } from './context/LoginContext';
 
+
+
 function App() {
     const { user } = useContext(LoginContext);
+            
     
-    return (
-        <>
-            <Header />
 
-            <Themes />
-            <main>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/entries/:id" element={<EntryFull />} />
-                    <Route path="/mynews" element={<MyNewsPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route
-                        path="/themes/:categoryId"
-                        element={<CategoriesPage />}
-                    />
-                    <Route path="/createentry" element={<CreateEntry />} />
-                    <Route path="/entries/update/:entryId" element={<UpdateEntry />}
-                    />
-                </Routes>
-            </main>
+
+    return (
+        < >
+            <Header />
+            <div className='aside-main'>
+                <Themes />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/entries/:id" element={<EntryFull />} />
+                        <Route path="/mynews" element={<MyNewsPage />} />
+                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/themes/:categoryId" element={<CategoriesPage />} />
+                        <Route path="/createentry" element={<CreateEntry />} />
+                        <Route path="/entries/update/:entryId" element={<UpdateEntry />} />
+                    </Routes>
+                </main>
+            </div>
             <Footer />
             <ToastContainer />
         </>

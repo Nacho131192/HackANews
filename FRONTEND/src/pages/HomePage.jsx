@@ -2,6 +2,7 @@ import useEntries from '../hooks/useEntries';
 import AllEntries from '../components/AllEntries';
 import Carousel from '../components/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
+import './HomePage.css'
 
 export default function HomePage() {
     const { news, loading, error } = useEntries();
