@@ -21,6 +21,12 @@ export default function HomePage() {
                 <br />
             </section>
             <section>
+                <h2>MEJORES VALORADAS</h2>
+                <br />
+                <AllEntries news={news} />
+                <br />
+            </section>
+            <section>
                 <h2>ÚLTIMAS NOTICIAS</h2>
                 <br />
                 <AllEntries news={news} />
