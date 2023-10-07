@@ -8,6 +8,7 @@
   
   height: 100px;
   max-width: 100%;
+  min-width: 600px;
   }
 
 .btn_position{
@@ -34,4 +35,7 @@
 
 .btn_down{
   width: 150px;
+}
+.btn_reg{
+  margin-left: 550px;
 }
