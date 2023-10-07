@@ -33,7 +33,7 @@ export default function Themes() {
                               <li>
                                 {category.name}
                               </li>
-                            </Buttom>
+                            </Button>
                         </Link>
                     );
                 })}
