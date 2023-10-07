@@ -1,10 +1,10 @@
-import { Entry } from "./Entry";
 
+import { Entry } from "./Entry";
 import Spinner from 'react-bootstrap/Spinner';
 import './AllEntries.css';
 
-export default function AllEntries({ news }) {
 
+export default function AllEntries({ news }) {
   const newArray = news.slice(0, 6);
 
   return news.length ? (
@@ -27,4 +27,4 @@ export default function AllEntries({ news }) {
 
 
 
-// slice o splice
+

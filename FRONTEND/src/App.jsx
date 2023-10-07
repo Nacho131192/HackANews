@@ -1,5 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,7 +23,7 @@ import { LoginContext } from './context/LoginContext';
 
 function App() {
     const { user } = useContext(LoginContext);
-
+    
     return (
         <>
             <Header />
@@ -34,16 +36,19 @@ function App() {
                     <Route path="/entries/:id" element={<EntryFull />} />
                     <Route path="/mynews" element={<MyNewsPage />} />
                     <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/:categoryId" element={<CategoriesPage />} />
+                    <Route
+                        path="/themes/:categoryId"
+                        element={<CategoriesPage />}
+                    />
                     <Route path="/createentry" element={<CreateEntry />} />
                     <Route path="/entries/update/:entryId" element={<UpdateEntry />}
                     />
                 </Routes>
             </main>
             <Footer />
+            <ToastContainer />
         </>
     );
-
 }
 
 export default App;

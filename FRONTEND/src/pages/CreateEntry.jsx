@@ -1,23 +1,36 @@
 // Importamos los hooks.
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // Importamos los servicios.
 import { createEntryService } from '../services/createEntryService';
+
+//importamos el npm de notificaciones
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Importamos la función que retorna un token.
 import { getToken } from '../utilities/getToken';
 
 const CreateEntry = () => {
-    const fetchedCategories = [
-        { name: 'Celebrities', id: 1 },
-        { name: 'Festivals', id: 2 },
-        { name: 'Oscars 2024', id: 3 },
-        { name: 'Premieres', id: 4 },
-        { name: 'Ranking', id: 5 },
-        { name: 'Reviews', id: 6 },
-    ];
-
     const token = getToken();
+    const [fetchedCategories, setFetchedCategories] = useState([]);
+    const API_URL = import.meta.env.VITE_API_URL_BACKEND;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        let results = {};
+        fetch(`${API_URL}/entries/themes`)
+            .then((response) => response.json())
+            .then((data) => {
+                results = data.data.map((obj) => {
+                    let hash = {};
+                    hash['name'] = obj.theme_name;
+                    hash['id'] = obj.themes_id;
+                    return hash;
+                });
+                setFetchedCategories(results);
+            });
+    }, []);
 
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -31,14 +44,27 @@ const CreateEntry = () => {
 
             const data = new FormData(e.target);
 
-            await createEntryService({ data, token });
+            const res = await createEntryService({ data, token });
+            console.log(res);
+            //const body = await res.json();
 
             e.target.reset();
 
             setImage(null);
+            if (!res.ok) {
+                //throw new Error(body.message);
+                toast.error(res.message);
+            }
+
+            // setToken(body.data.token);
+            setLoading(false);
+
+            toast.success(res.message);
+            navigate('/mynews');
         } catch (error) {
-            setError(error.message);
-        } finally {
+            console.log(error);
+            toast.error(error.message);
+
             setLoading(false);
         }
     };
@@ -112,6 +138,8 @@ const CreateEntry = () => {
                 {error ? <p>{error}</p> : null}
                 {loading ? <p>Publicando noticia...</p> : null}
             </form>
+
+            <ToastContainer />
         </div>
     );
 };

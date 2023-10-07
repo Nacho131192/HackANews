@@ -1,19 +1,42 @@
 // Importamos los hooks.
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Importamos los servicios.
 import { updateEntryService } from '../services/updateEntryService';
-
+// Importamos el modulo de notificaciones
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UpdateEntry = () => {
     let { entryId } = useParams();
+    const API_URL = import.meta.env.VITE_API_URL_BACKEND;
+    const navigate = useNavigate();
 
     const [titleInput, setTitleInput] = useState('');
     const [entranceInput, setEntranceInput] = useState('');
     const [textInput, setTextInput] = useState('');
     const [themeInput, setThemeInput] = useState('');
+    const [picInput, setPicInput] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [fetchedCategories, setFetchedCategories] = useState([]);
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        let results = {};
+        fetch(`${API_URL}/entries/themes`)
+            .then((response) => response.json())
+            .then((data) => {
+                results = data.data.map((obj) => {
+                    let hash = {};
+                    hash['name'] = obj.theme_name;
+                    hash['id'] = obj.themes_id;
+                    return hash;
+                });
+                setFetchedCategories(results);
+            });
+    }, []);
 
     useEffect(() => {
         fetch(`http://localhost:3000/entries/view/${entryId}`)
@@ -23,37 +46,13 @@ const UpdateEntry = () => {
                 setTitleInput(data.data.results[0].new_title);
                 setEntranceInput(data.data.results[0].new_entrance);
                 setTextInput(data.data.results[0].new_text);
+                setPicInput(data.data.results[0].new_pic);
                 setThemeInput(data.data.results[0].themes_themes_id);
             })
             .catch((err) => console.log('Solicitud fallida', err));
     }, [entryId]);
 
-    const fetchedCategories = [
-        {
-            name: 'Celebrities',
-            id: 1,
-        },
-        {
-            name: 'Festivals',
-            id: 2,
-        },
-        {
-            name: 'Oscars 2024',
-            id: 3,
-        },
-        {
-            name: 'Premieres',
-            id: 4,
-        },
-        {
-            name: 'Ranking',
-            id: 5,
-        },
-        {
-            name: 'Reviews',
-            id: 6,
-        },
-    ];
+    console.log(picInput);
 
     const handleForm = async (e) => {
         e.preventDefault();
@@ -66,11 +65,21 @@ const UpdateEntry = () => {
             formData.append('new_title', titleInput);
             formData.append('new_entrance', entranceInput);
             formData.append('new_text', textInput);
+            formData.append('new_pic', picInput);
             formData.append('new_theme', themeInput);
 
-            await updateEntryService({ formData, entryId });
+            const res = await updateEntryService({ formData, entryId });
 
             e.target.reset();
+            if (!res.ok) {
+                //throw new Error(body.message);
+                toast.error(res.message);
+            }
+
+            setLoading(false);
+
+            toast.success(res.message);
+            navigate('/mynews');
         } catch (error) {
             setError(error.message);
         } finally {
@@ -135,10 +144,43 @@ const UpdateEntry = () => {
                     </select>
                 </fieldset>
 
+                <fieldset>
+                    <label htmlFor="new_pic">Imagen</label>
+                    <input
+                        type="file"
+                        name="new_pic"
+                        id="new_pic"
+                        accept={'image/*'}
+                        onChange={(e) => setPicInput(e.target.files[0])}
+                    />
+
+                    {picInput ? (
+                        typeof picInput === 'string' ||
+                        picInput instanceof String ? (
+                            <figure>
+                                <img
+                                    src={`${API_URL}/${picInput}`}
+                                    style={{ width: '100px' }}
+                                    alt="Preview"
+                                />
+                            </figure>
+                        ) : (
+                            <figure>
+                                <img
+                                    src={URL.createObjectURL(picInput)}
+                                    style={{ width: '100px' }}
+                                    alt="Preview"
+                                />
+                            </figure>
+                        )
+                    ) : null}
+                </fieldset>
+
                 <button>Editar noticia</button>
                 {error ? <p>{error}</p> : null}
                 {loading ? <p>Publicando noticia...</p> : null}
             </form>
+            <ToastContainer />
         </div>
     );
 };

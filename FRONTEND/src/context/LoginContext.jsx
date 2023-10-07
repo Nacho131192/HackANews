@@ -25,14 +25,15 @@ const LoginContextProvider = ({ children }) => {
     const [token, setToken] = useState(getToken());
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
-
+   
     useEffect(() => {
         // Función que retorna los datos del usuario.
         const fetchUser = async () => {
             try {
                 const data = await getPrivateProfileService(token);
-
-                setUser(data[0]);
+                // console.log(data);
+                setUser(data.user);
+                // console.log(user);
             } catch (err) {
                 alert(err.message);
             }
