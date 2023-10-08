@@ -37,7 +37,7 @@ export default function Header() {
             <Link to={"/"}>
                 <img className='logo' src={logo} />
             </Link>
-            <div class="input-group">
+            <div className="input-group">
                 <input type="search" className="form-control rounded" placeholder="¿Qué buscas?" aria-label="Search" aria-describedby="search-addon" />
                 <Button type="button" variant="secondary" >Buscar</Button>
             </div>
@@ -45,12 +45,12 @@ export default function Header() {
 
 
         <div className='btn_position'>  
-            <div className='btn_reg'>{!user && <Link to={"/register"}>
-                    <Button className="btn_down" variant="outline-light">REGISTRO</Button>
+            <div >{!user && <Link to={"/register"}>
+                    <Button className="btn_non_user" variant="secondary">REGISTRO</Button>
                 </Link>}</div>
 
             <div className='btn_non_user'>{!user && <Link to={"/login"}>
-                    <Button className="btn_down" variant="outline-light">LOGIN</Button>
+                    <Button className="btn_non_user" variant="secondary">LOGIN</Button>
                 </Link>}</div>
         </div>
  
@@ -62,12 +62,12 @@ export default function Header() {
 
         <Dropdown.Menu>
           <Dropdown.Item href="#/action-1" >
-          <Link className='noline' to="/mynews">
+          <Link to="/mynews">
             MIS NOTICIAS
             </Link>
           </Dropdown.Item>
           <Dropdown.Item href="#/action-2" >
-          <Link className='noline' to="/createentry">
+          <Link to="/createentry">
             NUEVA NOTICIA
             </Link>
             </Dropdown.Item>

@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import likesButtomService from '../services/likesButtomService';
 import { LoginContext } from '../context/LoginContext';
 
+import Button from 'react-bootstrap/Button';
+
 
 export default function Likes({ newsId }) {
     const { token } = useContext(LoginContext);
@@ -18,8 +20,9 @@ export default function Likes({ newsId }) {
     return (
         <div>
             <p>{newsId}</p>
-            <button onClick={() => { handleLike(newsId) }}>LIKE</button>
+            <Button className='like' variant="secondary" onClick={() => { handleLike(newsId) }}>LIKE</Button>
         </div>
     );
 
 }
+

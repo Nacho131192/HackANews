@@ -7,7 +7,7 @@
   background-color: #484444;
   position: fixed;
   height: 100px;
-  width: 1400px;
+  width: 1270px;
   z-index: 1;
   }
 
@@ -16,6 +16,7 @@
   flex-direction: row;
   gap: 2rem;
   margin-right: 2.5rem;
+  margin-left: 2.5rem;
 
 }
 
@@ -27,12 +28,16 @@
   width: 300px;
 }
 
-.btn_down{
+.btn_non_user{
   width: 150px;
 }
-.btn_reg{
-  margin-left: 550px;
-}
+
 .perfil{
   margin-right: 50px;
+}
+header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

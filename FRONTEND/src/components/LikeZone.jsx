@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
+import Button from 'react-bootstrap/Button';
 
 export default function LikeZone() {
   // Datos del usuario
@@ -7,6 +8,7 @@ export default function LikeZone() {
 
  
   return (
-    <button>Like</button>
+    <Button  variant="secondary">LIKE</Button>
+  
   )
 }
