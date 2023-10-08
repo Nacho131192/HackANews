@@ -9,7 +9,7 @@ export async function likesButtomService(newsId, token) {
 
     })
     const json = await response.json()
-    console.log(json);
+    
     if (!response.ok) {
         throw new Error(json.message)
     }
@@ -17,7 +17,7 @@ export async function likesButtomService(newsId, token) {
 }
 
 export async function likesStatusService(newsId, token) {
-    console.log(newsId,token);
+    
     const response = await fetch(`${API_URL}/entries/likestatus/${newsId}`, {
         headers: {
             Authorization: token
