@@ -5,6 +5,7 @@ import EditDeleteEntry from '../components/EditDeleteEntry';
 import { useLogin } from '../hooks/useLogin';
 import Spinner from 'react-bootstrap/Spinner';
 import '../components/AllEntries.css';
+import Likes from '../components/Likes';
 
 
 
