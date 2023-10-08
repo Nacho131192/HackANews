@@ -21,31 +21,55 @@ function EntryFull() {
     const { news, loading, error } = useEntry(id);
     const { results, user } = news;
 
-    
+    console.log(results);
 
     if (loading) return <p><Spinner animation="border" />Cargando...</p>;
     if (error) return <p>{error}</p>;
 
 
 
-    return <>
-        <NewsArticleFull>
+    return (
+        <>
+            <NewsArticleFull>
+                <p className="title">{results[0].new_title}</p>
+                <img
+                    className="pic"
+                    src={`${API_URL}/${results[0].new_pic}`}
+                    alt="Imagen de Entrada"
+                />
+                <p className="entrance">{results[0].new_entrance}</p>
+                <p className="text">{results[0].new_text}</p>
+                <p className="theme">Tema: {results[0].new_theme}</p>
+                <video
+                    className="video"
+                    src={`${API_URL}/${results[0].new_video}`}
+                    width="100%"
+                    type="video/mp4"
+                    autoPlay
+                    muted
+                    controls
+                ></video>
+                <p>
+                    {usercontext ? (
+                        <Likes newsId={id} newsLike={results[0].new_likes} />
+                    ) : (
+                        <div className="likes">Likes: {results[0].new_likes}💚</div>
+                    )}
+                </p>
 
-            <p className="title">{results[0].new_title}</p>
-            <img className="pic" src={`${API_URL}/${results[0].new_pic}`} alt="Imagen de Entrada" />
-            <p className="entrance">{results[0].new_entrance}</p>
-            <p className="text">{results[0].new_text}</p>
-            <p className="theme">Tema: {results[0].new_theme}</p>
-            <video className="video" src={`${API_URL}/${results[0].new_video}`} width="100%" type="video/mp4" autoPlay muted controls></video>
-            <p className="likes">LIKES: {results[0].new_likes}</p>
-            <p className="author">Autor de la entrada: {user[0].user_name}</p>
-            <p className="date">Publicación hecha el {new Date(results[0].created_at).toLocaleDateString()}</p>
-            {usercontext && usercontext.user_email == user[0].user_email ? <EditDeleteEntry results={results} /> : null}
-
-        </NewsArticleFull>
-
-
-    </>
+                <p className="author">
+                    Autor de la entrada: {user[0].user_name}
+                </p>
+                <p className="date">
+                    Publicación hecha el{' '}
+                    {new Date(results[0].created_at).toLocaleDateString()}
+                </p>
+                {usercontext && usercontext.user_email == user[0].user_email ? (
+                    <EditDeleteEntry results={results} />
+                ) : null}
+            </NewsArticleFull>
+        </>
+    );
 
 
 };

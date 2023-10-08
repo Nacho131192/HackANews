@@ -21,7 +21,6 @@ async function likeEntry(req, res, next) {
       VALUES(?,?)`,
         [entryId, userId]
       )
-      console.log(`like con el id ${insertId} grabado correctamente`)
 
       await sendQuery(
         `
@@ -33,7 +32,7 @@ async function likeEntry(req, res, next) {
       )
       res.send({
         ok: true,
-        data: entryId,
+        data: true,
         error: false,
         message: "like añadido",
       })
@@ -55,7 +54,7 @@ async function likeEntry(req, res, next) {
       )
        res.send({
          ok: true,
-         data: entryId,
+         data: false,
          error: false,
          message: "like borrado",
        })
