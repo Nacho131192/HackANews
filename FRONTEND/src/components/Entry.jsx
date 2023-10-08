@@ -28,7 +28,7 @@ export const Entry = ({ news }) => {
                 </Card.Body>
                 <div>
                     {user ? (
-                        <Likes newsId={news.id} news={news} />
+                        <Likes newsId={news.id} newsLike={news.new_likes} />
                     ) : (
                         <div className="likes">{news.new_likes}💚</div>
                     )}

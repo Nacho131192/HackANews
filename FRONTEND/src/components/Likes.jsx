@@ -7,7 +7,7 @@ import {
 
 import './likes.css';
 
-export default function Likes({ newsId, news }) {
+export default function Likes({ newsId, newsLike }) {
     const { token } = useContext(LoginContext);
     //Estado del boton like
     const [initialLike, setInitialLike] = useState(false);
@@ -15,7 +15,7 @@ export default function Likes({ newsId, news }) {
     const [loading, setLoading] = useState(false);
 
     //  Contador  cambio de like
-    const [counterLike, setCounterLike] = useState(news.new_likes);
+    const [counterLike, setCounterLike] = useState(newsLike);
 
     useEffect(() => {
         const loadStatus = async (newsId) => {
@@ -46,7 +46,6 @@ export default function Likes({ newsId, news }) {
 
     return (
         <div>
-            <p>{newsId}</p>
             <button
                 className={initialLike && 'redStatus'}
                 onClick={() => {
