@@ -5,7 +5,9 @@ import { LoginContext } from '../context/LoginContext';
 import './Header.css';
 import { Link } from "react-router-dom";
 import logo from '../assets/logo3.png';
+// import { authLogout } from '../context/LoginContext';
 import Button from 'react-bootstrap/Button';
+
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
 
@@ -16,7 +18,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 export default function Header() {
     const { user } = useContext(LoginContext);
     const { token, setToken } = useContext(LoginContext);
-    
+
     const [news, setNews] = useState([]);
     const [search, setSearch] = useState("");
 
@@ -75,13 +77,12 @@ export default function Header() {
        
           
             <Dropdown.Divider />
-            {token && (
-            <Dropdown.Item href="#/action-4" onClick={() => setToken("")}>Logout</Dropdown.Item>
-          )}
+                <Dropdown.Item href="#/action-4" >
+                    <button onClick={() => authLogout()} to="/"> Logout </button>
+                </Dropdown.Item>          
         </Dropdown.Menu>
       </Dropdown>}
-      </div>   
-                
+      </div>                   
             
         </header>
     );
