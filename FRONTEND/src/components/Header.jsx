@@ -15,6 +15,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export default function Header() {
     const { user } = useContext(LoginContext);
+    const { token, setToken } = useContext(LoginContext);
     
     const [news, setNews] = useState([]);
     const [search, setSearch] = useState("");
@@ -71,9 +72,12 @@ export default function Header() {
             NUEVA NOTICIA
             </Link>
             </Dropdown.Item>
+       
           
-          <Dropdown.Divider />
-          <Dropdown.Item href="#/action-4">LOG OUT</Dropdown.Item>
+            <Dropdown.Divider />
+            {token && (
+            <Dropdown.Item href="#/action-4" onClick={() => setToken("")}>Logout</Dropdown.Item>
+          )}
         </Dropdown.Menu>
       </Dropdown>}
       </div>   
