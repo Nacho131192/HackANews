@@ -18,7 +18,9 @@ export default function Likes({ newsId, newsLike }) {
         const loadStatus = async (newsId) => {
             try {
                 setLoading(true);
+
                 const data = await likesStatusService(newsId, token);
+              
                 setInitialLike(data.likeStatus);
             } catch (error) {
                 setError(error.message);
@@ -45,7 +47,7 @@ export default function Likes({ newsId, newsLike }) {
         <div>
 
             <button
-                className={initialLike && 'redStatus'}
+                className={initialLike ? 'redStatus' : ''}
                 onClick={() => {
                     handleLike(newsId);
                 }}
