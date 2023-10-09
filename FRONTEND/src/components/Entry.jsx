@@ -33,7 +33,7 @@ export const Entry = ({ news }) => {
 
   </Card>
             
-  <Card style={{ width: '18rem' }}>
+  {/* <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={`${API_URL}/${news.new_pic}`} />
       <Card.Body>
         <Card.Title>{news.new_title}</Card.Title>
@@ -47,10 +47,10 @@ export const Entry = ({ news }) => {
         <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
+        <Card.Link href="#"><Link to={`/entries/${news.id}`} ><Button variant="secondary">Ver Entrada</Button></Link></Card.Link>
         <Card.Link href="#">Another Link</Card.Link>
       </Card.Body>
-    </Card>
+    </Card> */}
 
         </>
     );
