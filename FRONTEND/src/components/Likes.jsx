@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { LoginContext } from '../context/LoginContext';
-import { likesButtomService, likesStatusService } from '../services/entriesServices';
+import {
+    likesButtomService,
+    likesStatusService,
+} from '../services/entriesServices';
 import './likes.css';
-
 
 export default function Likes({ newsId, newsLike }) {
     const { token } = useContext(LoginContext);
@@ -20,7 +22,7 @@ export default function Likes({ newsId, newsLike }) {
                 setLoading(true);
 
                 const data = await likesStatusService(newsId, token);
-              
+
                 setInitialLike(data.likeStatus);
             } catch (error) {
                 setError(error.message);
@@ -44,18 +46,21 @@ export default function Likes({ newsId, newsLike }) {
     };
 
     return (
-        <div>
-
+        <div classname="container-like">
             <button
                 className={initialLike ? 'redStatus' : ''}
                 onClick={() => {
                     handleLike(newsId);
                 }}
             >
+                {/* <div className="corazon">
+                    <div className="circle"></div>
+                    <div className="circle2"></div>
+                    <div className="cube"></div>
+                </div> */}
                 LIKE
             </button>
-            <div className="likes">{counterLike}💚</div>
+            <div className="likes-user">{counterLike}❤️</div>
         </div>
     );
 }
-
