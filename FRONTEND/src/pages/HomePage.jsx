@@ -7,7 +7,10 @@ import './HomePage.css'
 export default function HomePage() {
     const { news, loading, error } = useEntries();
 
-    if (loading) return <p><Spinner animation="border" />Cargando...</p>;
+    if (loading) return <> 
+        <Spinner animation="border" /> 
+        <p>Cargando...</p> 
+    </>;
     if (error) return <p>{error}</p>;
 
 

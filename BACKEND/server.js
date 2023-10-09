@@ -25,17 +25,7 @@ app.use(fileUpload())
 app.use('/users', usersRouter)
 app.use('/entries', entriesRouter)
 
-app.use((req, res, next) => {
-  req.cohete = '🚀'
-  next()
-})
-app.get('/', (req, res) => {
-  res.status(200).send(`${req.cohete} Bienvenido a Hack a News ${req.cohete}`)
-})
-
-app.use(errorHandler)
-
-//*Middleware Error 404: not found
+// Middleware Error 404: not found
 app.use((req, res) => {
   res.status(404).send({
     ok: false,
@@ -44,6 +34,9 @@ app.use((req, res) => {
     message: '404: not found'
   })
 })
+
+// Middleware de error.
+app.use(errorHandler)
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`)

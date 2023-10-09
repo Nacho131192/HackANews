@@ -1,37 +1,45 @@
 require('dotenv').config();
 
-const joi = require('joi');
+
+// Importamos la dependencia que encripta contraseñas y la dependencia que genera un token.
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const createError = require('../../helpers/createError');
+
+// Importamos la función que me permite interactuar con la base de datos.
 const sendQuery = require('../../db/connectToDB');
 
+// Importamos el esquema.
+const loginUserSchema = require('../../schemas/usersSchemas/loginUserSchema');
+
+// Importamos la función que valida un esquema.
+const validateSchema = require('../../helpers/validateSchema');
+
+// Importamos la función que genera errores.
+const createError = require('../../helpers/createError');
+
 async function loginUser(req, res, next) {
-  const schema = joi.object({
-    email: joi.string().email().required(),
-    password: joi.string().required(),
-  });
-
   try {
-    await schema.validateAsync(req.body);
-  } catch (error) {
-    return next(createError(400, 'Datos Incorrectos'));
-  }
+    // Validamos los datos que nos envía el usuario con Joi.
+    await validateSchema(loginUserSchema, req.body);
+ 
+    const { email, password } = req.body;
 
-  const { email, password } = req.body;
-
-  try {
     const [user] = await sendQuery(
       'SELECT * FROM users WHERE user_email  = ?',
       [email]
     );
+
     if (!user) {
-      return next(createError(401, 'Email o Password son inválidos'));
+      createError(401, 'Email o Password son inválidos');
     }
+
     const validPassword = await bcrypt.compare(password, user.user_password);
+
     if (!validPassword) {
-      return next(createError(401, 'Email o Password son inválidos'));
+      createError(401, 'Email o Password son inválidos');
     }
+
+    // Creamos un objeto con la info que queramos añadir al token.
     const infoUser = {
       userId: user.user_id,
       user_name: user.user_name,
@@ -41,15 +49,12 @@ async function loginUser(req, res, next) {
       expiresIn: '1d',
     });
 
-    res.header({ authorization: token });
-
     res.send({
       ok: true,
       data: {
         token,
         username: user.user_name,
       },
-      error: null,
       message: 'Login correcto',
     });
   } catch (error) {
