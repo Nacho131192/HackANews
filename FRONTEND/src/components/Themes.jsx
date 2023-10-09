@@ -25,19 +25,19 @@ export default function Themes() {
     return (
         <aside>
             <h2 className="category">CATEGORIAS</h2>
-            <ul className="nav2">
+            <div className="nav2">
                 {fetchedCategories.map((category) => {
                     return (
                         <Link to={`/themes/${category.id}`} key={category.id}>
-                            <Button className='btn_themes' variant="primary" size="lg" >
-                              <li>
+                            <Button className='btn_themes' variant="secondary" size="lg" >
+                              <div>
                                 {category.name}
-                              </li>
+                              </div>
                             </Button>
                         </Link>
                     );
                 })}
-            </ul>
+            </div>
         </aside>
     );
 }

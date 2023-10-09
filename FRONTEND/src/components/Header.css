@@ -5,10 +5,10 @@
   align-items: center;
   justify-content: space-between;
   background-color: #484444;
-  
+  position: fixed;
   height: 100px;
-  max-width: 100%;
-  min-width: 600px;
+  width: 1270px;
+  z-index: 1;
   }
 
 .btn_position{
@@ -16,26 +16,28 @@
   flex-direction: row;
   gap: 2rem;
   margin-right: 2.5rem;
+  margin-left: 2.5rem;
 
 }
 
 
-* {
-  text-decoration: none;
-  list-style: none;
-}
 
 .logo {
   
   height: 200px;
   width: 300px;
-  
-
 }
 
-.btn_down{
+.btn_non_user{
   width: 150px;
 }
-.btn_reg{
-  margin-left: 550px;
+
+.perfil{
+  margin-right: 50px;
+}
+header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

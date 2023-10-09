@@ -1,16 +1,15 @@
 aside {
+    margin-top: 100px;
     width: 270px;
     letter-spacing: 1px;
     padding: 10px;
-    color: black;
+    background-color: #0B0C10;
     display:flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    position: fixed;
+   
     
-
-    
-
 }
 
 .nav2 {
@@ -21,13 +20,10 @@ aside {
 }
 
 .category {
-    margin-bottom: 1rem;
+   margin-bottom: 1rem;
    
-
-}
+   }
 
 .btn_themes {
-
     width: 180px;
-
 }

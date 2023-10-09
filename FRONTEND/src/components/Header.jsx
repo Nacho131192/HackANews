@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { LoginContext } from '../context/LoginContext';
 import './Header.css';
 import { Link } from "react-router-dom";
-import logo from '../assets/logo.png';
+import logo from '../assets/logo3.png';
 import Button from 'react-bootstrap/Button';
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
@@ -37,32 +37,46 @@ export default function Header() {
             <Link to={"/"}>
                 <img className='logo' src={logo} />
             </Link>
-            <div class="input-group">
+            <div className="input-group">
                 <input type="search" className="form-control rounded" placeholder="¿Qué buscas?" aria-label="Search" aria-describedby="search-addon" />
-                <Button type="button" variant="primary" >Buscar</Button>
+                <Button type="button" variant="secondary" >Buscar</Button>
             </div>
 
+
+
         <div className='btn_position'>  
-            <div className='btn_reg'>{!user && <Link to={"/register"}>
-                    <Button className="btn_down" variant="outline-light">REGISTRO</Button>
+            <div >{!user && <Link to={"/register"}>
+                    <Button className="btn_non_user" variant="secondary">REGISTRO</Button>
                 </Link>}</div>
 
             <div className='btn_non_user'>{!user && <Link to={"/login"}>
-                    <Button className="btn_down" variant="outline-light">LOGIN</Button>
+                    <Button className="btn_non_user" variant="secondary">LOGIN</Button>
                 </Link>}</div>
         </div>
-        <div className='btn_position'>
-           {user && <DropdownButton id="dropdown-basic-button" title='PERFIL' className="btn_down">
-                <Dropdown.Item href="#/action-1" ><Link to="/mynews"><Button className="btn_down"  variant="secondary">MIS NOTICIAS</Button></Link></Dropdown.Item>
-                <Dropdown.Item href="#/action-2" ><Link to="/createentry"><Button className="btn_down"  variant="secondary">NUEVA NOTICIA</Button></Link></Dropdown.Item>
-                <Dropdown.Item href="#/action-3" ><Button className="btn_down"  variant="secondary" >LOG OUT</Button></Dropdown.Item>
+ 
+            <div className='perfil'>
+       {user &&  <Dropdown data-bs-theme="dark">
+        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          PERFIL
+        </Dropdown.Toggle>
 
-            </DropdownButton> }
-
-        </div> 
-
-
-                  
+        <Dropdown.Menu>
+          <Dropdown.Item href="#/action-1" >
+          <Link to="/mynews">
+            MIS NOTICIAS
+            </Link>
+          </Dropdown.Item>
+          <Dropdown.Item href="#/action-2" >
+          <Link to="/createentry">
+            NUEVA NOTICIA
+            </Link>
+            </Dropdown.Item>
+          
+          <Dropdown.Divider />
+          <Dropdown.Item href="#/action-4">LOG OUT</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>}
+      </div>   
                 
             
         </header>

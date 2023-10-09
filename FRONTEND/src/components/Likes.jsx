@@ -1,11 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { LoginContext } from '../context/LoginContext';
-import {
-    likesButtomService,
-    likesStatusService,
-} from '../services/entriesServices';
-
+import { likesButtomService, likesStatusService } from '../services/entriesServices';
 import './likes.css';
+
 
 export default function Likes({ newsId, newsLike }) {
     const { token } = useContext(LoginContext);
@@ -46,6 +43,7 @@ export default function Likes({ newsId, newsLike }) {
 
     return (
         <div>
+
             <button
                 className={initialLike && 'redStatus'}
                 onClick={() => {
@@ -58,3 +56,4 @@ export default function Likes({ newsId, newsLike }) {
         </div>
     );
 }
+
