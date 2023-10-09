@@ -2,19 +2,19 @@
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
 // Función de registro.
-export async function registerService ({
-    user_name,
-    user_email,
-    user_password,
-}) {
+export async function registerService({user_name,user_email,user_password}) {
     const response = await fetch(`${API_URL}/users`, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user_name, user_email, user_password }),
-    });
-}
+      method: "post",
+      body: JSON.stringify({ user_name, user_email, user_password }),
+      headers: {
+        "Content-Type":"application/json",
+      },
+    }) 
+    const json = await response.json()
+    if (!response.ok) {
+      throw new Error (json.message)
+    }
+  };
 
 // Función de login.
 export const loginService = async ({ email, password }) => {

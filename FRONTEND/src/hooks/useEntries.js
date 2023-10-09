@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getAllEntriesService from '../services/getAllEntriesService';
+import { getAllEntriesService } from '../services/entriesServices.js';
 
 
 

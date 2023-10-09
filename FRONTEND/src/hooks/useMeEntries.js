@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import MeNewsService from '../services/meNewsService';
+import { MeNewsService } from '../services/entriesServices';
 import { useLogin } from './useLogin';
 import { getToken } from '../utilities/getToken';
 

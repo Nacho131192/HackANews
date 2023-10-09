@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { LoginContext } from '../context/LoginContext';
-import deleteEntryService from '../services/deleteEntryService';
+import { deleteEntryService } from '../services/entriesServices';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import swal from 'sweetalert';

@@ -31,9 +31,9 @@ const LoginContextProvider = ({ children }) => {
         const fetchUser = async () => {
             try {
                 const data = await getPrivateProfileService(token);
-                // console.log(data);
+                
                 setUser(data.user);
-                // console.log(user);
+                
             } catch (err) {
                 alert(err.message);
             }

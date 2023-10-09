@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 // Importamos los servicios.
-import { updateEntryService } from '../services/updateEntryService';
+import { updateEntryService } from '../services/entriesServices';
 // Importamos el modulo de notificaciones
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -42,7 +42,7 @@ const UpdateEntry = () => {
         fetch(`http://localhost:3000/entries/view/${entryId}`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                
                 setTitleInput(data.data.results[0].new_title);
                 setEntranceInput(data.data.results[0].new_entrance);
                 setTextInput(data.data.results[0].new_text);
@@ -52,7 +52,7 @@ const UpdateEntry = () => {
             .catch((err) => console.log('Solicitud fallida', err));
     }, [entryId]);
 
-    console.log(picInput);
+    
 
     const handleForm = async (e) => {
         e.preventDefault();

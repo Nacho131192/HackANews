@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getEntryService from '../services/getEntryService';
+import { getEntryService } from '../services/entriesServices';
 
 
 

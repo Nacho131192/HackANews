@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Importamos los servicios.
-import { createEntryService } from '../services/createEntryService';
+import { createEntryService } from '../services/entriesServices';
 
 //importamos el npm de notificaciones
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,7 +13,7 @@ import { getToken } from '../utilities/getToken';
 
 const CreateEntry = () => {
     const token = getToken();
-    const [fetchedCategories, setFetchedCategories] = useState([]);
+    const [fetchedCategories, setFetchedCategories] = useState([]);    //* mirar tinyMCE para el texto de la entrada
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
     const navigate = useNavigate();
 
