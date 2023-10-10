@@ -16,7 +16,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 
 
 export default function Header() {
-    const { user } = useContext(LoginContext);
+    const { user, authLogout } = useContext(LoginContext);
     const { token, setToken } = useContext(LoginContext);
 
     const [news, setNews] = useState([]);
@@ -78,7 +78,7 @@ export default function Header() {
           
             <Dropdown.Divider />
                 <Dropdown.Item href="#/action-4" >
-                    <button onClick={() => authLogout()} to="/"> Logout </button>
+                    <Link onClick={() => authLogout()} to="/"> CERRAR SESION </Link>
                 </Dropdown.Item>          
         </Dropdown.Menu>
       </Dropdown>}
