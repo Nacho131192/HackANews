@@ -65,9 +65,16 @@ const LoginContextProvider = ({ children }) => {
         }
     };
 
+    const authLogout = () => {
+        localStorage.removeItem(VITE_TOKEN_LOCALSTORAGE_KEY);
+        setToken("");
+        setUser(null);
+    };
+
+
     return (
         <LoginContext.Provider
-            value={{ user, setUser, token, authLogin, loading }}
+            value={{ user, setUser, token, authLogin, authLogout, loading }}
         >
             {children}
         </LoginContext.Provider>
