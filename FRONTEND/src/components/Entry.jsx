@@ -42,9 +42,6 @@ export const Entry = ({ news }) => {
                         <div className="btn-like-user">
                             {' '}
                             <Likes newsId={news.id} newsLike={news.new_likes} />
-                            <div className="likes-yes">
-                                {news.new_likes}❤️
-                            </div>{' '}
                         </div>
                     )}
                     {!user && (

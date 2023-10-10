@@ -8,10 +8,10 @@
     width: 200px;
     --bs-card-bg: #484444;
     position:relative;
-    --bs-card-border-color: #74aba7;
+    --bs-card-border-color: #c1c1c1;
 }
 .likes-non{
-    border: solid #74aba7 2px;
+    border: solid #c1c1c1 1px;
     background-color: #797777;
     border-radius: 5px;
     color:black;
@@ -19,6 +19,7 @@
     height: 30px;
     display: flex;
     justify-content: center;
+    margin-left: 35px;
 }
 
 .btn_to_new{
@@ -46,13 +47,13 @@
 }
 .btn_like{
 position: absolute;
-margin-left: 230px;
-margin-top: 200px;
+margin-left: 195px;
+margin-top: 180px;
 }
-.btn-like-user{
-    border: solid #74aba7 2px;
+/* .btn-like-user{
+    border: solid #c1c1c1 2px;
     background-color: #797777;
     border-radius: 5px;
     color:black;
     
-}
+} */

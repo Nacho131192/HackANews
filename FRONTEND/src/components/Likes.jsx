@@ -47,20 +47,19 @@ export default function Likes({ newsId, newsLike }) {
 
     return (
         <div classname="container-like">
-            <button
-                className={initialLike ? 'redStatus' : ''}
+            <div
+                className={initialLike ? 'color-rojo' : ''}
                 onClick={() => {
                     handleLike(newsId);
                 }}
             >
-                {/* <div className="corazon">
+                <div className="corazon">
                     <div className="circle"></div>
                     <div className="circle2"></div>
                     <div className="cube"></div>
-                </div> */}
-                LIKE
-            </button>
-            <div className="likes-user">{counterLike}❤️</div>
+                </div>
+            </div>
+            <div className="likes-user">{counterLike}👍🏼</div>
         </div>
     );
 }
