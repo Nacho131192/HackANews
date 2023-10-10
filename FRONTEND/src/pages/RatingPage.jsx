@@ -11,7 +11,7 @@ export default function RatingPage() {
     const newsRating = news.toSorted((x, y) => {
         return y.new_likes - x.new_likes;
     });
-
+    
     return (
         <>
             <section>
