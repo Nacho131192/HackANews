@@ -15,11 +15,16 @@ export default function MyNewsPage() {
     // Obtenemos las noticias únicamente si existe un usuario...
     const { meNews, error, loading } = useMeEntries();
 
+     const meNewsRating = [...meNews].sort((x, y) => {
+         return y.new_likes - x.new_likes;
+     });
     return (
         <>
             <h2> Mis noticias</h2>
-
             <AllEntries news={meNews} />
+            <h2> Mis noticias mejor valoradas</h2>
+            <AllEntries news={meNewsRating} />
         </>
+
     );
 }
