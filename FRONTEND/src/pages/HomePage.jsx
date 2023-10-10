@@ -16,15 +16,11 @@ export default function HomePage() {
             </>
         );
     if (error) return <p>{error}</p>;
-    // const newsRating = news.Sorted((x, y) => {
-    //   return y.new_likes - x.new_likes;
-
-    // });
 
     return (
         <>
             <section>
-                <h2>ULTIMOS ESTRENOS</h2>
+                <h2>NOTICIAS TOP</h2>
                 <br />
                 <Carousel />
                 <br />
