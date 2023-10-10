@@ -27,7 +27,7 @@ export default function Likes({ newsId, newsLike }) {
             }
         };
         loadStatus(newsId);
-    }, [newsId]);
+    }, [newsId,initialLike]);
 
     // Cuando hace like
     const handleLike = async (newsId) => {

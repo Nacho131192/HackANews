@@ -20,6 +20,7 @@ import UpdateEntry from './pages/UpdateEntry';
 
 import { useContext } from 'react';
 import { LoginContext } from './context/LoginContext';
+import RatingPage from './pages/RatingPage';
 
 
 
@@ -44,6 +45,7 @@ function App() {
                         <Route path="/themes/:categoryId" element={<CategoriesPage />} />
                         <Route path="/createentry" element={<CreateEntry />} />
                         <Route path="/entries/update/:entryId" element={<UpdateEntry />} />
+                        <Route path="/entries/rating" element={<RatingPage />} />
                     </Routes>
                 </main>
             </div>
