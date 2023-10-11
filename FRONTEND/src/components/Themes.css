@@ -1,16 +1,16 @@
 aside {
-    margin-top: 100px;
+    /* margin-top: 100px; */
     width: 270px;
     letter-spacing: 1px;
     padding: 10px;
-    background-color: #0B0C10;
+    background-color: #17191f;
     display:flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-   
     
 }
+
 
 .nav2 {
     list-style: none;
@@ -26,4 +26,14 @@ aside {
 
 .btn_themes {
     width: 180px;
+}
+.formatted-text {
+    text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+  }
+.line-sep{
+    margin: 0px;
 }

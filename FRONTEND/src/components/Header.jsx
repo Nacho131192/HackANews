@@ -8,15 +8,17 @@ import logo from '../assets/logo3.png';
 // import { authLogout } from '../context/LoginContext';
 import Button from 'react-bootstrap/Button';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
 import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export default function Header() {
     const { user, authLogout } = useContext(LoginContext);
     const { token, setToken } = useContext(LoginContext);
-    
+
     const [news, setNews] = useState([]);
     const [keyword, setKeyword] = useState('');
 
@@ -41,54 +43,55 @@ export default function Header() {
     }, [keyword]);
 
     return (
-        <header className="header">
-            <Link to={'/'}>
-                <img className="logo" src={logo} />
-            </Link>
-            <div className="input-group">
-                <input
-                    type="search"
-                    className="form-control rounded"
-                    placeholder="¿Qué buscas?"
-                    value={keyword}
-                    onChange={(e) => setKeyword(e.target.value)}
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-                />
-                <Button type="button" variant="secondary">
-                    Buscar
-                </Button>
-            </div>
-
-            <div className="btn_position">
-                <div>
-                    {!user && (
-                        <Link to={'/register'}>
-                            <Button
-                                className="btn_non_user"
-                                variant="secondary"
-                            >
-                                REGISTRO
-                            </Button>
-                        </Link>
-                    )}
+        <>
+            <header className="cabecera">
+                <Link to={'/'}>
+                    <img className="logo" src={logo} />
+                </Link>
+                <div className="input-group">
+                    <input
+                        type="search"
+                        className="form-control"
+                        placeholder="¿Qué buscas?"
+                        value={keyword}
+                        onChange={(e) => setKeyword(e.target.value)}
+                        aria-label="Search"
+                        aria-describedby="search-addon"
+                    />
+                    <Button type="button" variant="secondary">
+                        Buscar
+                    </Button>
                 </div>
 
-                <div className="btn_non_user">
-                    {!user && (
-                        <Link to={'/login'}>
-                            <Button
-                                className="btn_non_user"
-                                variant="secondary"
-                            >
-                                LOGIN
-                            </Button>
-                        </Link>
-                    )}
-                </div>
-            </div>
+                <div className="btn_reg_log">
+                    <div>
+                        {!user && (
+                            <Link to={'/register'}>
+                                <Button
+                                    className="btn_non_user"
+                                    variant="secondary"
+                                >
+                                    REGISTRO
+                                </Button>
+                            </Link>
+                        )}
+                    </div>
 
-            <div className="perfil">
+                    <div className="btn_non_user">
+                        {!user && (
+                            <Link to={'/login'}>
+                                <Button
+                                    className="btn_non_user"
+                                    variant="secondary"
+                                >
+                                    LOGIN
+                                </Button>
+                            </Link>
+                        )}
+                    </div>
+                </div>
+            </header>
+            <div className="btn_menu_user">
                 {user && (
                     <Dropdown data-bs-theme="dark">
                         <Dropdown.Toggle
@@ -98,27 +101,33 @@ export default function Header() {
                             PERFIL
                         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1" >
-          <Link to="/mynews">
-            MIS NOTICIAS
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-2" >
-          <Link to="/createentry">
-            NUEVA NOTICIA
-            </Link>
-            </Dropdown.Item>
-          
-          <Dropdown.Divider />
-          <Dropdown.Item href="#/action-4" >
-                    <Link onClick={() => authLogout()} to="/"> CERRAR SESION </Link>
-                </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>)}
-      </div>   
-                
-            
-        </header>
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">
+                                <Link to="/mynews">MIS NOTICIAS</Link>
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                                <Link to="/createentry">NUEVA NOTICIA</Link>
+                            </Dropdown.Item>
+
+                            <Dropdown.Divider />
+                            <Dropdown.Item href="#/action-4">
+                                <Link onClick={() => authLogout()} to="/">
+                                    {' '}
+                                    CERRAR SESION{' '}
+                                </Link>
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                )}
+                {user && (
+                    <Link onClick={() => authLogout()} to="/">
+                        <FontAwesomeIcon
+                            className="icon_log_out"
+                            icon={faPowerOff}
+                        />
+                    </Link>
+                )}
+            </div>
+        </>
     );
 }

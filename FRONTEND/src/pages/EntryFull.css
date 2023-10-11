@@ -21,7 +21,8 @@
     border-radius: 10px;
 }
 .pic-full-entry{
-    width: 400px;
+    max-width: 400px;
+    height: 230px;
     margin-bottom: 1rem;
     margin-right: 1rem;
     border: 2px solid #484444;
@@ -31,13 +32,18 @@
 .video_entry{
     position: absolute;
     margin-top: 330px;
-    margin-right: 280px;
+    margin-right: 290px;
 }
 .columna1{
     margin: 0.5rem;
+    width: 400px;
+}
+.columna2{
+    width: 600px;
 }
 .mapeo-full-entry{
     margin-bottom: 2rem;
+    
 }
 
 .btn_full_entry{
@@ -50,7 +56,7 @@ a:link, a:visited, a:active {
 .btn_like_full_entry{
     position: absolute;
     margin-top: 275px;
-    margin-right: 300px;
+    margin-right: 900px;
 }
 .btn_edit_delete_entryFull{
     position: absolute;

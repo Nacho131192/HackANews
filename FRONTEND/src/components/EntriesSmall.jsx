@@ -6,13 +6,28 @@ import useEntries from '../hooks/useEntries';
 export default function EntriesSmall() {
     const { news } = useEntries();
 
-    const newArray = news.slice(0, 4);
+    // const newArray = news.slice(0, 4);
+
+    const getRandomNews = (news, count) => {
+        const randomNews = [];
+        const usedIndices = [];
+        while (randomNews.length < count && randomNews.length < news.length) {
+            const randomIndex = Math.floor(Math.random() * news.length);
+            if (!usedIndices.includes(randomIndex)) {
+                randomNews.push(news[randomIndex]);
+                usedIndices.push(randomIndex);
+            }
+        }
+        return randomNews;
+    };
+
+    const randomNews = getRandomNews(news, 4);
 
     return news.length ? (
         <section className="mapeo-array">
-            {newArray.map((news) => (
-                <article key={news.id}>
-                    <Entry2 news={news} />
+            {randomNews.map((newsItem) => (
+                <article key={newsItem.id}>
+                    <Entry2 news={newsItem} />
                 </article>
             ))}
         </section>

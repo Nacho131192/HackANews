@@ -3,7 +3,7 @@ import AllEntries from '../components/AllEntries';
 import Carousel from '../components/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
-import './HomePage.css'
+import './HomePage.css';
 
 export default function HomePage() {
     const { news, loading, error } = useEntries();
@@ -25,9 +25,12 @@ export default function HomePage() {
                 <Carousel />
                 <br />
             </section>
+            <hr className="line-HP"></hr>
             <section>
                 <h2>ÚLTIMAS NOTICIAS</h2>
-                <Link to="/entries/rating"><h3>mejor valoradas</h3></Link>
+                <Link to="/entries/rating">
+                    <h3>mejor valoradas</h3>
+                </Link>
                 <br />
                 <AllEntries news={news} />
                 <br />
