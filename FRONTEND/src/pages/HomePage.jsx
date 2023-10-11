@@ -3,10 +3,18 @@ import AllEntries from '../components/AllEntries';
 import Carousel from '../components/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
-import './HomePage.css'
+import './HomePage.css';
+import UsePageNumber from '../hooks/usePageNumber';
+import { useEffect, useState } from 'react';
+import PageButton from '../components/PageButtons';
 
 export default function HomePage() {
     const { news, loading, error } = useEntries();
+
+    // Funcion que controla las paginas
+    const { initPage, endPage, setInitPage, setEndPage } = UsePageNumber(6);
+
+    const newsArray = news.slice(initPage, endPage);
 
     if (loading)
         return (
@@ -27,9 +35,37 @@ export default function HomePage() {
             </section>
             <section>
                 <h2>ÚLTIMAS NOTICIAS</h2>
-                <Link to="/entries/rating"><h3>mejor valoradas</h3></Link>
+
+                <button
+                    onClick={() => {
+                        setInitPage(initPage - 6);
+                        setEndPage(endPage - 6);
+                        if (initPage <= 0) {
+                            setInitPage(0), setEndPage(6);
+                        }
+
+                        console.log(initPage, endPage);
+                    }}
+                >
+                    Previous
+                </button>
+                <button
+                    onClick={() => {
+                        if (endPage <= news.length) {
+                            setInitPage(initPage + 6);
+                            setEndPage(endPage + 6);
+                        }
+                        console.log(initPage, endPage);
+                    }}
+                >
+                    Next
+                </button>
+
+                <Link to="/entries/rating">
+                    <h3>mejor valoradas</h3>
+                </Link>
                 <br />
-                <AllEntries news={news} />
+                <AllEntries news={newsArray} />
                 <br />
             </section>
         </>

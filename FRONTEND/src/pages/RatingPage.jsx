@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 import './HomePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import UsePageNumber from '../hooks/usePageNumber';
 
 export default function RatingPage() {
     const { news, loading, error } = useEntries();
     const newsRating = news.toSorted((x, y) => {
         return y.new_likes - x.new_likes;
     });
-    
+
+    const { initPage, endPage, setInitPage, setEndPage } = UsePageNumber(6);
+
+    const newsArray = newsRating.slice(initPage, endPage);
     return (
         <>
             <section>
@@ -23,7 +27,33 @@ export default function RatingPage() {
                         size="2x"
                     />
                 </Link>
-                <AllEntries news={newsRating} />
+
+                <button
+                    onClick={() => {
+                        setInitPage(initPage - 6);
+                        setEndPage(endPage - 6);
+                        if (initPage <= 0) {
+                            setInitPage(0), setEndPage(6);
+                        }
+
+                        console.log(initPage, endPage);
+                    }}
+                >
+                    Previous
+                </button>
+                <button
+                    onClick={() => {
+                        if (endPage <= news.length) {
+                            setInitPage(initPage + 6);
+                            setEndPage(endPage + 6);
+                        }
+                        console.log(initPage, endPage);
+                    }}
+                >
+                    Next
+                </button>
+
+                <AllEntries news={newsArray} />
             </section>
         </>
     );
