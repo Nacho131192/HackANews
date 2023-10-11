@@ -5,11 +5,11 @@ import './AllEntries.css';
 
 
 export default function AllEntries({ news }) {
-  const newArray = news.slice(0, 6);
+ 
 
   return news.length ? (
     <section className='mapeo-array'>
-      {newArray.map((news) => (
+      {news.map((news) => (
         <article key={news.id}>
           <Entry news={news} />
         </article>
