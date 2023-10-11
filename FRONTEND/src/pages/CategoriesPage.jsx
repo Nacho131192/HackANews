@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import AllEntries from '../components/AllEntries';
+import UsePageNumber from '../hooks/usePageNumber';
 
 function CategoriesPage() {
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
@@ -18,9 +19,7 @@ function CategoriesPage() {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
                 const filteredData = data.data.entry;
-                console.log(filteredData);
                 setData(filteredData);
             })
             .catch((error) => {
@@ -28,10 +27,43 @@ function CategoriesPage() {
             });
     }, [targetId]);
 
+    const { initPage, endPage, setInitPage, setEndPage } = UsePageNumber(6);
+
+    const newsArray = data.slice(initPage, endPage);
+
+
+
     return (
-        <div>
-            <AllEntries news={data} />
-        </div>
+        <>
+            <button
+                onClick={() => {
+                    setInitPage(initPage - 6);
+                    setEndPage(endPage - 6);
+                    if (initPage <= 0) {
+                        setInitPage(0), setEndPage(6);
+                    }
+
+                    console.log(initPage, endPage);
+                }}
+            >
+                Previous
+            </button>
+            <button
+                onClick={() => {
+                    if (endPage <= newsArray.length) {
+                        setInitPage(initPage + 6);
+                        setEndPage(endPage + 6);
+                    }
+                    console.log(initPage, endPage);
+                }}
+            >
+                Next
+            </button>
+
+            <div>
+                <AllEntries news={newsArray} />
+            </div>
+        </>
     );
 }
 
