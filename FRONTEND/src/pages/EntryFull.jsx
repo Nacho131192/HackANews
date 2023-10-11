@@ -5,6 +5,9 @@ import { useLogin } from '../hooks/useLogin';
 import Spinner from 'react-bootstrap/Spinner';
 import Likes from '../components/Likes';
 import './EntryFull.css';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import EntriesSmall from '../components/EntriesSmall';
 
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
@@ -52,10 +55,6 @@ function EntryFull() {
                                 results[0].created_at
                             ).toLocaleDateString()}
                         </p>
-
-                        <div>
-                            {results[0].new_video ? <video /> : <div></div>}
-                        </div>
                     </div>
 
                     <div className="columna2">
@@ -64,34 +63,37 @@ function EntryFull() {
                     </div>
                 </div>
 
-                <p>
+                <div className="btn_like_full_entry">
                     {usercontext ? (
                         <Likes newsId={id} newsLike={results[0].new_likes} />
                     ) : (
                         <div className="likes">
-                            Likes: {results[0].new_likes}💚
+                            Likes: {results[0].new_likes}❤️
                         </div>
                     )}
-                </p>
-
-                {usercontext && usercontext.user_email == user[0].user_email ? (
-                    <EditDeleteEntry results={results} />
-                ) : null}
+                </div>
+                <div className="video_entry">
+                    {results[0].new_video ? (
+                        <Button className="btn_full_entry" variant="secondary">
+                            <Link to={results[0].new_video}>TRAILER</Link>
+                        </Button>
+                    ) : (
+                        <div></div>
+                    )}
+                </div>
+                <div className="btn_edit_delete_entryFull">
+                    {usercontext &&
+                    usercontext.user_email == user[0].user_email ? (
+                        <EditDeleteEntry results={results} />
+                    ) : null}
+                </div>
             </article>
+            <hr></hr>
+            <section className="mapeo-full-entry">
+                <EntriesSmall />
+            </section>
         </>
     );
-}
-
-{
-    /* <video
-                    className="video"
-                    src={`${API_URL}/${results[0].new_video}`}
-                    width="100%"
-                    type="video/mp4"
-                    autoPlay
-                    muted
-                    controls
-                ></video> */
 }
 
 export default EntryFull;

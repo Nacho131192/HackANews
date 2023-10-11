@@ -46,7 +46,7 @@ export default function Likes({ newsId, newsLike }) {
     };
 
     return (
-        <div classname="container-like">
+        <div className="container-like">
             <div
                 className={initialLike ? 'color-rojo' : ''}
                 onClick={() => {

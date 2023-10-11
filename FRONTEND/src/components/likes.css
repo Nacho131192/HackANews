@@ -20,7 +20,7 @@
     position:relative;
 }
  .circle{
-    background-color: whitesmoke;
+    background-color: rgb(255, 255, 255);
     border-radius: 50%;
     position: absolute;
     width: 20px;
@@ -28,14 +28,14 @@
     margin-left: 14px;
 }
 .circle2{
-    background-color: whitesmoke;
+    background-color: rgb(255, 255, 255);
     border-radius: 50%;
     position: absolute;
     width: 20px;
     height: 20px;
 }
 .cube{
-    background-color: whitesmoke;
+    background-color: rgb(255, 255, 255);
     position: absolute;
     width: 20px;
     height: 20px;
