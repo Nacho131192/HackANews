@@ -4,9 +4,11 @@ import Carousel from '../components/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
+
 import UsePageNumber from '../hooks/usePageNumber';
 import { useEffect, useState } from 'react';
 import PageButton from '../components/PageButtons';
+
 
 export default function HomePage() {
     const { news, loading, error } = useEntries();
@@ -33,8 +35,10 @@ export default function HomePage() {
                 <Carousel />
                 <br />
             </section>
+            <hr className="line-HP"></hr>
             <section>
                 <h2>ÚLTIMAS NOTICIAS</h2>
+
 
                 <button
                     onClick={() => {
@@ -60,6 +64,7 @@ export default function HomePage() {
                 >
                     Next
                 </button>
+
 
                 <Link to="/entries/rating">
                     <h3>mejor valoradas</h3>

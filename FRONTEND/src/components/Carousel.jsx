@@ -15,7 +15,7 @@ function UncontrolledExample() {
     return (
         <div className="carousel">
             {threeTopNews.length != 0 && (
-                <Carousel>
+                <Carousel className="carousel-completo">
                     <Carousel.Item>
                         <Link to={`/entries/${threeTopNews[0].id}`}>
                             {' '}

@@ -26,11 +26,6 @@ export const Entry = ({ news }) => {
                     <Card.Text className="text_card1">
                         {news.new_entrance}
                     </Card.Text>
-                    <Link to={`/entries/${news.id}`}>
-                        <Button className="btn_to_new" variant="secondary">
-                            Ver Entrada
-                        </Button>
-                    </Link>
                 </Card.Body>
                 <div className="btn_like">
                     {/* {user ? (
@@ -48,6 +43,11 @@ export const Entry = ({ news }) => {
                         <div className="likes-non">{news.new_likes}❤️</div>
                     )}
                 </div>
+                <Link className="link_to_new" to={`/entries/${news.id}`}>
+                    <Button className="btn_to_new" variant="secondary">
+                        Ver Entrada
+                    </Button>
+                </Link>
             </Card>
         </>
     );
