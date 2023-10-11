@@ -37,12 +37,9 @@ export default function EditDeleteEntry({ results }) {
                 variant="secondary"
                 onClick={() => {
                     if (
-                        swal({
-                            title: 'Are you sure?',
-                            text: 'Are you sure that you want to delete this entry?',
-                            icon: 'warning',
-                            dangerMode: true,
-                        })
+                        window.confirm(
+                            'Are you sure you want to delete the news?'
+                        )
                     )
                         handleDelete(idNew, token);
                 }}
