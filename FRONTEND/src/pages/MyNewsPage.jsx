@@ -57,7 +57,6 @@ export default function MyNewsPage() {
             </Link>
             <AllEntries news={newsArray} />
 
-            {/* <AllEntries news={meNewsRating} /> */}
         </>
     );
 }

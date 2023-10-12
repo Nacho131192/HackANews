@@ -29,7 +29,7 @@ export default function MyNewsRatingPage() {
     return (
         <>
             <h2>Mis noticias mejor valoradas</h2>
-            <Link to="/">
+            <Link to="/mynews">
                 <FontAwesomeIcon
                     className="narrowButton"
                     icon={faArrowLeft}
@@ -62,8 +62,6 @@ export default function MyNewsRatingPage() {
                 Next
             </button>
             <AllEntries news={newsArray} />
-
-            {/* <AllEntries news={meNewsRating} /> */}
         </>
     );
 }
