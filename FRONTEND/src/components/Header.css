@@ -11,7 +11,7 @@
 }
 .header-total{
  
-
+z-index: 1;
   
 }
 
@@ -50,4 +50,5 @@ height: 30px;
 }
 .svg-inline--fa {
   height: 2.3em;
+  
 }

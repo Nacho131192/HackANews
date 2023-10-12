@@ -17,7 +17,7 @@ aside {
     position: fixed;
     margin-left: 125px;
     margin-top: -70px;
-    z-index: 9999;
+    z-index: 1;
 }
 
 .nav2 {
@@ -29,12 +29,14 @@ aside {
 
 .category {
    margin-bottom: 1rem;
+   color: white;
    
    }
 
 .btn_themes {
     width: 180px;
     border: 1px solid #c1c1c1;
+    
     -webkit-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
     -moz-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
     box-shadow: 9px 13px 19px -1px rgba(0,0,0,1)
@@ -44,6 +46,7 @@ aside {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: white;
    
   }
 .line-sep{
