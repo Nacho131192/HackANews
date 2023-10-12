@@ -83,6 +83,7 @@ const CreateEntry = () => {
                             <InputGroup.Text
                                 htmlFor="new_title"
                                 id="basic-addon1"
+                                className="dark-btn-new"
                             >
                                 Título
                             </InputGroup.Text>
@@ -93,15 +94,37 @@ const CreateEntry = () => {
                                 type="text"
                                 name="new_title"
                                 id="new_title"
+                                className="dark-btn-new"
                                 required
                             />
                         </InputGroup>
-
                         <InputGroup className="mb-3">
-                            <InputGroup.Text htmlFor="new_theme">
+                            <InputGroup.Text
+                                htmlFor="new_entrance"
+                                id="basic-addon2"
+                                className="dark-btn-new"
+                            >
+                                Entrada
+                            </InputGroup.Text>
+                            <Form.Control
+                                placeholder="Entrada de la noticia"
+                                aria-label="Recipient's username"
+                                aria-describedby="basic-addon2"
+                                type="text"
+                                name="new_entrance"
+                                id="new_entrance"
+                                className="dark-btn-new"
+                                required
+                            />
+                        </InputGroup>
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text
+                                className="dark-btn-new"
+                                htmlFor="new_theme"
+                            >
                                 Categoria
                             </InputGroup.Text>
-                            <select className="" name="new_theme">
+                            <select className="dark-btn-new" name="new_theme">
                                 {fetchedCategories.map((category) => {
                                     return (
                                         <option
@@ -116,6 +139,7 @@ const CreateEntry = () => {
                         </InputGroup>
                         <InputGroup className="mb-3">
                             <InputGroup.Text
+                                className="dark-btn-new"
                                 htmlFor="new_video"
                                 id="basic-addon3"
                             >
@@ -125,13 +149,19 @@ const CreateEntry = () => {
                                 placeholder="URL de YouTube"
                                 id="basic-url"
                                 aria-describedby="basic-addon3"
+                                className="dark-btn-new"
                             />
                         </InputGroup>
+
                         <InputGroup className="mb-3">
-                            <InputGroup.Text htmlFor="new_pic">
+                            <InputGroup.Text
+                                className="dark-btn-new"
+                                htmlFor="new_pic"
+                            >
                                 Imagen
                             </InputGroup.Text>
                             <input
+                                className="dark-btn-new"
                                 type="file"
                                 name="new_pic"
                                 id="new_pic"
@@ -149,36 +179,19 @@ const CreateEntry = () => {
                             ) : null}
                         </InputGroup>
                     </div>
-                    <div className="columna-right-new">
-                        <InputGroup className="mb-3">
-                            <InputGroup.Text
-                                htmlFor="new_entrance"
-                                id="basic-addon2"
-                            >
-                                Entrada
-                            </InputGroup.Text>
-                            <Form.Control
-                                placeholder="Entrada de la noticia"
-                                aria-label="Recipient's username"
-                                aria-describedby="basic-addon2"
-                                type="text"
-                                name="new_entrance"
-                                id="new_entrance"
-                                required
-                            />
-                        </InputGroup>
-                        <InputGroup>
-                            <InputGroup.Text>Texto</InputGroup.Text>
-                            <Form.Control
-                                type="text"
-                                name="new_text"
-                                id="new_title"
-                                required
-                                as="textarea"
-                                aria-label="With textarea"
-                            />
-                        </InputGroup>
-                    </div>
+
+                    <InputGroup>
+                        <InputGroup.Text>Texto</InputGroup.Text>
+                        <Form.Control
+                            type="text"
+                            name="new_text"
+                            id="new_title"
+                            required
+                            as="textarea"
+                            className="text-area-new"
+                            aria-label="With textarea"
+                        />
+                    </InputGroup>
                     <InputGroup className="btn-publish">
                         <button className="btn-publish-css">
                             Enviar noticia
