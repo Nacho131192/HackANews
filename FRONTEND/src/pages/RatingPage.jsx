@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 import './HomePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 import UsePageNumber from '../hooks/usePageNumber';
-
+import './RatingPage.css';
 export default function RatingPage() {
     const { news, loading, error } = useEntries();
     const newsRating = news.toSorted((x, y) => {
@@ -24,34 +24,33 @@ export default function RatingPage() {
                     <FontAwesomeIcon
                         className="narrowButton"
                         icon={faArrowLeft}
-                        size="2x"
+                        size="1x"
                     />
                 </Link>
 
-                <button
+                <a
+                    className="button-page"
                     onClick={() => {
                         setInitPage(initPage - 6);
                         setEndPage(endPage - 6);
                         if (initPage <= 0) {
                             setInitPage(0), setEndPage(6);
                         }
-
-                        console.log(initPage, endPage);
                     }}
                 >
-                    Previous
-                </button>
-                <button
+                    <FontAwesomeIcon icon={faBackward}/>
+                </a>
+                <a
+                    className="button-page"
                     onClick={() => {
                         if (endPage <= news.length) {
                             setInitPage(initPage + 6);
                             setEndPage(endPage + 6);
                         }
-                        console.log(initPage, endPage);
                     }}
                 >
-                    Next
-                </button>
+                    <FontAwesomeIcon icon={faForward} />
+                </a>
 
                 <AllEntries news={newsArray} />
             </section>

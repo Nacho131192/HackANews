@@ -4,8 +4,8 @@ import AllEntries from '../components/AllEntries';
 import { Link, Navigate } from 'react-router-dom';
 import UsePageNumber from '../hooks/usePageNumber';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-
+import { faArrowLeft, faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
+import './MyNewsRatingPage.css'
 export default function MyNewsRatingPage() {
     const { user } = useLogin();
 
@@ -29,38 +29,38 @@ export default function MyNewsRatingPage() {
     return (
         <>
             <h2>Mis noticias mejor valoradas</h2>
+
             <Link to="/mynews">
                 <FontAwesomeIcon
                     className="narrowButton"
                     icon={faArrowLeft}
-                    size="2x"
+                    size="1x"
                 />
             </Link>
 
-            <button
+            <a 
+                className="button-page"
                 onClick={() => {
                     setInitPage(initPage - 9);
                     setEndPage(endPage - 9);
                     if (initPage <= 0) {
                         setInitPage(0), setEndPage(9);
                     }
-
-                    console.log(initPage, endPage);
                 }}
             >
-                Previous
-            </button>
-            <button
+                <FontAwesomeIcon icon={faBackward} />
+            </a>
+            <a
+                className="button-page"
                 onClick={() => {
                     if (endPage <= meNews.length) {
                         setInitPage(initPage + 9);
                         setEndPage(endPage + 9);
                     }
-                    console.log(initPage, endPage);
                 }}
             >
-                Next
-            </button>
+                <FontAwesomeIcon icon={faForward} />
+            </a>
             <AllEntries news={newsArray} />
         </>
     );

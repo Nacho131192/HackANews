@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import AllEntries from '../components/AllEntries';
 import UsePageNumber from '../hooks/usePageNumber';
 
-import './CategoriesPage.css'
+import './CategoriesPage.css';
+import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function CategoriesPage() {
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
 
@@ -34,31 +36,30 @@ function CategoriesPage() {
 
     return (
         <div>
-            <div className='buttons-container'>
-                <button
+            <div className="buttons-container">
+                <a
+                    className="button-page"
                     onClick={() => {
                         setInitPage(initPage - 6);
                         setEndPage(endPage - 6);
                         if (initPage <= 0) {
                             setInitPage(0), setEndPage(6);
                         }
-
-                        console.log(initPage, endPage);
                     }}
                 >
-                    Previous
-                </button>
-                <button
+                    <FontAwesomeIcon className="buton-pg" icon={faBackward} />
+                </a>
+                <a
+                    className="button-page"
                     onClick={() => {
                         if (endPage <= newsArray.length) {
                             setInitPage(initPage + 6);
                             setEndPage(endPage + 6);
                         }
-                        console.log(initPage, endPage);
                     }}
                 >
-                    Next
-                </button>
+                    <FontAwesomeIcon icon={faForward} />
+                </a>
             </div>
 
             <div>

@@ -4,11 +4,9 @@ import Carousel from '../components/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UsePageNumber from '../hooks/usePageNumber';
-import { useEffect, useState } from 'react';
-import PageButton from '../components/PageButtons';
-
+import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 
 export default function HomePage() {
     const { news, loading, error } = useEntries();
@@ -38,37 +36,33 @@ export default function HomePage() {
             <hr className="line-HP"></hr>
             <section>
                 <h2>ÚLTIMAS NOTICIAS</h2>
-
-
-                <button
+                <Link to="/entries/rating">
+                    <h3 className='rating-button'>mejor valoradas</h3>
+                </Link>
+                <a
+                    className="button-page"
                     onClick={() => {
                         setInitPage(initPage - 6);
                         setEndPage(endPage - 6);
                         if (initPage <= 0) {
                             setInitPage(0), setEndPage(6);
                         }
-
-                        console.log(initPage, endPage);
                     }}
                 >
-                    Previous
-                </button>
-                <button
+                    <FontAwesomeIcon icon={faBackward} />
+                </a>
+                <a
+                    className="button-page"
                     onClick={() => {
                         if (endPage <= news.length) {
                             setInitPage(initPage + 6);
                             setEndPage(endPage + 6);
                         }
-                        console.log(initPage, endPage);
                     }}
                 >
-                    Next
-                </button>
+                    <FontAwesomeIcon icon={faForward} />
+                </a>
 
-
-                <Link to="/entries/rating">
-                    <h3>mejor valoradas</h3>
-                </Link>
                 <br />
                 <AllEntries news={newsArray} />
                 <br />
