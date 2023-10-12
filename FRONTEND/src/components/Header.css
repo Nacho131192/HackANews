@@ -6,6 +6,13 @@
   align-items: center;
   justify-content: space-evenly;
   position: relative;
+  
+
+}
+.header-total{
+ 
+
+  
 }
 
 .logo{
@@ -39,7 +46,7 @@ height: 30px;
   gap: 1rem;
   z-index: 1;
   margin-left: 1080px;
-  margin-top: -63px;
+  margin-top: -65px;
 }
 .svg-inline--fa {
   height: 2.3em;

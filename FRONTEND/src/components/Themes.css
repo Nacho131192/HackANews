@@ -10,7 +10,15 @@ aside {
     position: fixed;
     
 }
-
+.themes-container{
+    position: absolute;
+   }
+.narrow-to-up{
+    position: fixed;
+    margin-left: 125px;
+    margin-top: -70px;
+    z-index: 9999;
+}
 
 .nav2 {
     list-style: none;
@@ -26,6 +34,10 @@ aside {
 
 .btn_themes {
     width: 180px;
+    border: 1px solid #c1c1c1;
+    -webkit-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
+    box-shadow: 9px 13px 19px -1px rgba(0,0,0,1)
 }
 .formatted-text {
     text-transform: capitalize;

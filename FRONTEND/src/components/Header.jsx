@@ -43,7 +43,7 @@ export default function Header() {
     }, [keyword]);
 
     return (
-        <>
+        <div className="header-total">
             <header className="cabecera">
                 <Link to={'/'}>
                     <img className="logo" src={logo} />
@@ -128,6 +128,6 @@ export default function Header() {
                     </Link>
                 )}
             </div>
-        </>
+        </div>
     );
 }
