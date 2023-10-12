@@ -19,7 +19,7 @@ export default function Header() {
     const { user, authLogout } = useContext(LoginContext);
     const { token, setToken } = useContext(LoginContext);
 
-    const [news, setNews] = useState([]);
+    const [newsSearch, setNewsSearch] = useState([]);
     const [keyword, setKeyword] = useState('');
 
     useEffect(() => {
@@ -31,7 +31,8 @@ export default function Header() {
                 );
 
                 // Establecemos las entradas en el State.
-                setNews(res.data.data);
+                setNewsSearch(res.data.data);
+                console.log(newsSearch);
             } catch (err) {
                 // Faltaría manejar el error.
                 console.error(err);
