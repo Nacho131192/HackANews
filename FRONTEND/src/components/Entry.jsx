@@ -17,16 +17,16 @@ import { useLogin } from '../hooks/useLogin'
 export const Entry = ({ news }) => {
     const { user } = useLogin() 
     //placeholder de la imagen (validacion temprana)
-    let picurl = '../assets/Placeholder_view_vector.jpg'
-    if (news.new_pic != null) {
-        picurl = `${API_URL}/${news.new_pic}`
-    }
+    // let picurl = '../assets/Placeholder_view_vector.jpg'
+    // if (news.new_pic != null) {
+    //     picurl = `${API_URL}/${news.new_pic}`
+    // }
     // `${API_URL}/${news.new_pic}`
     return (
         <>
 
             <Card className="entry" style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={picurl} />
+                <Card.Img variant="top" src={`${API_URL}/${news.new_pic}`} />
                 <Card.Body>
                     <Card.Title>{news.new_title}</Card.Title>
                     <Card.Text>{news.new_entrance}</Card.Text>
