@@ -78,170 +78,115 @@ const CreateEntry = () => {
             <div className="container-form-news">
                 <h1>Añadir nueva noticia</h1>
                 <form className="new-entry" onSubmit={handleForm}>
-                    {/* <fieldset>
-                        <label htmlFor="new_title">Título</label>
-                        <input
-                            type="text"
-                            name="new_title"
-                            id="new_title"
-                            required
-                        />
-                    </fieldset>
+                    <div className="columna-left-new">
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text
+                                htmlFor="new_title"
+                                id="basic-addon1"
+                            >
+                                Título
+                            </InputGroup.Text>
+                            <Form.Control
+                                placeholder="Título de la noticia"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                type="text"
+                                name="new_title"
+                                id="new_title"
+                                required
+                            />
+                        </InputGroup>
 
-                    <fieldset>
-                        <label htmlFor="new_entrance">Entradilla</label>
-                        <input
-                            type="text"
-                            name="new_entrance"
-                            id="new_entrance"
-                            required
-                        />
-                    </fieldset>
-
-                    <fieldset>
-                        <label htmlFor="new_text">Texto</label>
-                        <input
-                            type="text"
-                            name="new_text"
-                            id="new_title"
-                            required
-                        />
-                    </fieldset>
-
-                    <fieldset>
-                        <label htmlFor="new_theme">Categoria</label>
-                        <select name="new_theme">
-                            {fetchedCategories.map((category) => {
-                                return (
-                                    <option
-                                        value={category.id}
-                                        key={category.id}
-                                    >
-                                        {category.name}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </fieldset>
-
-                    <fieldset>
-                        <label htmlFor="new_pic">Imagen</label>
-                        <input
-                            type="file"
-                            name="new_pic"
-                            id="new_pic"
-                            accept={'image/*'}
-                            onChange={(e) => setImage(e.target.files[0])}
-                        />
-                        {image ? (
-                            <figure>
-                                <img
-                                    src={URL.createObjectURL(image)}
-                                    style={{ width: '100px' }}
-                                    alt="Preview"
-                                />
-                            </figure>
-                        ) : null}
-                    </fieldset> */}
-
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text htmlFor="new_title" id="basic-addon1">
-                            Título
-                        </InputGroup.Text>
-                        <Form.Control
-                            placeholder="Título de la noticia"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                            type="text"
-                            name="new_title"
-                            id="new_title"
-                            required
-                        />
-                    </InputGroup>
-
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text
-                            htmlFor="new_entrance"
-                            id="basic-addon2"
-                        >
-                            Entrada
-                        </InputGroup.Text>
-                        <Form.Control
-                            placeholder="Entrada de la noticia"
-                            aria-label="Recipient's username"
-                            aria-describedby="basic-addon2"
-                            type="text"
-                            name="new_entrance"
-                            id="new_entrance"
-                            required
-                        />
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text htmlFor="new_theme">
-                            Categoria
-                        </InputGroup.Text>
-                        <select name="new_theme">
-                            {fetchedCategories.map((category) => {
-                                return (
-                                    <option
-                                        value={category.id}
-                                        key={category.id}
-                                    >
-                                        {category.name}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text htmlFor="new_video" id="basic-addon3">
-                            URL de YouTube
-                        </InputGroup.Text>
-                        <Form.Control
-                            placeholder="URL de YouTube"
-                            id="basic-url"
-                            aria-describedby="basic-addon3"
-                        />
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text htmlFor="new_pic">
-                            Imagen
-                        </InputGroup.Text>
-                        <input
-                            type="file"
-                            name="new_pic"
-                            id="new_pic"
-                            accept={'image/*'}
-                            onChange={(e) => setImage(e.target.files[0])}
-                        />
-                        {image ? (
-                            <figure>
-                                <img
-                                    src={URL.createObjectURL(image)}
-                                    style={{ width: '100px' }}
-                                    alt="Preview"
-                                />
-                            </figure>
-                        ) : null}
-                    </InputGroup>
-
-                    <InputGroup>
-                        <InputGroup.Text>Texto</InputGroup.Text>
-                        <Form.Control
-                            type="text"
-                            name="new_text"
-                            id="new_title"
-                            required
-                            as="textarea"
-                            aria-label="With textarea"
-                        />
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text htmlFor="new_theme">
+                                Categoria
+                            </InputGroup.Text>
+                            <select className="" name="new_theme">
+                                {fetchedCategories.map((category) => {
+                                    return (
+                                        <option
+                                            value={category.id}
+                                            key={category.id}
+                                        >
+                                            {category.name}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </InputGroup>
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text
+                                htmlFor="new_video"
+                                id="basic-addon3"
+                            >
+                                URL de YouTube
+                            </InputGroup.Text>
+                            <Form.Control
+                                placeholder="URL de YouTube"
+                                id="basic-url"
+                                aria-describedby="basic-addon3"
+                            />
+                        </InputGroup>
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text htmlFor="new_pic">
+                                Imagen
+                            </InputGroup.Text>
+                            <input
+                                type="file"
+                                name="new_pic"
+                                id="new_pic"
+                                accept={'image/*'}
+                                onChange={(e) => setImage(e.target.files[0])}
+                            />
+                            {image ? (
+                                <figure>
+                                    <img
+                                        src={URL.createObjectURL(image)}
+                                        style={{ width: '200px' }}
+                                        alt="Preview"
+                                    />
+                                </figure>
+                            ) : null}
+                        </InputGroup>
+                    </div>
+                    <div className="columna-right-new">
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text
+                                htmlFor="new_entrance"
+                                id="basic-addon2"
+                            >
+                                Entrada
+                            </InputGroup.Text>
+                            <Form.Control
+                                placeholder="Entrada de la noticia"
+                                aria-label="Recipient's username"
+                                aria-describedby="basic-addon2"
+                                type="text"
+                                name="new_entrance"
+                                id="new_entrance"
+                                required
+                            />
+                        </InputGroup>
+                        <InputGroup>
+                            <InputGroup.Text>Texto</InputGroup.Text>
+                            <Form.Control
+                                type="text"
+                                name="new_text"
+                                id="new_title"
+                                required
+                                as="textarea"
+                                aria-label="With textarea"
+                            />
+                        </InputGroup>
+                    </div>
+                    <InputGroup className="btn-publish">
+                        <button className="btn-publish-css">
+                            Enviar noticia
+                        </button>
+                        {error ? <p>{error}</p> : null}
+                        {loading ? <p>Publicando noticia...</p> : null}
                     </InputGroup>
                 </form>
-                <InputGroup className="btn-publish">
-                    <button className="btn-publish-css">Enviar noticia</button>
-                    {error ? <p>{error}</p> : null}
-                    {loading ? <p>Publicando noticia...</p> : null}
-                </InputGroup>
             </div>
             <ToastContainer />
         </div>
