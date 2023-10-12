@@ -17,10 +17,13 @@ import MyNewsPage from './pages/MyNewsPage';
 import EntryFull from './pages/EntryFull';
 import CreateEntry from './pages/CreateEntry';
 import UpdateEntry from './pages/UpdateEntry';
+import RatingPage from './pages/RatingPage';
+
 
 import { useContext } from 'react';
 import { LoginContext } from './context/LoginContext';
-import RatingPage from './pages/RatingPage';
+import MyNewsRatingPage from './pages/MyNewsRatingPage';
+
 
 
 
@@ -46,6 +49,7 @@ function App() {
                         <Route path="/createentry" element={<CreateEntry />} />
                         <Route path="/entries/update/:entryId" element={<UpdateEntry />} />
                         <Route path="/entries/rating" element={<RatingPage />} />
+                        <Route path="/entries/nymnewsrating" element={<MyNewsRatingPage />} />
                     </Routes>
                 </main>
             </div>
