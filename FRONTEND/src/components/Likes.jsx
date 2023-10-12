@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { LoginContext } from '../context/LoginContext';
-import { likesButtomService, likesStatusService } from '../services/entriesServices';
+import {
+    likesButtomService,
+    likesStatusService,
+} from '../services/entriesServices';
 import './likes.css';
-
 
 export default function Likes({ newsId, newsLike }) {
     const { token } = useContext(LoginContext);
@@ -18,14 +20,16 @@ export default function Likes({ newsId, newsLike }) {
         const loadStatus = async (newsId) => {
             try {
                 setLoading(true);
+
                 const data = await likesStatusService(newsId, token);
+
                 setInitialLike(data.likeStatus);
             } catch (error) {
                 setError(error.message);
             }
         };
         loadStatus(newsId);
-    }, [newsId]);
+    }, [newsId,initialLike]);
 
     // Cuando hace like
     const handleLike = async (newsId) => {
@@ -42,18 +46,20 @@ export default function Likes({ newsId, newsLike }) {
     };
 
     return (
-        <div>
-
-            <button
-                className={initialLike && 'redStatus'}
+        <div className="container-like">
+            <div
+                className={initialLike ? 'color-rojo' : ''}
                 onClick={() => {
                     handleLike(newsId);
                 }}
             >
-                LIKE
-            </button>
-            <div className="likes">{counterLike}💚</div>
+                <div className="corazon">
+                    <div className="circle"></div>
+                    <div className="circle2"></div>
+                    <div className="cube"></div>
+                </div>
+            </div>
+            <div className="likes-user">{counterLike}👍🏼</div>
         </div>
     );
 }
-

@@ -1,19 +1,19 @@
-.entry {
+.entry2 {
     border-radius: 10px;
-    
     display: flex;
     flex-direction: column;
     align-items: start;
     height: 400px;
     width: 200px;
     --bs-card-bg: #484444;
+    
     position:relative;
     --bs-card-border-color: #c1c1c1;
     -webkit-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
     -moz-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
     box-shadow: 9px 13px 19px -1px rgba(0,0,0,1)
 }
-.likes-non{
+.likes-non2{
     border: solid #c1c1c1 1px;
     background-color: #797777;
     border-radius: 5px;
@@ -25,44 +25,37 @@
     margin-left: 35px;
 }
 
-.btn_to_new{
-    margin-left: 70px;
+.btn_to_new2{
+    margin-left: 10px;
 }
 
-.linea{
-    width: 250px;
-}
-.title {
+.title2 {
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 0.5rem;    
     color: white;
 }
-.text_card1{
+.text_card2{
     color: white;
     font-weight: lighter;
     height: 60px;
 }
-.imgCard1 {
-    height: 220px;
+.imgCard2 {
+    height: 170px;
     border-radius: 10px;
 }
-.btn_like{
+.btn_like2{
 position: absolute;
-margin-left: 195px;
+margin-left: 115px;
 margin-top: 180px;
 }
-/* .btn-like-user{
-    border: solid #c1c1c1 2px;
-    background-color: #797777;
-    border-radius: 5px;
-    color:black;
-    
-} */
 
-.link_to_new{
+.card{
+    --bs-card-bg: #484444;
+}
+.btn_position{
     position: absolute;
-    margin-top: 350px;
-    margin-left: 20px;
+    margin-top: 355px;
+    margin-left: 40px;
 }

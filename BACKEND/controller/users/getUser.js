@@ -1,7 +1,6 @@
 const sendQuery = require('../../db/connectToDB');
 const createError = require('../../helpers/createError');
-const Joi = require('joi');
-const bcrypt = require('bcrypt');
+
 
 
 async function getUser(req, res, next) {

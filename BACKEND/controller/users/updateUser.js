@@ -1,9 +1,9 @@
 require('dotenv').config()
-const Joi = require('joi')
+
 const createError = require('../../helpers/createError')
 const sendQuery = require('../../db/connectToDB')
 const bcrypt = require('bcrypt');
-const updateUserSchema = require('../../schemas/updateUserSchema');
+const updateUserSchema = require('../../schemas/usersSchemas/updateUserSchema');
 
 async function updateUser(req, res, next) {
     try {

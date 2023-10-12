@@ -1,44 +1,32 @@
 import useEntries from '../hooks/useEntries';
 import AllEntries from '../components/AllEntries';
-import Carousel from '../components/Carousel';
-import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
+
 import './HomePage.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import UsePageNumber from '../hooks/usePageNumber';
-import { useEffect, useState } from 'react';
-import PageButton from '../components/PageButtons';
 
-
-export default function HomePage() {
+export default function RatingPage() {
     const { news, loading, error } = useEntries();
+    const newsRating = news.toSorted((x, y) => {
+        return y.new_likes - x.new_likes;
+    });
 
-    // Funcion que controla las paginas
     const { initPage, endPage, setInitPage, setEndPage } = UsePageNumber(6);
 
-    const newsArray = news.slice(initPage, endPage);
-
-    if (loading)
-        return (
-            <>
-                <Spinner animation="border" />
-                <p>Cargando...</p>
-            </>
-        );
-    if (error) return <p>{error}</p>;
-
+    const newsArray = newsRating.slice(initPage, endPage);
     return (
         <>
             <section>
-                <h2>NOTICIAS TOP</h2>
-                <br />
-                <Carousel />
-                <br />
-            </section>
-            <hr className="line-HP"></hr>
-            <section>
-                <h2>ÚLTIMAS NOTICIAS</h2>
-
+                <h2>MEJOR VALORADAS</h2>
+                <Link to="/">
+                    <FontAwesomeIcon
+                        className="narrowButton"
+                        icon={faArrowLeft}
+                        size="2x"
+                    />
+                </Link>
 
                 <button
                     onClick={() => {
@@ -65,13 +53,7 @@ export default function HomePage() {
                     Next
                 </button>
 
-
-                <Link to="/entries/rating">
-                    <h3>mejor valoradas</h3>
-                </Link>
-                <br />
                 <AllEntries news={newsArray} />
-                <br />
             </section>
         </>
     );
