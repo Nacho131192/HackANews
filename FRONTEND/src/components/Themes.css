@@ -17,7 +17,7 @@ aside {
     position: fixed;
     margin-left: 125px;
     margin-top: -70px;
-    z-index: 9999;
+    z-index: 1;
 }
 
 .nav2 {

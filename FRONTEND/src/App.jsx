@@ -26,7 +26,7 @@ function App() {
     const { user } = useContext(LoginContext);
 
     return (
-        <>
+        <div className="App-full">
             <Header className="header-app" />
             <div className="aside-main">
                 <Themes />
@@ -55,7 +55,7 @@ function App() {
             </div>
             <Footer />
             <ToastContainer />
-        </>
+        </div>
     );
 }
 
