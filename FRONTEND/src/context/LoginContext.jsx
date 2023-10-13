@@ -25,6 +25,7 @@ const LoginContextProvider = ({ children }) => {
     const [token, setToken] = useState(getToken());
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
    
     useEffect(() => {
         // Función que retorna los datos del usuario.
@@ -35,7 +36,7 @@ const LoginContextProvider = ({ children }) => {
                 setUser(data.user);
                 
             } catch (err) {
-                alert(err.message);
+                setError(err.message);
             }
         };
 
@@ -59,7 +60,7 @@ const LoginContextProvider = ({ children }) => {
             // Redirigimos a la página principal.
             navigate('/');
         } catch (err) {
-            alert(err.message);
+            setError(err.message);
         } finally {
             setLoading(false);
         }
