@@ -3,7 +3,7 @@ import { registerService } from '../services/userServices';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
 import Button from 'react-bootstrap/Button';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 export default function RegisterPage() {
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState({
@@ -22,7 +22,11 @@ export default function RegisterPage() {
         e.preventDefault();
         if (formValues.userpass1 !== formValues.userpass2) {
             setError('Password do not match ');
-            toast.error(error);
+            toast.error(error, {
+                position: 'top-center',
+                autoclosse: 2000,
+                theme: "dark"
+            });
             return;
         }
         try {
@@ -31,11 +35,19 @@ export default function RegisterPage() {
                 user_email: formValues.usermail,
                 user_password: formValues.userpass1,
             });
-            toast.success("Usaurio registrado")
+            toast.success("Usaurio registrado", {
+                position: 'top-center',
+                autoclosse: 2000,
+                theme:"dark"
+            })
             navigate('/login');
         } catch (error) {
             setError(error.message);
-            toast.error(error.message)
+            toast.error(error.message, {
+                position: 'top-center',
+                autoclosse: 2000,
+                theme:"dark"
+            })
         }
     }
     return (
@@ -100,8 +112,7 @@ export default function RegisterPage() {
                     </fieldset>
                     <button className="btn_log-form">Acceder</button>
                 </form>
-            </section>
-            <ToastContainer />        
+            </section>      
         </div>
     );
 }
