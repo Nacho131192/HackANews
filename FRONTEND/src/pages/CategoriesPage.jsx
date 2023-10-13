@@ -13,17 +13,22 @@ function CategoriesPage() {
     const [data, setData] = useState([]);
     const targetId = categoryId;
 
+    const [title, setTitle] = useState('');
+
     useEffect(() => {
         fetch(`${API_URL}/entries/themes/${targetId}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Se ha producido un error');
                 }
+
                 return response.json();
             })
             .then((data) => {
                 const filteredData = data.data.entry;
                 setData(filteredData);
+                const ThemeTitle = data.data.theme_name;
+                setTitle(ThemeTitle);
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -35,7 +40,8 @@ function CategoriesPage() {
     const newsArray = data.slice(initPage, endPage);
 
     return (
-        <div>
+        <div className="categories-page">
+            <h2 className="title-categories">{title}</h2>
             <div className="buttons-container">
                 <a
                     className="button-page"
@@ -50,7 +56,7 @@ function CategoriesPage() {
                     <FontAwesomeIcon className="buton-pg" icon={faBackward} />
                 </a>
                 <a
-                    className="button-page"
+                    className="button-page-right"
                     onClick={() => {
                         if (endPage <= newsArray.length) {
                             setInitPage(initPage + 6);

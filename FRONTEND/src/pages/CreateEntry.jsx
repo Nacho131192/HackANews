@@ -128,6 +128,7 @@ const CreateEntry = () => {
                                 {fetchedCategories.map((category) => {
                                     return (
                                         <option
+                                            className="color-text-themes"
                                             value={category.id}
                                             key={category.id}
                                         >

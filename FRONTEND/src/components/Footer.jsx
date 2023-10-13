@@ -6,7 +6,7 @@ export default function Footer() {
             <h3>Footer</h3>
 
             <b>
-                <p>Copyright © 2023 - Hack a News</p>
+                <p className="text-color">Copyright © 2023 - Hack a News</p>
             </b>
         </footer>
     );

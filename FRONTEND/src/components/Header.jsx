@@ -96,6 +96,7 @@ export default function Header() {
                 {user && (
                     <Dropdown data-bs-theme="dark">
                         <Dropdown.Toggle
+                            className="btn-down-menu"
                             id="dropdown-button-dark-example1"
                             variant="secondary"
                         >

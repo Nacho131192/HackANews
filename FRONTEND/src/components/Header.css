@@ -9,11 +9,7 @@
   
 
 }
-.header-total{
- 
-z-index: 1;
-  
-}
+
 
 .logo{
   height: 200px;
@@ -22,6 +18,9 @@ z-index: 1;
 .input-group{
 width: 400px;
 height: 30px;
+-webkit-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
+-moz-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
+box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
 
 }
 
@@ -36,7 +35,12 @@ height: 30px;
 .form-control{
   margin-left: -50px;
 }
-
+.btn-down-menu{
+  -webkit-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
+  box-shadow: 9px 13px 19px -1px rgba(0,0,0,1);
+  border: 1px solid white;
+}
 .btn_menu_user{
   display: flex;
   flex-direction: row;
@@ -50,5 +54,5 @@ height: 30px;
 }
 .svg-inline--fa {
   height: 2.3em;
-  
+  color: white;
 }
