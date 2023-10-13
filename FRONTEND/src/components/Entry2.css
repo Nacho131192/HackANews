@@ -48,11 +48,12 @@
 .btn_like2{
 position: absolute;
 margin-left: 115px;
-margin-top: 180px;
+margin-top: 140px;
 }
 
 .card{
     --bs-card-bg: #484444;
+    color: white;
 }
 .btn_position{
     position: absolute;

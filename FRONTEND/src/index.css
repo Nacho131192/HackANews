@@ -6,7 +6,7 @@
  
 }
 *{
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .aside-main{
@@ -16,5 +16,6 @@
 }
 main{
   margin-left: 270px;
-  /* margin-top: 100px; */
+  min-height: calc(100vh - 100px);
+  margin-bottom: -50px;
 }

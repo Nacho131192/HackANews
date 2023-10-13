@@ -19,7 +19,9 @@ export const Entry2 = ({ news }) => {
                     />
                     <Card.Body>
                         <Card.Title>{news.new_title}</Card.Title>
-                        <Card.Text>{news.new_entrance}</Card.Text>
+                        <Card.Text style={{ color: 'white' }}>
+                            {news.new_entrance}
+                        </Card.Text>
                     </Card.Body>
                 </Card>
 

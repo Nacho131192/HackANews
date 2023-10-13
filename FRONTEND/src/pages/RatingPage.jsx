@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 
 import './HomePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
+import {
+    faArrowLeft,
+    faBackward,
+    faForward,
+} from '@fortawesome/free-solid-svg-icons';
 import UsePageNumber from '../hooks/usePageNumber';
 export default function RatingPage() {
     const { news, loading, error } = useEntries();
@@ -17,7 +21,7 @@ export default function RatingPage() {
     const newsArray = newsRating.slice(initPage, endPage);
     return (
         <>
-            <section>
+            <section className="section-rating">
                 <h2>MEJOR VALORADAS</h2>
                 <Link to="/">
                     <FontAwesomeIcon
@@ -37,10 +41,10 @@ export default function RatingPage() {
                         }
                     }}
                 >
-                    <FontAwesomeIcon icon={faBackward}/>
+                    <FontAwesomeIcon icon={faBackward} />
                 </a>
                 <a
-                    className="button-page"
+                    className="button-page-right"
                     onClick={() => {
                         if (endPage <= news.length) {
                             setInitPage(initPage + 6);
