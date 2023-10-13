@@ -6,7 +6,6 @@ import './HomePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 import UsePageNumber from '../hooks/usePageNumber';
-import './RatingPage.css';
 export default function RatingPage() {
     const { news, loading, error } = useEntries();
     const newsRating = news.toSorted((x, y) => {
