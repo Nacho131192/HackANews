@@ -17,32 +17,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function Header() {
     const { user, authLogout } = useContext(LoginContext);
-    const { token, setToken } = useContext(LoginContext);
-
-    const [newsSearch, setNewsSearch] = useState([]);
     const [keyword, setKeyword] = useState('');
 
-    useEffect(() => {
-        // Función que busca las entradas en la base de datos.
-        const fetchEntries = async () => {
-            try {
-                const res = await axios.get(
-                    `${API_URL}/entries/allentries?keyword=${keyword}`
-                );
 
-                // Establecemos las entradas en el State.
-                setNewsSearch(res.data.data);
-                console.log(newsSearch);
-            } catch (err) {
-                // Faltaría manejar el error.
-                console.error(err);
-            }
-        };
-
-        // Llamamos a la función anterior.
-        fetchEntries();
-    }, [keyword]);
-
+  
     return (
         <div className="header-total">
             <header className="cabecera">
@@ -53,15 +31,18 @@ export default function Header() {
                     <input
                         type="search"
                         className="form-control"
-                        placeholder="¿Qué buscas?"
+                        placeholder="Buscador de titulos"
                         value={keyword}
                         onChange={(e) => setKeyword(e.target.value)}
                         aria-label="Search"
                         aria-describedby="search-addon"
                     />
-                    <Button type="button" variant="secondary">
-                        Buscar
-                    </Button>
+
+                    {!keyword==0 && <Link to={`/entries/search/${keyword}`}>
+                        <Button type="button" variant="secondary">
+                            Buscar
+                        </Button>
+                    </Link>}
                 </div>
 
                 <div className="btn_reg_log">
@@ -96,6 +77,7 @@ export default function Header() {
                 {user && (
                     <Dropdown data-bs-theme="dark">
                         <Dropdown.Toggle
+                            className="btn-down-menu"
                             id="dropdown-button-dark-example1"
                             variant="secondary"
                         >

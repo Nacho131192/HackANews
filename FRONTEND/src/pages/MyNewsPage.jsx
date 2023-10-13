@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router-dom';
 import UsePageNumber from '../hooks/usePageNumber';
 import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './MyNewsPage.css'
+import './MyNewsPage.css';
 export default function MyNewsPage() {
     const { user } = useLogin();
 
@@ -17,16 +17,16 @@ export default function MyNewsPage() {
 
     // Obtenemos las noticias únicamente si existe un usuario...
     const { meNews, error, loading } = useMeEntries();
-    
+
     const { initPage, endPage, setInitPage, setEndPage } = UsePageNumber(9);
 
     const newsArray = meNews.slice(initPage, endPage);
-    
+
     return (
-        <>
-            <h2> Mis noticias</h2>
+        <section className="section-my-news">
+            <h2> MIS NOTICIAS</h2>
             <Link to="/entries/nymnewsrating">
-                <h3 className="rating-button"> mejor valoradas</h3>
+                <h3 className="rating-button"> MEJOR VALORADAS</h3>
             </Link>
             <a
                 className="button-page"
@@ -41,7 +41,7 @@ export default function MyNewsPage() {
                 <FontAwesomeIcon icon={faBackward} />
             </a>
             <a
-                className="button-page"
+                className="button-page-right"
                 onClick={() => {
                     if (endPage <= meNews.length) {
                         setInitPage(initPage + 9);
@@ -53,6 +53,6 @@ export default function MyNewsPage() {
             </a>
 
             <AllEntries news={newsArray} />
-        </>
+        </section>
     );
 }

@@ -3,10 +3,20 @@ section{
 }
 .line-HP{
     width: 930px;
+    color: white;
 }
-a.button-page{
-    margin: 1rem;
-}
+
 .rating-button:hover{
  color:lightgrey
+}
+
+section{
+    margin-bottom: 25px;
+}
+.text-color{
+    color: white;
+}
+
+.button-page-right{
+    margin-left: 800px;
 }

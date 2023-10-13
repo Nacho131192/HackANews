@@ -28,16 +28,16 @@ export default function HomePage() {
     return (
         <>
             <section>
-                <h2>NOTICIAS TOP</h2>
+                <h2 className="text-color">NOTICIAS TOP</h2>
                 <br />
                 <Carousel />
                 <br />
             </section>
             <hr className="line-HP"></hr>
             <section>
-                <h2>ÚLTIMAS NOTICIAS</h2>
+                <h2 className="text-color">ÚLTIMAS NOTICIAS</h2>
                 <Link to="/entries/rating">
-                    <h3 className='rating-button'>mejor valoradas</h3>
+                    <h3 className="rating-button">MEJOR VALORADAS</h3>
                 </Link>
                 <a
                     className="button-page"
@@ -52,7 +52,7 @@ export default function HomePage() {
                     <FontAwesomeIcon icon={faBackward} />
                 </a>
                 <a
-                    className="button-page"
+                    className="button-page-right"
                     onClick={() => {
                         if (endPage <= news.length) {
                             setInitPage(initPage + 6);

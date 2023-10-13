@@ -1,4 +1,8 @@
 const API_URL = import.meta.env.VITE_API_URL_BACKEND;
+
+//RUTA DE LA IMAGEN PARA ASSETS
+import NoImage from '../assets/imageNotFound.jpg';
+
 import { Link } from 'react-router-dom';
 import './Entry.css';
 import { LoginContext } from '../context/LoginContext';
@@ -9,15 +13,22 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import { useLogin } from '../hooks/useLogin';
 
-export const Entry = ({ news }) => {
+// {`${API_URL}/${news.new_pic}`}
+export const Entry = ({ news }) => {       
     const { user } = useLogin();
+    //Validacion Temprana de la NoImage
+    let entryImage = NoImage;
+    if (news.new_pic != null) {
+        entryImage = `${API_URL}/${news.new_pic}`;
+    }
+
     return (
         <>
             <Card className="entry" style={{ width: '18rem' }}>
                 <Card.Img
                     className="imgCard1"
                     variant="top"
-                    src={`${API_URL}/${news.new_pic}`}
+                    src={entryImage}
                 />
                 <Card.Body>
                     <Card.Title className="title">{news.new_title}</Card.Title>

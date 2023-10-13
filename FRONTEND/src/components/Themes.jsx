@@ -38,7 +38,7 @@ export default function Themes() {
 
     return (
         <div className="themes-container">
-            <FontAwesomeIcon className="narrow-to-up" icon={faArrowUp} />
+            {/* <FontAwesomeIcon className="narrow-to-up" icon={faArrowUp} /> */}
 
             <aside className="menu-lateral">
                 <h2 className="category">CATEGORIAS</h2>
