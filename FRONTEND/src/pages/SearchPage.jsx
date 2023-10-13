@@ -8,12 +8,12 @@ import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 export default function SearchPage() {
     let { word } = useParams();
     const { newsSearch, setNewsSearch } = useSearch(word);
-     const { initPage, endPage, setInitPage, setEndPage } = UsePageNumber(9);
+    const { initPage, endPage, setInitPage, setEndPage } = UsePageNumber(9);
 
-     const newsArray = newsSearch.slice(initPage, endPage);
+    const newsArray = newsSearch.slice(initPage, endPage);
     return (
-        <>
-            <h2>Resultado de la búsqueda: { word }</h2>
+        <div className="search-page">
+            <h2>Resultado de la búsqueda: {word}</h2>
             <section>
                 <a
                     className="button-page"
@@ -28,7 +28,7 @@ export default function SearchPage() {
                     <FontAwesomeIcon icon={faBackward} />
                 </a>
                 <a
-                    className="button-page"
+                    className="button-page-right"
                     onClick={() => {
                         if (endPage <= newsSearch.length) {
                             setInitPage(initPage + 9);
@@ -41,6 +41,6 @@ export default function SearchPage() {
 
                 <AllEntries news={newsArray} />
             </section>
-        </>
+        </div>
     );
 }

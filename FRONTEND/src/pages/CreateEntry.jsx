@@ -182,7 +182,9 @@ const CreateEntry = () => {
                     </div>
 
                     <InputGroup>
-                        <InputGroup.Text>Texto</InputGroup.Text>
+                        <InputGroup.Text htmlFor="new_text">
+                            Texto
+                        </InputGroup.Text>
                         <Form.Control
                             type="text"
                             name="new_text"
