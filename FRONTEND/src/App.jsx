@@ -19,9 +19,12 @@ import CreateEntry from './pages/CreateEntry';
 import UpdateEntry from './pages/UpdateEntry';
 import RatingPage from './pages/RatingPage';
 import MyNewsRatingPage from './pages/MyNewsRatingPage';
+import SearchPage from './pages/SearchPage';
 
 import { useContext } from 'react';
 import { LoginContext } from './context/LoginContext';
+
+
 
 
 
@@ -45,6 +48,7 @@ function App() {
                         <Route path="/entries/update/:entryId" element={<UpdateEntry />} />
                         <Route path="/entries/rating" element={<RatingPage />} />
                         <Route path="/entries/nymnewsrating" element={<MyNewsRatingPage />} />
+                        <Route path="/entries/search/:word" element={<SearchPage />} />
 
                     </Routes>
                 </main>
