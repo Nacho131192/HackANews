@@ -19,8 +19,6 @@ export default function Header() {
     const { user, authLogout } = useContext(LoginContext);
     const [keyword, setKeyword] = useState('');
 
-
-  
     return (
         <div className="header-total">
             <header className="cabecera">
@@ -38,11 +36,13 @@ export default function Header() {
                         aria-describedby="search-addon"
                     />
 
-                    {!keyword==0 && <Link to={`/entries/search/${keyword}`}>
-                        <Button type="button" variant="secondary">
-                            Buscar
-                        </Button>
-                    </Link>}
+                    {!keyword == 0 && (
+                        <Link to={`/entries/search/${keyword}`}>
+                            <Button type="button" variant="secondary">
+                                Buscar
+                            </Button>
+                        </Link>
+                    )}
                 </div>
 
                 <div className="btn_reg_log">
@@ -59,7 +59,7 @@ export default function Header() {
                         )}
                     </div>
 
-                    <div className="btn_non_user">
+                    <div>
                         {!user && (
                             <Link to={'/login'}>
                                 <Button
