@@ -50,25 +50,35 @@ const CreateEntry = () => {
             const data = new FormData(e.target);
 
             const res = await createEntryService({ data, token });
-            console.log(res);
-            //const body = await res.json();
 
             e.target.reset();
 
             setImage(null);
             if (!res.ok) {
                 //throw new Error(body.message);
-                toast.error(res.message);
+                toast.error(res.message, {
+                    position: 'top-center',
+                    autoclosse: 2000,
+                    theme: 'dark',
+                });
             }
 
             // setToken(body.data.token);
             setLoading(false);
 
-            toast.success(res.message);
+            toast.success(res.message, {
+                position: 'top-center',
+                autoclosse: 2000,
+                theme: 'dark',
+            });
             navigate('/mynews');
         } catch (error) {
             console.log(error);
-            toast.error(error.message);
+            toast.error(error.message, {
+                position: 'top-center',
+                autoclosse: 2000,
+                theme: 'dark',
+            });
 
             setLoading(false);
         }
