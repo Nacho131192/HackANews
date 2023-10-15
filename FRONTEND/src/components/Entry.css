@@ -49,21 +49,26 @@
     height: 60px;
 }
 .imgCard1 {
-    height: 220px;
+    height: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
     border-radius: 10px;
 }
+.container-img-entry{
+    height: 220px;
+    width: 18rem;
+    overflow: hidden;
+    position: relative;
+
+}
+
 .btn_like{
 position: absolute;
 margin-left: 195px;
 margin-top: 180px;
 }
-/* .btn-like-user{
-    border: solid #c1c1c1 2px;
-    background-color: #797777;
-    border-radius: 5px;
-    color:black;
-    
-} */
+
 
 .link_to_new{
     position: absolute;

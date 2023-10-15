@@ -41,8 +41,17 @@
     font-weight: lighter;
     height: 60px;
 }
+.container-img-entry2{
+    height: 120px;
+    width: 13rem;
+    overflow: hidden;
+    position: relative;
+}
 .imgCard2 {
-    height: 170px;
+    height: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
     border-radius: 10px;
 }
 .btn_like2{

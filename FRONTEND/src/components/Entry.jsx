@@ -14,7 +14,7 @@ import Card from 'react-bootstrap/Card';
 import { useLogin } from '../hooks/useLogin';
 
 // {`${API_URL}/${news.new_pic}`}
-export const Entry = ({ news }) => {       
+export const Entry = ({ news }) => {
     const { user } = useLogin();
     //Validacion Temprana de la NoImage
     let entryImage = NoImage;
@@ -25,11 +25,13 @@ export const Entry = ({ news }) => {
     return (
         <>
             <Card className="entry" style={{ width: '18rem' }}>
-                <Card.Img
-                    className="imgCard1"
-                    variant="top"
-                    src={entryImage}
-                />
+                <div className="container-img-entry">
+                    <Card.Img
+                        className="imgCard1"
+                        variant="top"
+                        src={entryImage}
+                    />
+                </div>
                 <Card.Body>
                     <Card.Title className="title">{news.new_title}</Card.Title>
 
@@ -39,11 +41,6 @@ export const Entry = ({ news }) => {
                     </Card.Text>
                 </Card.Body>
                 <div className="btn_like">
-                    {/* {user ? (
-                        <Likes newsId={news.id} newsLike={news.new_likes} />
-                    ) : (
-                        <div className="likes-yes">{news.new_likes}❤️</div>
-                    )} */}
                     {user && (
                         <div className="btn-like-user">
                             {' '}
