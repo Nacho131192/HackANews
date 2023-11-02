@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #17191f;
+    background-color: #3a3a3a;
     background-size: cover;
 }
 * {
@@ -13,7 +13,7 @@
 .aside-main {
     display: flex;
     flex-direction: row;
-    background-color: #17191f;
+    background-color: #3a3a3a;
 }
 main {
     margin-left: 270px;
