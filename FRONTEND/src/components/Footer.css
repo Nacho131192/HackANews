@@ -1,9 +1,11 @@
 .footer {
- 
-  text-align: center;
-  letter-spacing: 1px;
-  background-color: #484444;
-  color: white;
-  margin-bottom: -20px;
- 
+    height: 10vh;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: #02819a;
+    margin-bottom: -20px;
+}
+
+.text-color {
+    padding-top: 18px;
 }

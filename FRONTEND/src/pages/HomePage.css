@@ -1,25 +1,25 @@
-section{
-    margin-top: 10px;
+section {
+    margin-top: 11px;
 }
-.line-HP{
+.line-HP {
     width: 930px;
     color: white;
 }
 
-.rating-button:hover{
- color:lightgrey
+.rating-button:hover {
+    color: lightgrey;
 }
 
-section{
+section {
     margin-bottom: 25px;
 }
-.text-color{
+.text-color {
     color: white;
 }
 
-.button-page-right{
+.button-page-right {
     margin-left: 800px;
 }
-.section-rating{
+.section-rating {
     margin-bottom: 100px;
 }
