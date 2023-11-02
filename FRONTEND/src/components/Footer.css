@@ -4,8 +4,7 @@
     letter-spacing: 1px;
     background-color: #02819a;
     margin-bottom: -20px;
-}
-
-.text-color {
-    padding-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
