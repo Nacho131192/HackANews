@@ -25,7 +25,7 @@ export default function RegisterPage() {
             toast.error(error, {
                 position: 'top-center',
                 autoclosse: 2000,
-                theme: "dark"
+                theme: 'dark',
             });
             return;
         }
@@ -35,19 +35,19 @@ export default function RegisterPage() {
                 user_email: formValues.usermail,
                 user_password: formValues.userpass1,
             });
-            toast.success("Usaurio registrado", {
+            toast.success('Usuario registrado', {
                 position: 'top-center',
                 autoclosse: 2000,
-                theme:"dark"
-            })
+                theme: 'dark',
+            });
             navigate('/login');
         } catch (error) {
             setError(error.message);
             toast.error(error.message, {
                 position: 'top-center',
                 autoclosse: 2000,
-                theme:"dark"
-            })
+                theme: 'dark',
+            });
         }
     }
     return (
@@ -112,7 +112,7 @@ export default function RegisterPage() {
                     </fieldset>
                     <button className="btn_log-form">Acceder</button>
                 </form>
-            </section>      
+            </section>
         </div>
     );
 }
