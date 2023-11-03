@@ -24,7 +24,7 @@ export default function EditDeleteEntry({ results }) {
     return (
         <section className="btn_edit_delete">
             <Button
-                className="btn_full_entry"
+                className="btn_full_entry btn_custom_hover"
                 variant="secondary"
                 onClick={() => {
                     navigate(`/entries/update/${idNew}`);
@@ -33,12 +33,12 @@ export default function EditDeleteEntry({ results }) {
                 EDITAR
             </Button>
             <Button
-                className="btn_full_entry"
+                className="btn_full_entry btn_custom_hover"
                 variant="secondary"
                 onClick={() => {
                     if (
                         window.confirm(
-                            'Are you sure you want to delete the news?'
+                            '¿Estas segur@ de que quieres eliminar la entrada?'
                         )
                     )
                         handleDelete(idNew, token);

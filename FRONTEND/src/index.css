@@ -6,10 +6,13 @@
     background-size: cover;
 }
 * {
-    color: rgb(255, 255, 255);
     font-family: 'Quicksand', sans-serif;
+    --toastify-text-color-dark: #0b0a0a;
 }
 
+body {
+    color: rgb(255, 255, 255);
+}
 .aside-main {
     display: flex;
     flex-direction: row;

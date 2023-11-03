@@ -33,6 +33,12 @@
     border: 1px solid white;
 }
 
+.btn_to_new:hover {
+    background-color: rgba(2, 129, 154, 0.8);
+    border: 1px solid #c1c1c1;
+    transform: translateY(-3px);
+}
+
 .linea {
     width: 250px;
 }
