@@ -3,6 +3,7 @@ import { useLogin } from '../hooks/useLogin';
 import { Navigate } from 'react-router-dom';
 import './Loginpage.css';
 import Button from 'react-bootstrap/Button';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const LoginPage = () => {
     const { user, authLogin, loading } = useLogin();
@@ -16,12 +17,35 @@ export const LoginPage = () => {
 
     const handleForm = async (e) => {
         e.preventDefault();
-        setError('');
+        
+        if (!password) {
+            // setError('Password Incorrect. Please try again.');
+            toast.error(error, {
+                position: 'top-center',
+                autoclosse: 1500,
+                theme: "dark"
+            });
+            return;
+        }
+        // setError('');
 
         try {
             await authLogin({ email, password });
+            
+            toast.success("Login Success", {
+                position: 'top-center',
+                autoclosse: 1000,
+                theme:"dark"
+            })
         } catch (error) {
-            setError(error.message);
+            // setError(error.message);
+
+            toast.error(error.message, {
+                position: 'top-center',
+                autoclosse: 2000,
+                theme:"dark"
+            })
+            
         }
     };
 
@@ -64,8 +88,10 @@ export const LoginPage = () => {
                         Login
                     </button>
                     {error ? <p>{error}</p> : null}
+                    
                 </form>
             </section>
+            <ToastContainer />
         </div>
     );
 };
