@@ -11,21 +11,20 @@ export const Entry2 = ({ news }) => {
     return (
         <>
             <Card className="entry2" style={{ width: '13rem' }}>
-                <Card>
-                    <div className="container-img-entry2">
-                        <Card.Img
-                            className="imgCard2"
-                            variant="top"
-                            src={`${API_URL}/${news.new_pic}`}
-                        />
-                    </div>
-                    <Card.Body>
-                        <Card.Title>{news.new_title}</Card.Title>
-                        <Card.Text style={{ color: 'white' }}>
-                            {news.new_entrance}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+                <div className="container-img-entry2">
+                    <Card.Img
+                        className="imgCard2"
+                        variant="top"
+                        src={`${API_URL}/${news.new_pic}`}
+                    />
+                </div>
+                <Card.Body>
+                    <Card.Title className="title">{news.new_title}</Card.Title>
+
+                    <Card.Text style={{ color: 'white' }}>
+                        {news.new_entrance}
+                    </Card.Text>
+                </Card.Body>
 
                 <div className="btn_like2">
                     {user && (

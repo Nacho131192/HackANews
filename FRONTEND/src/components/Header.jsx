@@ -25,7 +25,7 @@ export default function Header() {
                 <Link to={'/'}>
                     <img className="logo" src={logo} />
                 </Link>
-                <div className="input-group">
+                <div className="input-group-header">
                     <input
                         type="search"
                         className="form-control"

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, createRef } from 'react';
 import './Themes.css';
 import Button from 'react-bootstrap/Button';
 import { LoginContext } from '../context/LoginContext';
@@ -10,6 +10,25 @@ export default function Themes() {
     const API_URL = import.meta.env.VITE_API_URL_BACKEND;
     const [fetchedCategories, setFetchedCategories] = useState([]);
     const { user } = useContext(LoginContext);
+    const [isSticky, setIsSticky] = useState(false);
+
+    const handleScroll = () => {
+        if (window.pageYOffset >= 495.5) {
+            console.log(window.pageYOffset);
+            setIsSticky(true);
+        } else {
+            setIsSticky(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const asideRef = createRef();
 
     useEffect(() => {
         let results = {};
@@ -37,7 +56,10 @@ export default function Themes() {
     });
 
     return (
-        <div className="themes-container">
+        <div
+            ref={asideRef}
+            className={`themes-container ${isSticky ? 'sticky' : ''}`}
+        >
             {/* <FontAwesomeIcon className="narrow-to-up" icon={faArrowUp} /> */}
 
             <aside className="menu-lateral">

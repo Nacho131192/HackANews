@@ -1,21 +1,25 @@
-:root{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #17191f;
- 
+:root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a3a3a;
+    background-size: cover;
 }
-*{
-  color: rgb(255, 255, 255);
+* {
+    font-family: 'Quicksand', sans-serif;
+    --toastify-text-color-dark: #0b0a0a;
 }
 
-.aside-main{
-  display: flex;
-  flex-direction: row;
-  background-color: #17191f;
+body {
+    color: rgb(255, 255, 255);
 }
-main{
-  margin-left: 270px;
-  min-height: calc(100vh - 100px);
-  margin-bottom: -50px;
+.aside-main {
+    display: flex;
+    flex-direction: row;
+    background-color: #3a3a3a;
+}
+main {
+    margin-left: 270px;
+    min-height: 75vh;
+    margin-bottom: -50px;
 }
