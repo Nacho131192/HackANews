@@ -13,7 +13,7 @@ export default function RegisterPage() {
         userpass2: '',
     });
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
 
     function handleFormChange(e) {
         setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -21,11 +21,12 @@ export default function RegisterPage() {
     async function handleSubmit(e) {
         e.preventDefault();
         if (formValues.userpass1 !== formValues.userpass2) {
-            setError('Password do not match ');
-            toast.error(error, {
+            setError('Las Contraseñas no coinciden');
+            error && toast.error(error, {
                 position: 'top-center',
                 autoclosse: 2000,
-                theme: 'dark',
+                hideProgressBar: true,
+                theme: 'colored',
             });
             return;
         }
@@ -37,16 +38,19 @@ export default function RegisterPage() {
             });
             toast.success('Usuario registrado', {
                 position: 'top-center',
+                hideProgressBar: true,
                 autoclosse: 2000,
-                theme: 'dark',
+                theme: 'light',
             });
             navigate('/login');
         } catch (error) {
+            console.error
             setError(error.message);
-            toast.error(error.message, {
+            error && toast.error(error.message, {
                 position: 'top-center',
+                hideProgressBar: true,
                 autoclosse: 2000,
-                theme: 'dark',
+                theme: 'colored',
             });
         }
     }
