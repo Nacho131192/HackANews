@@ -20,7 +20,7 @@ export const LoginPage = () => {
         
         if (!password) {
             // setError('Password Incorrect. Please try again.');
-            toast.error(error, {
+            toast.error("Login Error", {
                 position: 'top-center',
                 autoclosse: 1500,
                 theme: "dark"
