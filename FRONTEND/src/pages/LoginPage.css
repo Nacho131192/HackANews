@@ -64,3 +64,6 @@
     background-color: rgba(2, 129, 154, 0.9);
     transform: translateY(-3px);
 }
+.error {
+    color: red;
+}
