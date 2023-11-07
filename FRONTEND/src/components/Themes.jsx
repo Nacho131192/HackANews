@@ -13,7 +13,7 @@ export default function Themes() {
     const [isSticky, setIsSticky] = useState(false);
 
     const handleScroll = () => {
-        if (window.pageYOffset >= 495.5) {
+        if (window.pageYOffset >= 600) {
             console.log(window.pageYOffset);
             setIsSticky(true);
         } else {
