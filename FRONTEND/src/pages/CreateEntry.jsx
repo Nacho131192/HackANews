@@ -59,7 +59,7 @@ const CreateEntry = () => {
                 toast.error(res.message, {
                     position: 'top-center',
                     autoclosse: 2000,
-                    theme: 'dark',
+                    theme: 'light',
                 });
             }
 
@@ -69,7 +69,7 @@ const CreateEntry = () => {
             toast.success(res.message, {
                 position: 'top-center',
                 autoclosse: 2000,
-                theme: 'dark',
+                theme: 'light',
             });
             navigate('/mynews');
         } catch (error) {
@@ -77,7 +77,7 @@ const CreateEntry = () => {
             toast.error(error.message, {
                 position: 'top-center',
                 autoclosse: 2000,
-                theme: 'dark',
+                theme: 'light',
             });
 
             setLoading(false);
