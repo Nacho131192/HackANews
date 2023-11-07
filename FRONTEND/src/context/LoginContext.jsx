@@ -60,7 +60,7 @@ const LoginContextProvider = ({ children }) => {
             // Redirigimos a la página principal.
             navigate('/');
         } catch (err) {
-            setError(err.message);
+           throw new Error(err.message);
         } finally {
             setLoading(false);
         }

@@ -3,6 +3,7 @@ import { useLogin } from '../hooks/useLogin';
 import { Navigate } from 'react-router-dom';
 import './Loginpage.css';
 import Button from 'react-bootstrap/Button';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LoginPage = () => {
     const { user, authLogin, loading } = useLogin();
@@ -41,7 +42,7 @@ export const LoginPage = () => {
                             name="email"
                             required
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => {setEmail(e.target.value)}}
                         />
                     </fieldset>
 
@@ -56,14 +57,17 @@ export const LoginPage = () => {
                             name="password"
                             required
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => {
+                                setPassword(e.target.value)
+                                setError('')
+                            }}
                         />
                     </fieldset>
 
                     <button className="btn_log-form" disabled={loading}>
                         Login
                     </button>
-                    {error ? <p>{error}</p> : null}
+                    {error ? <p className='error'>{error}</p> : null}
                 </form>
             </section>
         </div>
