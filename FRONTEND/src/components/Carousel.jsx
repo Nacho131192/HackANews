@@ -16,47 +16,26 @@ function UncontrolledExample() {
         <div className="carousel">
             {threeTopNews.length != 0 && (
                 <Carousel className="carousel-completo">
+                    {threeTopNews.map((news)=>{                  
+                        return (
                     <Carousel.Item>
-                        <Link to={`/entries/${threeTopNews[0].id}`}>
+                        <Link to={`/entries/${news.id}`}>
                             {' '}
                             <img
                                 className="img_carousel"
-                                src={`${API_URL}/${threeTopNews[0].new_pic}`}
-                                text="First slide"
+                                src={`${API_URL}/${news.new_pic}`}
+                                text="slide"
                             />
                         </Link>
                         <Carousel.Caption>
-                            <h3>{threeTopNews[0].new_title}</h3>
+                            <h3>{news.new_title}</h3>
                         </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <Link to={`/entries/${threeTopNews[1].id}`}>
-                            <img
-                                className="img_carousel"
-                                src={`${API_URL}/${threeTopNews[1].new_pic}`}
-                                text="Second slide"
-                            />
-                        </Link>
-                        <Carousel.Caption>
-                            <h3>{threeTopNews[1].new_title}</h3>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <Link to={`/entries/${threeTopNews[2].id}`}>
-                            <img
-                                className="img_carousel"
-                                src={`${API_URL}/${threeTopNews[2].new_pic}`}
-                                text="Third slide"
-                            />
-                        </Link>
-                        <Carousel.Caption>
-                            <h3>{threeTopNews[2].new_title}</h3>
-                        </Carousel.Caption>
-                    </Carousel.Item>
+                    </Carousel.Item>)}
+                    )}                    
                 </Carousel>
             )}
         </div>
-    );
+    ); 
 }
 
 export default UncontrolledExample;
