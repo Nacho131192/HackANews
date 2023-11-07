@@ -1,20 +1,19 @@
-.buttons-container{
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+.buttons-container {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
 }
-a.button-page{
+a.button-page {
     margin: 1rem;
 }
-.categories-page{
+.categories-page {
     width: 1000px;
     margin-bottom: 100px;
-    
-   
+    min-height: 90vh;
 }
 
-.title-categories{
+.title-categories {
     font-size: 35px;
     text-transform: uppercase;
     color: white;
-    margin-top: 10px;
+    margin-top: 8px;
 }

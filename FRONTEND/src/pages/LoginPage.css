@@ -1,6 +1,6 @@
 .centrado {
     width: 1000px;
-    height: 755px;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
