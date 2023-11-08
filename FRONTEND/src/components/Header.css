@@ -57,7 +57,7 @@
     width:80%;
     text-align: center;
 }
-.input-group-header>input::placeholder {
+.input-group-header>input::-webkit-input-placeholder {
     color:white;
     border: 1px solid white;
     background-color: rgb(94, 94, 94);
