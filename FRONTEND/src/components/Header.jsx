@@ -28,17 +28,17 @@ export default function Header() {
                 <div className="input-group-header">
                     <input
                         type="search"
-                        className="form-control"
                         placeholder="Buscador de titulos"
                         value={keyword}
                         onChange={(e) => setKeyword(e.target.value)}
                         aria-label="Search"
                         aria-describedby="search-addon"
+                        autofocus="autofocus"
                     />
 
                     {!keyword == 0 && (
                         <Link to={`/entries/search/${keyword}`}>
-                            <Button type="button" variant="secondary">
+                            <Button id="btn-search" type="button" variant="secondary">
                                 Buscar
                             </Button>
                         </Link>
